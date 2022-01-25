@@ -6,27 +6,22 @@ using UnityEngine.InputSystem;
 
 public class playermovement : MonoBehaviour
 {
-    private ProjectReaper playerControls;
     [SerializeField]
     float acceleration;
     [SerializeField]
     float maxSpeed;
     
+    private PlayerInput playerInput;
+    private InputAction moveAction;
+
+
 
     private void Awake()
     {
-        playerControls = new ProjectReaper();
+        playerInput = gameObject.GetComponent<PlayerInput>();
+        moveAction = playerInput.actions["Move"];
     }
 
-    private void OnEnable()
-    {
-        playerControls.Enable();
-    }
-
-    private void OnDisable()
-    {
-        playerControls.Disable();
-    }
 
     void Start()
     {
@@ -41,20 +36,23 @@ public class playermovement : MonoBehaviour
     void moveManager()
     {
         var rb = gameObject.GetComponent<Rigidbody2D>();
-        Vector2 move = playerControls.Player.Move.ReadValue<Vector2>();
-        float maxSpeedLimiter = (maxSpeed-rb.velocity.magnitude)/maxSpeed;
-        if (maxSpeedLimiter < 0)
-            maxSpeedLimiter = 0;
-        rb.AddForce(move * acceleration *1000 * Time.deltaTime * maxSpeedLimiter);
+        Vector2 move = moveAction.ReadValue<Vector2>();
+        if (move.SqrMagnitude() != 0)
+        {
+            float maxSpeedLimiter = (maxSpeed-rb.velocity.magnitude)/maxSpeed;
+            if (maxSpeedLimiter < 0)
+                maxSpeedLimiter = 0;
+            rb.AddForce(move * acceleration *1000 * Time.deltaTime * maxSpeedLimiter);
+        }
     }
-    void FixedUpdate()
-    {
-        var rb = gameObject.GetComponent<Rigidbody2D>();
-        print(rb.velocity.magnitude);
-    }
-    // void onMove(InputValue value)
-    // {
-    //     var moveInput = value.Get<Vector2>();
-    //     print("wowo");
-    // }
-}
+//     void FixedUpdate()
+//     {
+        
+//     }
+//     void onMove(InputValue value)
+//     {
+//         var move = value.Get<Vector2>();
+//         var rb = gameObject.GetComponent<Rigidbody2D>();
+//         print(rb.velocity.magnitude);
+//     }
+// }
