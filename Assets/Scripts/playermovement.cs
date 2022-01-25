@@ -45,6 +45,7 @@ public class playermovement : MonoBehaviour
             rb.AddForce(move * acceleration *1000 * Time.deltaTime * maxSpeedLimiter);
         }
     }
+}
 //     void FixedUpdate()
 //     {
         
