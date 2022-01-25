@@ -97,8 +97,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 607f9d52da7efe04a8b709c8e93469cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 300
+  acceleration: 100
   maxSpeed: 30
+  JoystickMovementRampGraph:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.40895995
+      outSlope: 0.40895995
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.18481377
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  dashWaitTime: 0.5
+  dashTime: 0.05
+  dashSpeed: 140
+  rb: {fileID: 1795383056706940643}
+  isDashing: 0
 --- !u!114 &1795383056706940642
 MonoBehaviour:
   m_ObjectHideFlags: 0
