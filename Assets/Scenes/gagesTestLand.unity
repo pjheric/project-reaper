@@ -310,7 +310,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.38679248, g: 0.38679248, b: 0.38679248, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -327,7 +327,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 20
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -653,18 +653,6 @@ PrefabInstance:
     - target: {fileID: 1795383056706940640, guid: 7adc64dc1b4649f4eaa768b36777501a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1795383056706940642, guid: 7adc64dc1b4649f4eaa768b36777501a, type: 3}
-      propertyPath: m_DefaultActionMap
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1795383056706940642, guid: 7adc64dc1b4649f4eaa768b36777501a, type: 3}
-      propertyPath: m_DefaultControlScheme
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1795383056706940642, guid: 7adc64dc1b4649f4eaa768b36777501a, type: 3}
-      propertyPath: m_NeverAutoSwitchControlSchemes
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1795383056706940654, guid: 7adc64dc1b4649f4eaa768b36777501a, type: 3}
       propertyPath: m_Name

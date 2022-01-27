@@ -22,6 +22,7 @@ public class playermovement : MonoBehaviour
     float dashSpeed;
 
     public Rigidbody2D rb;//just exists so I do less work :)
+    public Transform directionObj;
 
     private float dashWaitTimeTimer = 10.0f;
     private float dashTimeTimer = 0.0f;
@@ -64,7 +65,7 @@ public class playermovement : MonoBehaviour
             if (maxSpeedLimiter < 0)
                 maxSpeedLimiter = 0;
             rb.AddForce(move * acceleration *1000 * Time.deltaTime * maxSpeedLimiter);
-            transform.up = GetComponent<Rigidbody2D>().velocity;
+            directionObj.up = GetComponent<Rigidbody2D>().velocity;
         }
         dashWaitTimeTimer += Time.deltaTime;     
         //Dash
@@ -102,7 +103,7 @@ public class playermovement : MonoBehaviour
         dashTimeTimer += Time.deltaTime;
         if (dashTimeTimer <= dashTime)
         {
-            rb.velocity = transform.up * dashSpeed;
+            rb.velocity = directionObj.up * dashSpeed;
         }
         else
         {
