@@ -27,7 +27,8 @@ public class playermovement : MonoBehaviour
     private float dashTimeTimer = 0.0f;
 
     private PlayerInput playerInput;
-    private InputAction moveAction;
+    //private InputAction moveAction;
+    Vector2 rawMove;
     private InputAction dashAction;
 
     public bool isDashing;
@@ -38,7 +39,7 @@ public class playermovement : MonoBehaviour
     private void Awake()
     {
         playerInput = gameObject.GetComponent<PlayerInput>();
-        moveAction = playerInput.actions["Move"];
+        //moveAction = playerInput.actions["Move"];
         dashAction = playerInput.actions["Dash"];
     }
 
@@ -53,21 +54,19 @@ public class playermovement : MonoBehaviour
         moveManager();
     }
 
+
     void moveManager()
     {
         //Movement
-        transform.up = GetComponent<Rigidbody2D>().velocity;
-        dashWaitTimeTimer += Time.deltaTime;
-        Vector2 move = moveAction.ReadValue<Vector2>();
-        if (move.SqrMagnitude() != 0)
-        {
-            move = move*JoystickMovementRampGraph.Evaluate(move.magnitude);
+        if (rawMove.magnitude != 0){
+            Vector2 move = rawMove*JoystickMovementRampGraph.Evaluate(rawMove.magnitude);
             float maxSpeedLimiter = (maxSpeed-rb.velocity.magnitude)/maxSpeed;
             if (maxSpeedLimiter < 0)
                 maxSpeedLimiter = 0;
             rb.AddForce(move * acceleration *1000 * Time.deltaTime * maxSpeedLimiter);
+            transform.up = GetComponent<Rigidbody2D>().velocity;
         }
-        
+        dashWaitTimeTimer += Time.deltaTime;     
         //Dash
         dashAction.started += context => dash();
         if(isDashing)
@@ -77,10 +76,12 @@ public class playermovement : MonoBehaviour
         // Debug.Log(dashWaitTimeTimer);
         
     }
-    public void move()
+    public void OnMove(InputValue value)
     {
-        print("move");
+        print("hi");
+        rawMove = value.Get<Vector2>();
     }
+
 
     void dash()
     {
