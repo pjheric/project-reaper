@@ -231,17 +231,6 @@
             ],
             "bindings": [
                 {
-                    "name": "",
-                    "id": "10222ad1-90b2-4c1a-b0ea-9760cd495289",
-                    "path": "<Gamepad>/leftStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
                     "name": "WASD",
                     "id": "25c56a9f-347d-499e-9707-839e3291d609",
                     "path": "Dpad",
