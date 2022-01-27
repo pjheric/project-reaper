@@ -77,13 +77,18 @@ public class playermovement : MonoBehaviour
         // Debug.Log(dashWaitTimeTimer);
         
     }
+    public void move()
+    {
+        print("move");
+    }
 
     void dash()
     {
         if (dashWaitTimeTimer > dashWaitTime && isDashing == false)
         {
-            //Gamepad gamepad = InputSystem.GetDevice<Gamepad>();
-            //gamepad.SetMotorSpeeds(0.923f, 0.934f);
+            Gamepad gamepad = InputSystem.GetDevice<Gamepad>();
+            if (gamepad != null)
+                gamepad.SetMotorSpeeds(0.923f, 0.934f);
             isDashing = true;
             print("dash started");
         }
@@ -104,8 +109,9 @@ public class playermovement : MonoBehaviour
             isDashing = false;
             
             print("dash finished");
-           // Gamepad gamepad = InputSystem.GetDevice<Gamepad>();
-           // gamepad.SetMotorSpeeds(0f, 0f);
+            Gamepad gamepad = InputSystem.GetDevice<Gamepad>();
+            if (gamepad != null)
+                gamepad.SetMotorSpeeds(0f, 0f);
             dashWaitTimeTimer = 0.0f;
             dashTimeTimer = 0.0f;
         }
