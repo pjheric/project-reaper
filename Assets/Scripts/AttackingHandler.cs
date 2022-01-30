@@ -12,6 +12,11 @@ public class AttackingHandler : MonoBehaviour
     private GameObject clonedSword;
     private Vector3 newRotation;
 
+    private bool attacking;
+
+    [SerializeField] private float weaponDistance = -1.7f;
+    [SerializeField] private float orbitDegreesPerSec = 180.0f;
+
     private void Awake()
     {
         attackControls = new AttackingControls();
@@ -33,12 +38,25 @@ public class AttackingHandler : MonoBehaviour
 
     private void BasicAttack()
     {
+        Debug.Log("attack!");
 
+        attacking = true;
     }
 
     private void Update()
     {
-        ManageWeapon();
+        if (attacking)
+        {
+            // var v = Quaternion.AngleAxis(Time.time * speed * -10, Vector3.up) * new Vector3(distance, 0, 0);
+            // clonedSword.transform.position = transform.position + v;
+
+            clonedSword.transform.position = transform.position + (transform.position - transform.position).normalized * weaponDistance;
+            clonedSword.transform.RotateAround(transform.position, Vector3.up, orbitDegreesPerSec * Time.deltaTime);
+        }
+        if (!attacking)
+        {
+            ManageWeapon();
+        }
     }
 
     private void ManageWeapon()
