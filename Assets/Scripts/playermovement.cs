@@ -79,7 +79,6 @@ public class playermovement : MonoBehaviour
     }
     public void OnMove(InputValue value)
     {
-        print("hi");
         rawMove = value.Get<Vector2>();
     }
 
