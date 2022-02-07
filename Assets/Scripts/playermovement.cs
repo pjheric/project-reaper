@@ -8,9 +8,7 @@ using System.Threading.Tasks;
 public class playermovement : MonoBehaviour
 {
     [SerializeField]
-    float acceleration;
-    [SerializeField]
-    float maxSpeed;
+    Entity entity;
     [SerializeField]
     AnimationCurve JoystickMovementRampGraph;
 
@@ -61,10 +59,10 @@ public class playermovement : MonoBehaviour
         //Movement
         if (rawMove.magnitude != 0){
             Vector2 move = rawMove*JoystickMovementRampGraph.Evaluate(rawMove.magnitude);
-            float maxSpeedLimiter = (maxSpeed-rb.velocity.magnitude)/maxSpeed;
+            float maxSpeedLimiter = (entity.maxSpeed-rb.velocity.magnitude)/entity.maxSpeed;
             if (maxSpeedLimiter < 0)
                 maxSpeedLimiter = 0;
-            rb.AddForce(move * acceleration *1000 * Time.deltaTime * maxSpeedLimiter);
+            rb.AddForce(move * entity.acceleration *1000 * Time.deltaTime * maxSpeedLimiter);
             directionObj.up = GetComponent<Rigidbody2D>().velocity;
         }
         dashWaitTimeTimer += Time.deltaTime;     
