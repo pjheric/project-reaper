@@ -10,18 +10,26 @@ public class AttackingHandler : MonoBehaviour
     [SerializeField] GameObject sword;
     [SerializeField] Transform directionObj;
 
-    private bool attacking;
+    private bool swinging;
+    private bool canSwing;
 
     //[SerializeField] private float weaponDistance = -1.7f;
-    [SerializeField] private float orbitDegreesPerSec;
+    [SerializeField] private float swingDegrees;
     [SerializeField] private float swingTime;
+    private float orbitDegreesPerSec;
+
+    [SerializeField]
+    private float swingDelayTime;
+    
     float swingTimer;
+    float delayTimer = 0;
 
     private void Awake()
     {
         attackControls = new AttackingControls();
         attackControls.PlayerAttack.BasicAttack1.performed += BasicAttackContext => BasicAttack();
         sword.SetActive(true);
+        canSwing = true;
     }
 
     private void OnEnable()
@@ -37,30 +45,51 @@ public class AttackingHandler : MonoBehaviour
 
     private void BasicAttack()
     {
-        Debug.Log("attack!");
+        if (canSwing)
+        {
+            Debug.Log("attack!");
 
-        attacking = true;
-        //set sword angle back 90 degrees in prep for 18degree attack
-        sword.transform.RotateAround(transform.position, Vector3.forward, -90);
+            canSwing = false;
+            swinging = true;
+
+            float swingStartAngle = (swingDegrees / 2) * -1;
+
+            //set sword angle back 90 degrees in prep for 18degree attack
+            sword.transform.RotateAround(transform.position, Vector3.forward, swingStartAngle);
+        }
+        else
+        {
+            Debug.Log("Cannot attack!");
+        }
     }
 
     private void Update()
     {
-        if (attacking)
+        orbitDegreesPerSec = swingDegrees / swingTime;
+
+        if (swinging)
         {
             // var v = Quaternion.AngleAxis(Time.time * speed * -10, Vector3.up) * new Vector3(distance, 0, 0);
             // clonedSword.transform.position = transform.position + v;
             swingTimer += Time.deltaTime;
             sword.transform.RotateAround(transform.position, Vector3.forward, orbitDegreesPerSec * Time.deltaTime);
         }
-        if (!attacking)
+        else
         {
             ManageWeapon();
+            delayTimer += Time.deltaTime;
         }
         if(swingTimer >= swingTime)
         {
             swingTimer = 0;
-            attacking=false;
+            swinging = false;
+            canSwing = false;
+            delayTimer = 0;
+        }
+        if (delayTimer >= swingDelayTime)
+        {
+            delayTimer = 0;
+            canSwing = true;
         }
     }
 
