@@ -590,6 +590,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   basicEnemyPrefab: {fileID: 695591817594053590, guid: ad3cbcad8eb1b5a4385713a1321c93bf, type: 3}
   locus: {fileID: 1383143847}
+  player1: {fileID: 1750582348}
+  player2: {fileID: 1292329152}
   mapRadius: 70
 --- !u!4 &932007285
 Transform:
@@ -791,6 +793,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 882e2671df468f949a90d77b5286f3c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFriendly: 0
   maxHealth: 200
   currentHealth: 200
   acceleration: 0
@@ -1175,6 +1178,14 @@ PrefabInstance:
       propertyPath: locus
       value: 
       objectReference: {fileID: 1383143847}
+    - target: {fileID: 695591817594053586, guid: ad3cbcad8eb1b5a4385713a1321c93bf, type: 3}
+      propertyPath: player1
+      value: 
+      objectReference: {fileID: 1750582348}
+    - target: {fileID: 695591817594053586, guid: ad3cbcad8eb1b5a4385713a1321c93bf, type: 3}
+      propertyPath: player2
+      value: 
+      objectReference: {fileID: 1292329152}
     - target: {fileID: 695591817594053588, guid: ad3cbcad8eb1b5a4385713a1321c93bf, type: 3}
       propertyPath: m_RootOrder
       value: 5
