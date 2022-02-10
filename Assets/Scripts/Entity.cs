@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
+    public bool isFriendly;
+
     public float maxHealth;
     public float currentHealth;
 
