@@ -82,9 +82,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entity: {fileID: 695591817594053587}
-  attackRange: 0
-  attackDamage: 0
+  sprite: {fileID: 695591818455457763}
+  baseColor: {r: 1, g: 1, b: 1, a: 1}
+  attackRange: 2
+  attackDamage: 3
+  attackDelay: 0.4
+  isAttacking: 0
   locus: {fileID: 0}
+  player1: {fileID: 0}
+  player2: {fileID: 0}
 --- !u!114 &695591817594053589
 MonoBehaviour:
   m_ObjectHideFlags: 0

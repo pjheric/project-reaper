@@ -22,6 +22,8 @@ public class BasicEnemy : MonoBehaviour
     }
     public void act(GameObject locus)//called every update
     {
-        enemy.moveTowardsLocus(locus);
+        enemy.checkDeath();
+        enemy.moveTowardsLocus();
+        enemy.CheckIfPlayerAttackable();
     }
 }

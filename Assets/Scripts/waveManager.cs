@@ -8,6 +8,10 @@ public class waveManager : MonoBehaviour
     [SerializeField]
     GameObject locus;
     [SerializeField]
+    GameObject player1;
+    [SerializeField]
+    GameObject player2;
+    [SerializeField]
     float mapRadius;
     float t = 0.0f;
 
@@ -32,6 +36,8 @@ public class waveManager : MonoBehaviour
             }
             GameObject newEnemy = Instantiate(basicEnemyPrefab, pos, Quaternion.identity);
             newEnemy.GetComponent<Enemy>().locus = locus;
+            newEnemy.GetComponent<Enemy>().player1 = player1;
+            newEnemy.GetComponent<Enemy>().player2 = player2;
             t = 0.0f;
             enemyCount += 1;
         }
