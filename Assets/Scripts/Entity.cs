@@ -23,4 +23,15 @@ public class Entity : MonoBehaviour
     // {
         
     // }
+    public void knockBack(float knockBackDistance, GameObject source)
+    {
+        Vector2 direction = transform.position - source.transform.position;
+        direction.Normalize();
+        GetComponent<Rigidbody2D>().AddForce(direction *2000 * knockBackDistance);
+    }
+    public void knockBack(float knockBackDistance, Vector2 direction)
+    {
+        GetComponent<Rigidbody2D>().AddForce(direction *2000 * knockBackDistance);
+    }
+    
 }

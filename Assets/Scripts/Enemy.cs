@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     public float attackRange;
     public float attackDamage;
     public float attackDelay;
+    public float attackKnockBackDistance;
 
     public bool isAttacking;
 
@@ -97,7 +98,9 @@ public class Enemy : MonoBehaviour
                 sprite.color = Color.blue;
                 if (Vector2.Distance(target.transform.position+(Vector3)target.GetComponent<Collider2D>().offset, transform.position)<= attackStartDistance)
                 {
+                    //ACTUAL ATTACK
                     target.GetComponent<Entity>().currentHealth -= attackDamage;
+                    target.GetComponent<Entity>().knockBack(attackKnockBackDistance,this.gameObject);
                 }
                 isAttacking = false;
                 yield return new WaitForSeconds(0.05f);// stay on the full red for a little bit

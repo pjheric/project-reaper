@@ -65,6 +65,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 882e2671df468f949a90d77b5286f3c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFriendly: 0
   maxHealth: 7
   currentHealth: 7
   acceleration: 3
@@ -87,6 +88,7 @@ MonoBehaviour:
   attackRange: 2
   attackDamage: 3
   attackDelay: 0.4
+  attackKnockBackDistance: 0.4
   isAttacking: 0
   locus: {fileID: 0}
   player1: {fileID: 0}
