@@ -10,7 +10,7 @@ public class AttackingHandler : MonoBehaviour
     [SerializeField] GameObject sword;
     [SerializeField] Transform directionObj;
 
-    private bool swinging;
+    public bool swinging;
     private bool canSwing;
 
     //[SerializeField] private float weaponDistance = -1.7f;
