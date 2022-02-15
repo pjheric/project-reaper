@@ -8,6 +8,7 @@ public class SwordManager : MonoBehaviour
 
     // STATS
     [SerializeField] float damage = 3;
+    [SerializeField] float knockback = 0.2f;
 
     private AttackingHandler playerAttackHandler;
 
@@ -22,19 +23,13 @@ public class SwordManager : MonoBehaviour
     {
         victimEntity = other.GetComponent<Entity>();
 
-        if (playerAttackHandler.swinging)
+        // checks if it is an entity (weapons) and is not friendly
+        if (playerAttackHandler.swinging && victimEntity != null && !victimEntity.isFriendly)
         {
-            // checks if it is an entity (weapons) and is not friendly
-            if (victimEntity != null && !victimEntity.isFriendly)
-            {
-                victimEntity.currentHealth -= damage;
-                Debug.Log("enemy hit! health: " + victimEntity.currentHealth);
+            victimEntity.currentHealth -= damage;
+            Debug.Log("enemy hit! health: " + victimEntity.currentHealth);
 
-            }
-            
+            victimEntity.knockBack(knockback, transform.parent.gameObject);
         }
-        
-
-
     }
 }
