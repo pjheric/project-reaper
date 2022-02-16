@@ -1,12 +1,12 @@
 {
-    "name": "Attacking",
+    "name": "Attacking Controls",
     "maps": [
         {
-            "name": "Player Attack",
+            "name": "GangLimAttack",
             "id": "248431c2-bb78-46a3-9a54-682d60a72df8",
             "actions": [
                 {
-                    "name": "Basic Attack 1",
+                    "name": "BasicAttack",
                     "type": "Button",
                     "id": "3a2568f6-5b80-49ce-9890-e3ce08c61223",
                     "expectedControlType": "Button",
@@ -23,7 +23,35 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Basic Attack 1",
+                    "action": "BasicAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "MorriganAttack",
+            "id": "77245e4c-b785-4f73-8c60-4597920c9d77",
+            "actions": [
+                {
+                    "name": "BasicAttack",
+                    "type": "Button",
+                    "id": "dd92bf82-b7d8-426c-8edf-a8f39826b686",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "abb1e18d-c78d-49a4-af5b-4f1e3353dcc3",
+                    "path": "<Keyboard>/slash",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BasicAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

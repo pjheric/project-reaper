@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class AttackingHandler : MonoBehaviour
+public class GangLimAttackingHandler : MonoBehaviour
 {
     private AttackingControls attackControls;
 
@@ -27,7 +27,7 @@ public class AttackingHandler : MonoBehaviour
     private void Awake()
     {
         attackControls = new AttackingControls();
-        attackControls.PlayerAttack.BasicAttack1.performed += BasicAttackContext => BasicAttack();
+        attackControls.GangLimAttack.BasicAttack.performed += BasicAttackContext => BasicAttack();
         sword.SetActive(true);
         canSwing = true;
     }

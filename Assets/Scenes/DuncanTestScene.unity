@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &49262835 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7743118692935215219, guid: 7adc64dc1b4649f4eaa768b36777501a, type: 3}
+  m_PrefabInstance: {fileID: 1478906646}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &77820802
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -496,53 +501,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 409580484}
   m_CullTransparentMesh: 1
---- !u!1 &426278462
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 426278464}
-  - component: {fileID: 426278463}
-  m_Layer: 0
-  m_Name: Gang-Lim stats center
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &426278463
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 426278462}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 493cd46f3e2f6ec4786b96470d1e64c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseDamage: 3
-  baseKnockback: 0.2
-  procNumber: 3
-  procMaxHealthPercentageDamage: 5
---- !u!4 &426278464
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 426278462}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.1234971, y: -2.6354833, z: -77.555534}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &813133403
 GameObject:
   m_ObjectHideFlags: 0
@@ -693,6 +651,24 @@ MonoBehaviour:
   locusIndicator: {fileID: 409580484}
   playerCamera: {fileID: 1171517211}
   playerNum: 2
+--- !u!114 &1292329154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1292329152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b84a26453ea9ba1448a1b8adb1ec26c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spear: {fileID: 1428617984}
+  directionObj: {fileID: 49262835}
+  thrusting: 0
+  thrustTime: 1
+  thrustDelayTime: 1
+  thrustDistance: 5
 --- !u!1 &1332497283
 GameObject:
   m_ObjectHideFlags: 0
@@ -883,6 +859,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1428617984 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5809839462646819060, guid: 7adc64dc1b4649f4eaa768b36777501a, type: 3}
+  m_PrefabInstance: {fileID: 1478906646}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1478906646
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1004,7 +985,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1795383056706940654, guid: 7adc64dc1b4649f4eaa768b36777501a, type: 3}
       propertyPath: m_Name
-      value: player 2
+      value: Morrigan
       objectReference: {fileID: 0}
     - target: {fileID: 1795383056706940654, guid: 7adc64dc1b4649f4eaa768b36777501a, type: 3}
       propertyPath: m_TagString
@@ -1022,7 +1003,9 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2714929493593150479, guid: 7adc64dc1b4649f4eaa768b36777501a, type: 3}
+    - {fileID: 612135833, guid: 7adc64dc1b4649f4eaa768b36777501a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7adc64dc1b4649f4eaa768b36777501a, type: 3}
 --- !u!1 &1580313739
 GameObject:

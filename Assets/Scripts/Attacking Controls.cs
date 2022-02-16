@@ -24,11 +24,11 @@ public partial class @AttackingControls : IInputActionCollection2, IDisposable
     ""name"": ""Attacking Controls"",
     ""maps"": [
         {
-            ""name"": ""Player Attack"",
+            ""name"": ""GangLimAttack"",
             ""id"": ""248431c2-bb78-46a3-9a54-682d60a72df8"",
             ""actions"": [
                 {
-                    ""name"": ""Basic Attack 1"",
+                    ""name"": ""BasicAttack"",
                     ""type"": ""Button"",
                     ""id"": ""3a2568f6-5b80-49ce-9890-e3ce08c61223"",
                     ""expectedControlType"": ""Button"",
@@ -45,7 +45,35 @@ public partial class @AttackingControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Basic Attack 1"",
+                    ""action"": ""BasicAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""MorriganAttack"",
+            ""id"": ""77245e4c-b785-4f73-8c60-4597920c9d77"",
+            ""actions"": [
+                {
+                    ""name"": ""BasicAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""dd92bf82-b7d8-426c-8edf-a8f39826b686"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""abb1e18d-c78d-49a4-af5b-4f1e3353dcc3"",
+                    ""path"": ""<Keyboard>/slash"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""BasicAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -54,9 +82,12 @@ public partial class @AttackingControls : IInputActionCollection2, IDisposable
     ],
     ""controlSchemes"": []
 }");
-        // Player Attack
-        m_PlayerAttack = asset.FindActionMap("Player Attack", throwIfNotFound: true);
-        m_PlayerAttack_BasicAttack1 = m_PlayerAttack.FindAction("Basic Attack 1", throwIfNotFound: true);
+        // GangLimAttack
+        m_GangLimAttack = asset.FindActionMap("GangLimAttack", throwIfNotFound: true);
+        m_GangLimAttack_BasicAttack = m_GangLimAttack.FindAction("BasicAttack", throwIfNotFound: true);
+        // MorriganAttack
+        m_MorriganAttack = asset.FindActionMap("MorriganAttack", throwIfNotFound: true);
+        m_MorriganAttack_BasicAttack = m_MorriganAttack.FindAction("BasicAttack", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -113,40 +144,77 @@ public partial class @AttackingControls : IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Player Attack
-    private readonly InputActionMap m_PlayerAttack;
-    private IPlayerAttackActions m_PlayerAttackActionsCallbackInterface;
-    private readonly InputAction m_PlayerAttack_BasicAttack1;
-    public struct PlayerAttackActions
+    // GangLimAttack
+    private readonly InputActionMap m_GangLimAttack;
+    private IGangLimAttackActions m_GangLimAttackActionsCallbackInterface;
+    private readonly InputAction m_GangLimAttack_BasicAttack;
+    public struct GangLimAttackActions
     {
         private @AttackingControls m_Wrapper;
-        public PlayerAttackActions(@AttackingControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @BasicAttack1 => m_Wrapper.m_PlayerAttack_BasicAttack1;
-        public InputActionMap Get() { return m_Wrapper.m_PlayerAttack; }
+        public GangLimAttackActions(@AttackingControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @BasicAttack => m_Wrapper.m_GangLimAttack_BasicAttack;
+        public InputActionMap Get() { return m_Wrapper.m_GangLimAttack; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(PlayerAttackActions set) { return set.Get(); }
-        public void SetCallbacks(IPlayerAttackActions instance)
+        public static implicit operator InputActionMap(GangLimAttackActions set) { return set.Get(); }
+        public void SetCallbacks(IGangLimAttackActions instance)
         {
-            if (m_Wrapper.m_PlayerAttackActionsCallbackInterface != null)
+            if (m_Wrapper.m_GangLimAttackActionsCallbackInterface != null)
             {
-                @BasicAttack1.started -= m_Wrapper.m_PlayerAttackActionsCallbackInterface.OnBasicAttack1;
-                @BasicAttack1.performed -= m_Wrapper.m_PlayerAttackActionsCallbackInterface.OnBasicAttack1;
-                @BasicAttack1.canceled -= m_Wrapper.m_PlayerAttackActionsCallbackInterface.OnBasicAttack1;
+                @BasicAttack.started -= m_Wrapper.m_GangLimAttackActionsCallbackInterface.OnBasicAttack;
+                @BasicAttack.performed -= m_Wrapper.m_GangLimAttackActionsCallbackInterface.OnBasicAttack;
+                @BasicAttack.canceled -= m_Wrapper.m_GangLimAttackActionsCallbackInterface.OnBasicAttack;
             }
-            m_Wrapper.m_PlayerAttackActionsCallbackInterface = instance;
+            m_Wrapper.m_GangLimAttackActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @BasicAttack1.started += instance.OnBasicAttack1;
-                @BasicAttack1.performed += instance.OnBasicAttack1;
-                @BasicAttack1.canceled += instance.OnBasicAttack1;
+                @BasicAttack.started += instance.OnBasicAttack;
+                @BasicAttack.performed += instance.OnBasicAttack;
+                @BasicAttack.canceled += instance.OnBasicAttack;
             }
         }
     }
-    public PlayerAttackActions @PlayerAttack => new PlayerAttackActions(this);
-    public interface IPlayerAttackActions
+    public GangLimAttackActions @GangLimAttack => new GangLimAttackActions(this);
+
+    // MorriganAttack
+    private readonly InputActionMap m_MorriganAttack;
+    private IMorriganAttackActions m_MorriganAttackActionsCallbackInterface;
+    private readonly InputAction m_MorriganAttack_BasicAttack;
+    public struct MorriganAttackActions
     {
-        void OnBasicAttack1(InputAction.CallbackContext context);
+        private @AttackingControls m_Wrapper;
+        public MorriganAttackActions(@AttackingControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @BasicAttack => m_Wrapper.m_MorriganAttack_BasicAttack;
+        public InputActionMap Get() { return m_Wrapper.m_MorriganAttack; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MorriganAttackActions set) { return set.Get(); }
+        public void SetCallbacks(IMorriganAttackActions instance)
+        {
+            if (m_Wrapper.m_MorriganAttackActionsCallbackInterface != null)
+            {
+                @BasicAttack.started -= m_Wrapper.m_MorriganAttackActionsCallbackInterface.OnBasicAttack;
+                @BasicAttack.performed -= m_Wrapper.m_MorriganAttackActionsCallbackInterface.OnBasicAttack;
+                @BasicAttack.canceled -= m_Wrapper.m_MorriganAttackActionsCallbackInterface.OnBasicAttack;
+            }
+            m_Wrapper.m_MorriganAttackActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @BasicAttack.started += instance.OnBasicAttack;
+                @BasicAttack.performed += instance.OnBasicAttack;
+                @BasicAttack.canceled += instance.OnBasicAttack;
+            }
+        }
+    }
+    public MorriganAttackActions @MorriganAttack => new MorriganAttackActions(this);
+    public interface IGangLimAttackActions
+    {
+        void OnBasicAttack(InputAction.CallbackContext context);
+    }
+    public interface IMorriganAttackActions
+    {
+        void OnBasicAttack(InputAction.CallbackContext context);
     }
 }
