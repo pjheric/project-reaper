@@ -280,7 +280,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1795383056706940654, guid: 7adc64dc1b4649f4eaa768b36777501a, type: 3}
       propertyPath: m_Name
-      value: gang-lim
+      value: Gang-Lim
       objectReference: {fileID: 0}
     - target: {fileID: 1795383056706940654, guid: 7adc64dc1b4649f4eaa768b36777501a, type: 3}
       propertyPath: m_TagString
@@ -310,6 +310,10 @@ PrefabInstance:
       propertyPath: damage
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3797439537685191444, guid: 7adc64dc1b4649f4eaa768b36777501a, type: 3}
+      propertyPath: gangLimKit
+      value: 
+      objectReference: {fileID: 1750582350}
     - target: {fileID: 5161037570891554936, guid: 7adc64dc1b4649f4eaa768b36777501a, type: 3}
       propertyPath: maxHealth
       value: 0
@@ -492,6 +496,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 409580484}
   m_CullTransparentMesh: 1
+--- !u!1 &426278462
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 426278464}
+  - component: {fileID: 426278463}
+  m_Layer: 0
+  m_Name: Gang-Lim stats center
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &426278463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426278462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 493cd46f3e2f6ec4786b96470d1e64c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseDamage: 3
+  baseKnockback: 0.2
+  procNumber: 3
+  procMaxHealthPercentageDamage: 5
+--- !u!4 &426278464
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426278462}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.1234971, y: -2.6354833, z: -77.555534}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &813133403
 GameObject:
   m_ObjectHideFlags: 0
@@ -1096,6 +1147,34 @@ MonoBehaviour:
   locusIndicator: {fileID: 380369439}
   playerCamera: {fileID: 251261069}
   playerNum: 1
+--- !u!114 &1750582350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750582348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f412f40c1fe367446ab212bfada81429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1750582359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750582348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 226332918eff28f44a5a12e4f54cabea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseDamage: 3
+  baseKnockback: 0.2
+  procNumber: 3
+  procMaxHealthPercentageDamage: 5
 --- !u!1 &2023826921
 GameObject:
   m_ObjectHideFlags: 0

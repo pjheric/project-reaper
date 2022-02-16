@@ -6,9 +6,7 @@ public class SwordManager : MonoBehaviour
 {
     Entity victimEntity;
 
-    // STATS
-    [SerializeField] float damage = 3;
-    [SerializeField] float knockback = 0.2f;
+    [SerializeField] private GLkit gangLimKit;
 
     private AttackingHandler playerAttackHandler;
 
@@ -26,10 +24,19 @@ public class SwordManager : MonoBehaviour
         // checks if it is an entity (weapons) and is not friendly
         if (playerAttackHandler.swinging && victimEntity != null && !victimEntity.isFriendly)
         {
-            victimEntity.currentHealth -= damage;
-            Debug.Log("enemy hit! health: " + victimEntity.currentHealth);
+            if (gameObject.transform.parent.name == "Gang-Lim")
+            {
+                victimEntity.currentHealth -= gangLimKit.BasicAttackDamage(victimEntity);
+                Debug.Log("enemy hit! health: " + victimEntity.currentHealth);
 
-            victimEntity.knockBack(knockback, transform.parent.gameObject);
+                victimEntity.knockBack(gangLimKit.BasicAttackKnockback(), transform.parent.gameObject);
+            }
+            /*
+            else if (gameObject.transform.parent.name == "morigan")
+            {
+
+            }
+            */
         }
     }
 }
