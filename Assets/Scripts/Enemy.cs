@@ -16,7 +16,9 @@ public class Enemy : MonoBehaviour
 
     public float attackRange;
     public float attackDamage;
-    public float attackDelay;
+    public float attackSpeed;
+    public float timeBetweenAttacks;
+    float tBACounter = 10.0f;
     public float attackKnockBackDistance;
 
     public bool isAttacking;
@@ -46,6 +48,7 @@ public class Enemy : MonoBehaviour
     }
     public void moveTowardsLocus()
     {
+        tBACounter += Time.deltaTime;
         float attackStartDistance = attackRange + locus.GetComponent<CircleCollider2D>().radius;
         if (Vector2.Distance((Vector3)locus.GetComponent<CircleCollider2D>().offset+locus.transform.position, transform.position)> attackStartDistance)
         {
@@ -87,8 +90,9 @@ public class Enemy : MonoBehaviour
     
     public void attackBasic(GameObject target, float attackStartDistance)//assumes in range at start of attack
     {
-        if(isAttacking == false)
+        if(isAttacking == false && tBACounter > timeBetweenAttacks)
         {
+            tBACounter = 0.0f;//redundant
             isAttacking = true;
             StartCoroutine(attackDelayer(target, attackStartDistance));
         }
@@ -100,18 +104,21 @@ public class Enemy : MonoBehaviour
         while(true)
         {
             t += Time.deltaTime;
-            sprite.color = new Color(1,1-t/attackDelay,1-t/attackDelay,1);
-            if (t > attackDelay)
+            sprite.color = new Color(1-t/attackSpeed,1-t/attackSpeed,1,1);
+            if (t > attackSpeed)
             {
-                sprite.color = Color.blue;
                 if (Vector2.Distance(target.transform.position+(Vector3)target.GetComponent<Collider2D>().offset, transform.position)<= attackStartDistance)
                 {
                     //ACTUAL ATTACK
+                    sprite.color = Color.red;
                     target.GetComponent<Entity>().currentHealth -= attackDamage;
+                    target.GetComponent<Entity>().hurtColor();
                     target.GetComponent<Entity>().knockBack(attackKnockBackDistance,this.gameObject);
+                    yield return new WaitForSeconds(0.05f);// stay on the full red for a little bit
+
                 }
                 isAttacking = false;
-                yield return new WaitForSeconds(0.05f);// stay on the full red for a little bit
+                tBACounter = 0.0f;
                 sprite.color = baseColor;//return to normal
                 break;
             }

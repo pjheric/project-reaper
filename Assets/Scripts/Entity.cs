@@ -11,6 +11,8 @@ public class Entity : MonoBehaviour
 
     public float acceleration;//might be 0
     public float maxSpeed;//might be 0
+
+    [SerializeField] SpriteRenderer spriteObjSprite;
     
     // // Start is called before the first frame update
     // void Start()
@@ -40,6 +42,15 @@ public class Entity : MonoBehaviour
     public void knockBack(float knockBackDistance, Vector2 direction)
     {
         GetComponent<Rigidbody2D>().AddForce(direction *2000 * knockBackDistance);
+    }
+    public void hurtColor()
+    {
+        spriteObjSprite.color = Color.red;
+        Invoke("resetColor",0.1f);
+    }
+    public void resetColor()
+    {
+        spriteObjSprite.color = Color.white;
     }
     
 }

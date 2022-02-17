@@ -67,6 +67,8 @@ public class TestMorriganAttackingHandler : MonoBehaviour
                     victimEntity.currentHealth -= morriganKit.BasicAttackDamage(victimEntity);
                     Debug.Log("enemy hit! health: " + victimEntity.currentHealth);
                     victimEntity.knockBack(morriganKit.BasicAttackKnockback(), transform.gameObject);
+                    victimEntity.hurtColor();
+
                 }
             }
         }

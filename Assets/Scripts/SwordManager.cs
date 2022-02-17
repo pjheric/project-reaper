@@ -31,6 +31,8 @@ public class SwordManager : MonoBehaviour
                 Debug.Log("enemy hit! health: " + victimEntity.currentHealth);
 
                 victimEntity.knockBack(gangLimKit.BasicAttackKnockback(), transform.parent.gameObject);
+                victimEntity.hurtColor();
+
             }
         }
         /*

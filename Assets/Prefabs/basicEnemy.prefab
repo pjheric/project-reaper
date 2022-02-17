@@ -66,10 +66,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFriendly: 0
-  maxHealth: 7
-  currentHealth: 7
+  maxHealth: 6
+  currentHealth: 6
   acceleration: 3
   maxSpeed: 2
+  spriteObjSprite: {fileID: 695591818455457763}
 --- !u!114 &695591817594053586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,7 +88,8 @@ MonoBehaviour:
   baseColor: {r: 1, g: 1, b: 1, a: 1}
   attackRange: 2
   attackDamage: 3
-  attackDelay: 0.4
+  attackSpeed: 0.5
+  timeBetweenAttacks: 1
   attackKnockBackDistance: 0.4
   isAttacking: 0
   locus: {fileID: 0}

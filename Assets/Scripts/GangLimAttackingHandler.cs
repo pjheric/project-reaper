@@ -9,6 +9,7 @@ public class GangLimAttackingHandler : MonoBehaviour
 
     [SerializeField] GameObject sword;
     [SerializeField] Transform directionObj;
+    [SerializeField] Animator animator;
 
     public bool swinging;
     private bool canSwing;
@@ -51,6 +52,7 @@ public class GangLimAttackingHandler : MonoBehaviour
 
             canSwing = false;
             swinging = true;
+            animator.SetBool("isAttacking", true);
 
             float swingStartAngle = (swingDegrees / 2) * -1;
 
@@ -85,6 +87,7 @@ public class GangLimAttackingHandler : MonoBehaviour
             swinging = false;
             canSwing = false;
             delayTimer = 0;
+            animator.SetBool("isAttacking", false);
         }
         if (delayTimer >= swingDelayTime)
         {

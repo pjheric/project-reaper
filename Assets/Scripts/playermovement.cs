@@ -18,8 +18,10 @@ public class playermovement : MonoBehaviour
     [SerializeField]
     float dashSpeed;
 
-    public Rigidbody2D rb;//just exists so I do less work :)
-    public Transform directionObj;
+    [SerializeField] Rigidbody2D rb;//just exists so I do less work :)
+    [SerializeField] Transform directionObj;
+    [SerializeField] GameObject spriteObj;
+    [SerializeField] Animator animator;
 
     private float dashWaitTimeTimer = 10.0f;
     private float dashTimeTimer = 0.0f;
@@ -56,8 +58,21 @@ public class playermovement : MonoBehaviour
     void moveManager()
     {
         //Movement
+        if(animator != null){
+            animator.SetFloat("speed", Mathf.Abs(rawMove.x) + Mathf.Abs(rawMove.y)/2);
+        }
         if (rawMove.magnitude != 0){
             Vector2 move = rawMove*JoystickMovementRampGraph.Evaluate(rawMove.magnitude);
+            if(animator == null || animator.GetCurrentAnimatorStateInfo(0).IsName("Gang-LimBasicAttack") == false){
+                if(move.x< 0)
+                {
+                    spriteObj.GetComponent<SpriteRenderer>().flipX = true;
+                }
+                else if (move.x > 0)
+                {
+                    spriteObj.GetComponent<SpriteRenderer>().flipX = false;
+                }
+            }
             float maxSpeedLimiter = (entity.maxSpeed-rb.velocity.magnitude)/entity.maxSpeed;
             if (maxSpeedLimiter < 0)
                 maxSpeedLimiter = 0;
