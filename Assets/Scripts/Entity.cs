@@ -23,6 +23,14 @@ public class Entity : MonoBehaviour
     // {
         
     // }
+    public void addHealth(int health)
+    {
+        currentHealth += health;
+        if(currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+    }
     public void knockBack(float knockBackDistance, GameObject source)
     {
         Vector2 direction = transform.position - source.transform.position;

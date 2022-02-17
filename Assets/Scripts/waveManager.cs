@@ -52,6 +52,9 @@ public class waveManager : MonoBehaviour
     {
         waveRunning = false;
         currentWaveNum += 1;
+        locus.GetComponent<Entity>().addHealth(50);
+        player1.GetComponent<Entity>().addHealth(1000);//heal to full
+        player2.GetComponent<Entity>().addHealth(1000);//heal to full
         Invoke("startWave",5);
     }
     void startWave()
@@ -62,7 +65,7 @@ public class waveManager : MonoBehaviour
     void runWave()
     {
         t += Time.deltaTime;
-        if(t > 0.05f && currentWave.basicEnemySpawnCount > 0 && waveRunning)
+        if(t > 0.1f && currentWave.basicEnemySpawnCount > 0 && waveRunning)
         {
             Vector2 pos = new Vector2(Random.Range(-(mapRadius + 20), (mapRadius + 20)),Random.Range(-(mapRadius + 20), (mapRadius + 20)));
             while(Vector2.Distance(locus.transform.position, pos) < mapRadius || Vector2.Distance(locus.transform.position, pos) > (mapRadius+20))
