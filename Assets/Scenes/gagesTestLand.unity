@@ -1096,6 +1096,27 @@ MonoBehaviour:
   player1: {fileID: 532139063}
   player2: {fileID: 379655355}
   mapRadius: 70
+  waves:
+  - basicEnemySpawnCount: 80
+    fastEnemySpawnCount: 0
+    tankEnemySpawnCount: 0
+    buffEnemySpawnCount: 0
+  - basicEnemySpawnCount: 160
+    fastEnemySpawnCount: 0
+    tankEnemySpawnCount: 0
+    buffEnemySpawnCount: 0
+  - basicEnemySpawnCount: 240
+    fastEnemySpawnCount: 0
+    tankEnemySpawnCount: 0
+    buffEnemySpawnCount: 0
+  - basicEnemySpawnCount: 320
+    fastEnemySpawnCount: 0
+    tankEnemySpawnCount: 0
+    buffEnemySpawnCount: 0
+  - basicEnemySpawnCount: 400
+    fastEnemySpawnCount: 0
+    tankEnemySpawnCount: 0
+    buffEnemySpawnCount: 0
 --- !u!4 &1412248997
 Transform:
   m_ObjectHideFlags: 0

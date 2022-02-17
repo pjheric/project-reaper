@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
 
     public bool isAttacking;
 
+    waveManager WM;
     public GameObject locus;//will need to be set when it spawns
     public GameObject player1;
     public GameObject player2;
@@ -36,6 +37,13 @@ public class Enemy : MonoBehaviour
     // {
         
     // }
+    void OnDestroy()
+    {
+        if(gameObject.scene.isLoaded) //Was Deleted
+        {
+            waveManager.enemyCount -=1;
+        }
+    }
     public void moveTowardsLocus()
     {
         float attackStartDistance = attackRange + locus.GetComponent<CircleCollider2D>().radius;

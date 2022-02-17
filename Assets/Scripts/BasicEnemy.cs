@@ -20,6 +20,14 @@ public class BasicEnemy : MonoBehaviour
     {
         act(enemy.locus);
     }
+
+    void OnDestroy()
+    {
+        if(gameObject.scene.isLoaded) //Was Deleted
+        {
+            waveManager.basicEnemyCount -=1;
+        }
+    }
     public void act(GameObject locus)//called every update
     {
         enemy.checkDeath();

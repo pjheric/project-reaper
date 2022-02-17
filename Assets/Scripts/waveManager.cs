@@ -13,26 +13,61 @@ public class waveManager : MonoBehaviour
     GameObject player2;
     [SerializeField]
     float mapRadius;
-    float t = 0.0f;
+
+    [System.Serializable]
+    public struct waveConfiguration
+    {
+        public int basicEnemySpawnCount;
+        public int fastEnemySpawnCount;
+        public int tankEnemySpawnCount;
+        public int buffEnemySpawnCount;
+    }
+    [SerializeField]
+    public waveConfiguration[] waves = new waveConfiguration[5];
+
+    float t = 3.0f;
 
     public static int basicEnemyCount;
+    public static int fastEnemyCount;
+    public static int tankEnemyCount;
+    public static int buffEnemyCount;
     public static int enemyCount;
+    public static int currentWaveNum = 0;//starting at 0   
+    waveConfiguration currentWave;
+    
+    bool waveRunning = false;
     // Start is called before the first frame update
     void Start()
     {
-        
+        currentWaveNum = 0;
+        startWave();
     }
 
     // Update is called once per frame
     void Update()
     {
+        runWave();
+    }
+    void waveEnd()
+    {
+        waveRunning = false;
+        currentWaveNum += 1;
+        Invoke("startWave",5);
+    }
+    void startWave()
+    {
+        waveRunning = true;
+        currentWave = waves[currentWaveNum];
+    }
+    void runWave()
+    {
         t += Time.deltaTime;
-        if(t > 0.05f && enemyCount < 100)
+        if(t > 0.05f && currentWave.basicEnemySpawnCount > 0 && waveRunning)
         {
             Vector2 pos = new Vector2(Random.Range(-(mapRadius + 20), (mapRadius + 20)),Random.Range(-(mapRadius + 20), (mapRadius + 20)));
             while(Vector2.Distance(locus.transform.position, pos) < mapRadius || Vector2.Distance(locus.transform.position, pos) > (mapRadius+20))
             {
-                pos = new Vector2(Random.Range(-90,90),Random.Range(-90,90));//get a new pos until it is within the 2 circles
+                pos = new Vector2(Random.Range(-(mapRadius + 20), (mapRadius + 20)),Random.Range(-(mapRadius + 20), (mapRadius + 20)));//get a new pos until it is within the 2 circles
             }
             GameObject newEnemy = Instantiate(basicEnemyPrefab, pos, Quaternion.identity);
             newEnemy.GetComponent<Enemy>().locus = locus;
@@ -40,6 +75,11 @@ public class waveManager : MonoBehaviour
             newEnemy.GetComponent<Enemy>().player2 = player2;
             t = 0.0f;
             enemyCount += 1;
+            currentWave.basicEnemySpawnCount -= 1;
+        }
+        if (enemyCount <= 0 && waveRunning)
+        {
+            waveEnd();
         }
     }
 }
