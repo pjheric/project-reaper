@@ -29,6 +29,14 @@ public class mainManager : MonoBehaviour
         if(locus.GetComponent<Entity>().currentHealth<50)
         {
             locusHealthText.color = Color.red;
+            locus.transform.GetChild(0).gameObject.SetActive(false);
+            locus.transform.GetChild(1).gameObject.SetActive(true);
+        }
+        else
+        {
+            locusHealthText.color = Color.white;
+            locus.transform.GetChild(0).gameObject.SetActive(true);
+            locus.transform.GetChild(1).gameObject.SetActive(false);
         }
         if(locus.GetComponent<Entity>().currentHealth<=0 && gameOver == false)
         {
