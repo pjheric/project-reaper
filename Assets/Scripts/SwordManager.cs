@@ -7,15 +7,15 @@ public class SwordManager : MonoBehaviour
     Entity victimEntity;
 
     [SerializeField] private GLkit gangLimKit;
-    //[SerializeField] private Mkit morriganKit;
+    [SerializeField] private Mkit morriganKit;
 
     private GangLimAttackingHandler GLAttackHandler;
-   // private MorriganAttackingHandler MAttackHandler;
+    private TestMorriganAttackingHandler MAttackHandler;
 
     private void Awake()
     {
         GLAttackHandler = transform.parent.GetComponent<GangLimAttackingHandler>();
-        //MAttackHandler = transform.parent.GetComponent<MorriganAttackingHandler>();
+        MAttackHandler = transform.parent.GetComponent<TestMorriganAttackingHandler>();
     }
 
 
@@ -23,25 +23,24 @@ public class SwordManager : MonoBehaviour
     {
         victimEntity = other.GetComponent<Entity>();
 
-        // checks if it is an entity (weapons) and is not friendly
-        if (GLAttackHandler.swinging && victimEntity != null && !victimEntity.isFriendly)
+        if (gameObject.transform.parent.name == "Gang-Lim")
         {
-            if (gameObject.transform.parent.name == "Gang-Lim")
+            if (GLAttackHandler.swinging && victimEntity != null && !victimEntity.isFriendly)
             {
                 victimEntity.currentHealth -= gangLimKit.BasicAttackDamage(victimEntity);
                 Debug.Log("enemy hit! health: " + victimEntity.currentHealth);
 
                 victimEntity.knockBack(gangLimKit.BasicAttackKnockback(), transform.parent.gameObject);
             }
-            /*
-            else if (gameObject.transform.parent.name == "Morrigan")
+        }
+        else if (gameObject.transform.parent.name == "Morrigan")
+        {
+            if (MAttackHandler.swinging && victimEntity != null && !victimEntity.isFriendly)
             {
                 victimEntity.currentHealth -= morriganKit.BasicAttackDamage(victimEntity);
                 Debug.Log("enemy hit! health: " + victimEntity.currentHealth);
-
-                victimEntity.knockBack(morrigan.BasicAttackKnockback(), transform.parent.gameObject);
+                victimEntity.knockBack(morriganKit.BasicAttackKnockback(), transform.parent.gameObject);
             }
-            */
         }
     }
 }

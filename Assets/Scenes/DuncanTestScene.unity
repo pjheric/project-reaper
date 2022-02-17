@@ -660,15 +660,41 @@ MonoBehaviour:
   m_GameObject: {fileID: 1292329152}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b84a26453ea9ba1448a1b8adb1ec26c5, type: 3}
+  m_Script: {fileID: 11500000, guid: 925281bc25f170143a73da89396e899c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spear: {fileID: 1428617984}
+  sword: {fileID: 1428617984}
   directionObj: {fileID: 49262835}
-  thrusting: 0
-  thrustTime: 1
-  thrustDelayTime: 1
-  thrustDistance: 5
+  swinging: 0
+  swingDegrees: 5
+  swingTime: 0.85
+  swingDelayTime: 0.4
+--- !u!114 &1292329155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1292329152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1efeb4b05b58064b91c3511348adf09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseDamage: 3
+  baseKnockback: 0.2
+--- !u!114 &1292329156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1292329152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8947f1775b681d344b3a361a2c922f4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1332497283
 GameObject:
   m_ObjectHideFlags: 0
@@ -991,6 +1017,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3797439537685191444, guid: 7adc64dc1b4649f4eaa768b36777501a, type: 3}
+      propertyPath: morriganKit
+      value: 
+      objectReference: {fileID: 1292329156}
     - target: {fileID: 5161037570891554936, guid: 7adc64dc1b4649f4eaa768b36777501a, type: 3}
       propertyPath: isFriendly
       value: 1
