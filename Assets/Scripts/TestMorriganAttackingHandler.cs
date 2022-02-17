@@ -7,11 +7,15 @@ public class TestMorriganAttackingHandler : MonoBehaviour
 {
     private AttackingControls attackControls;
 
+    [SerializeField] Mkit morriganKit;
+
     [SerializeField] GameObject sword;
     [SerializeField] Transform directionObj;
 
-    public bool swinging;
-    private bool canSwing;
+    [SerializeField] Transform point1;
+    [SerializeField] Transform point2;
+
+    private bool canSwing = true;
 
     //[SerializeField] private float weaponDistance = -1.7f;
     [SerializeField] private float swingDegrees;
@@ -27,7 +31,7 @@ public class TestMorriganAttackingHandler : MonoBehaviour
     private void Awake()
     {
         attackControls = new AttackingControls();
-        attackControls.MorriganAttack.BasicAttack.performed += BasicAttackContext => BasicAttack();
+        attackControls.MorriganAttack.BasicAttack.performed += _ => BasicAttack();
         sword.SetActive(true);
         canSwing = true;
     }
@@ -43,19 +47,28 @@ public class TestMorriganAttackingHandler : MonoBehaviour
     }
 
 
-    private void BasicAttack()
+    void BasicAttack()
     {
+        Debug.Log("A*WDHHAOLD");
+
         if (canSwing)
         {
             Debug.Log("attack!");
 
             canSwing = false;
-            swinging = true;
 
-            float swingStartAngle = (swingDegrees / 2) * -1;
+            Collider2D[] allHitColliders = Physics2D.OverlapAreaAll(point1.position, point2.position);
 
-            //set sword angle back 90 degrees in prep for 18degree attack
-            sword.transform.RotateAround(transform.position, Vector3.forward, swingStartAngle);
+            foreach (var x in allHitColliders)
+            {
+                if (x.transform.tag == "enemy")
+                {
+                    var victimEntity = x.GetComponent<Entity>();
+                    victimEntity.currentHealth -= morriganKit.BasicAttackDamage(victimEntity);
+                    Debug.Log("enemy hit! health: " + victimEntity.currentHealth);
+                    victimEntity.knockBack(morriganKit.BasicAttackKnockback(), transform.gameObject);
+                }
+            }
         }
         else
         {
@@ -65,27 +78,9 @@ public class TestMorriganAttackingHandler : MonoBehaviour
 
     private void Update()
     {
-        orbitDegreesPerSec = swingDegrees / swingTime;
+        ManageWeapon();
+        delayTimer += Time.deltaTime;
 
-        if (swinging)
-        {
-            // var v = Quaternion.AngleAxis(Time.time * speed * -10, Vector3.up) * new Vector3(distance, 0, 0);
-            // clonedSword.transform.position = transform.position + v;
-            swingTimer += Time.deltaTime;
-            sword.transform.RotateAround(transform.position, Vector3.forward, orbitDegreesPerSec * Time.deltaTime);
-        }
-        else
-        {
-            ManageWeapon();
-            delayTimer += Time.deltaTime;
-        }
-        if (swingTimer >= swingTime)
-        {
-            swingTimer = 0;
-            swinging = false;
-            canSwing = false;
-            delayTimer = 0;
-        }
         if (delayTimer >= swingDelayTime)
         {
             delayTimer = 0;

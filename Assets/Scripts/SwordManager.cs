@@ -33,6 +33,7 @@ public class SwordManager : MonoBehaviour
                 victimEntity.knockBack(gangLimKit.BasicAttackKnockback(), transform.parent.gameObject);
             }
         }
+        /*
         else if (gameObject.transform.parent.name == "Morrigan")
         {
             if (MAttackHandler.swinging && victimEntity != null && !victimEntity.isFriendly)
@@ -42,5 +43,6 @@ public class SwordManager : MonoBehaviour
                 victimEntity.knockBack(morriganKit.BasicAttackKnockback(), transform.parent.gameObject);
             }
         }
+        */
     }
 }
