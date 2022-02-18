@@ -5,8 +5,6 @@ using UnityEngine.InputSystem;
 
 public class GangLimAttackingHandler : MonoBehaviour
 {
-    private AttackingControls attackControls;
-
     [SerializeField] GameObject sword;
     [SerializeField] Transform directionObj;
     [SerializeField] Animator animator;
@@ -27,22 +25,16 @@ public class GangLimAttackingHandler : MonoBehaviour
 
     private void Awake()
     {
-        attackControls = new AttackingControls();
-        attackControls.GangLimAttack.BasicAttack.performed += BasicAttackContext => BasicAttack();
+        //attackControls = new AttackingControls();
+        //attackControls.GangLimAttack.BasicAttack.performed += BasicAttackContext => BasicAttack();
         sword.SetActive(true);
         canSwing = true;
     }
 
-    private void OnEnable()
+    public void OnFire(InputValue value)
     {
-        attackControls.Enable();
+        BasicAttack();
     }
-
-    private void OnDisable()
-    {
-        attackControls.Disable();
-    }
-
 
     private void BasicAttack()
     {

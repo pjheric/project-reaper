@@ -5,8 +5,8 @@ using UnityEngine;
 public class edgeScreenIndicatorManager : MonoBehaviour
 {
     [SerializeField] GameObject player;
-    [SerializeField] GameObject locus;
-    [SerializeField] GameObject locusIndicator;
+    public GameObject locus;
+    public GameObject locusIndicator;
     [SerializeField] Camera playerCamera;
     [SerializeField] int playerNum;//1 or 2
     

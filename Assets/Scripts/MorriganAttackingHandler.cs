@@ -5,8 +5,6 @@ using UnityEngine.InputSystem;
 
 public class MorriganAttackingHandler : MonoBehaviour
 {
-    private AttackingControls attackControls;
-
     [SerializeField] GameObject spear;
     [SerializeField] Transform directionObj;
 
@@ -23,22 +21,17 @@ public class MorriganAttackingHandler : MonoBehaviour
 
     private void Awake()
     {
-        attackControls = new AttackingControls();
-        attackControls.MorriganAttack.BasicAttack.performed += BasicAttackContext => BasicAttack();
+        //attackControls = new AttackingControls();
+        //attackControls.MorriganAttack.BasicAttack.performed += BasicAttackContext => BasicAttack();
         spear.SetActive(true);
         canThrust = true;
     }
 
-    private void OnEnable()
-    {
-        attackControls.Enable();
-    }
 
-    private void OnDisable()
+    public void OnFire(InputValue value)
     {
-        attackControls.Disable();
+        BasicAttack();
     }
-
 
     private void BasicAttack()
     {

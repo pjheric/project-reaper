@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 
 public class TestMorriganAttackingHandler : MonoBehaviour
 {
-    private AttackingControls attackControls;
 
     [SerializeField] Mkit morriganKit;
 
@@ -30,22 +29,14 @@ public class TestMorriganAttackingHandler : MonoBehaviour
 
     private void Awake()
     {
-        attackControls = new AttackingControls();
-        attackControls.MorriganAttack.BasicAttack.performed += _ => BasicAttack();
         sword.SetActive(true);
         canSwing = true;
     }
 
-    private void OnEnable()
+    public void OnFire(InputValue value)
     {
-        attackControls.Enable();
+        BasicAttack();
     }
-
-    private void OnDisable()
-    {
-        attackControls.Disable();
-    }
-
 
     void BasicAttack()
     {
