@@ -83,7 +83,7 @@ public class playermovement : MonoBehaviour
         }
         if(Vector2.Distance(Vector2.zero, transform.position)> 150)//TEMP
         {
-            rb.AddForce(-transform.position.normalized *10000);
+            rb.velocity = (-transform.position.normalized *2000);
 
         }
         dashWaitTimeTimer += Time.deltaTime;     
