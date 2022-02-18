@@ -44,7 +44,7 @@ public class GangLimAttackingHandler : MonoBehaviour
 
             canSwing = false;
             swinging = true;
-            animator.SetBool("isAttacking", true);
+            animator.SetTrigger("attack");
 
             float swingStartAngle = (swingDegrees / 2) * -1;
 
@@ -79,7 +79,6 @@ public class GangLimAttackingHandler : MonoBehaviour
             swinging = false;
             canSwing = false;
             delayTimer = 0;
-            animator.SetBool("isAttacking", false);
         }
         if (delayTimer >= swingDelayTime)
         {

@@ -14,6 +14,8 @@ public class TestMorriganAttackingHandler : MonoBehaviour
     [SerializeField] Transform point1;
     [SerializeField] Transform point2;
 
+    [SerializeField] Animator animator;
+
     private bool canSwing = true;
 
     //[SerializeField] private float weaponDistance = -1.7f;
@@ -41,9 +43,11 @@ public class TestMorriganAttackingHandler : MonoBehaviour
     void BasicAttack()
     {
         Debug.Log("A*WDHHAOLD");
-
+        
         if (canSwing)
         {
+            animator.SetTrigger("attack");
+
             Debug.Log("attack!");
 
             canSwing = false;
@@ -71,6 +75,7 @@ public class TestMorriganAttackingHandler : MonoBehaviour
 
     private void Update()
     {
+        
         ManageWeapon();
         delayTimer += Time.deltaTime;
 

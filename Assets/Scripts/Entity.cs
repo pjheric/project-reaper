@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class Entity : MonoBehaviour
 {
@@ -12,7 +14,10 @@ public class Entity : MonoBehaviour
     public float acceleration;//might be 0
     public float maxSpeed;//might be 0
 
-    [SerializeField] SpriteRenderer spriteObjSprite;
+    public SpriteRenderer spriteObjSprite;
+    public Image edgeOfScreen; // can be null
+    public Image edgeOfScreen2; // can be null
+
     
     // // Start is called before the first frame update
     // void Start()
@@ -43,14 +48,30 @@ public class Entity : MonoBehaviour
     {
         GetComponent<Rigidbody2D>().AddForce(direction *2000 * knockBackDistance);
     }
-    public void hurtColor()
+    public void hurtColor()//TEMP
     {
         spriteObjSprite.color = Color.red;
+        if(edgeOfScreen != null)
+        {
+            edgeOfScreen.color = Color.red;
+        }
+        if(edgeOfScreen2 != null)
+        {
+            edgeOfScreen2.color = Color.red;
+        }
         Invoke("resetColor",0.1f);
     }
     public void resetColor()
     {
         spriteObjSprite.color = Color.white;
+        if(edgeOfScreen != null)
+        {
+            edgeOfScreen.color = Color.white;
+        }
+        if(edgeOfScreen2 != null)
+        {
+            edgeOfScreen2.color = Color.white;
+        }
     }
     
 }

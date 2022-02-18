@@ -33,6 +33,8 @@ public class playermovement : MonoBehaviour
 
     public bool isDashing;
 
+    public bool spriteDirCorrect;
+
     //private IDualMotorRumble Gamepad;
 
 
@@ -63,14 +65,14 @@ public class playermovement : MonoBehaviour
         }
         if (rawMove.magnitude != 0){
             Vector2 move = rawMove*JoystickMovementRampGraph.Evaluate(rawMove.magnitude);
-            if(animator == null || animator.GetCurrentAnimatorStateInfo(0).IsName("Gang-LimBasicAttack") == false){
+            if(animator == null || animator.GetCurrentAnimatorStateInfo(0).IsName("basicAttack") == false){
                 if(move.x< 0)
                 {
-                    spriteObj.GetComponent<SpriteRenderer>().flipX = true;
+                    spriteObj.GetComponent<SpriteRenderer>().flipX = spriteDirCorrect;
                 }
                 else if (move.x > 0)
                 {
-                    spriteObj.GetComponent<SpriteRenderer>().flipX = false;
+                    spriteObj.GetComponent<SpriteRenderer>().flipX = !spriteDirCorrect;
                 }
             }
             float maxSpeedLimiter = (entity.maxSpeed-rb.velocity.magnitude)/entity.maxSpeed;
@@ -78,6 +80,11 @@ public class playermovement : MonoBehaviour
                 maxSpeedLimiter = 0;
             rb.AddForce(move * entity.acceleration *1000 * Time.deltaTime * maxSpeedLimiter);
             directionObj.up = GetComponent<Rigidbody2D>().velocity;
+        }
+        if(Vector2.Distance(Vector2.zero, transform.position)> 150)//TEMP
+        {
+            rb.AddForce(-transform.position.normalized *10000);
+
         }
         dashWaitTimeTimer += Time.deltaTime;     
         //Dash

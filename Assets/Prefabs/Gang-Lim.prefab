@@ -355,11 +355,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFriendly: 1
-  maxHealth: 100
-  currentHealth: 100
+  maxHealth: 150
+  currentHealth: 150
   acceleration: 100
   maxSpeed: 30
   spriteObjSprite: {fileID: 3521586186172152193}
+  edgeOfScreen: {fileID: 0}
+  edgeOfScreen2: {fileID: 0}
 --- !u!114 &4588030386426635826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -372,6 +374,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b58f1f8a036ebc4e8a0c694e3204961, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entity: {fileID: 1135487958484964862}
+  healthBar: {fileID: 0}
 --- !u!114 &5816358765159570279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -417,6 +421,7 @@ MonoBehaviour:
   spriteObj: {fileID: 3942206681373878780}
   animator: {fileID: 5214499984453513613}
   isDashing: 0
+  spriteDirCorrect: 1
 --- !u!114 &5816358765159570276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -569,11 +574,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2431702037595590584, guid: 278cba9458b93a341af7dc0815d06452, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2431702037595590584, guid: 278cba9458b93a341af7dc0815d06452, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3.5
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 2431702037595590584, guid: 278cba9458b93a341af7dc0815d06452, type: 3}
       propertyPath: m_LocalScale.z
@@ -581,7 +586,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2431702037595590584, guid: 278cba9458b93a341af7dc0815d06452, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.12
+      value: 2.75
       objectReference: {fileID: 0}
     - target: {fileID: 2431702037595590584, guid: 278cba9458b93a341af7dc0815d06452, type: 3}
       propertyPath: m_LocalPosition.y

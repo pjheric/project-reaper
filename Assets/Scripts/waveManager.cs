@@ -7,10 +7,8 @@ public class waveManager : MonoBehaviour
     public GameObject basicEnemyPrefab;
     [SerializeField]
     GameObject locus;
-    [SerializeField]
-    GameObject player1;
-    [SerializeField]
-    GameObject player2;
+    public GameObject player1;
+    public GameObject player2;
     [SerializeField]
     float mapRadius;
 
@@ -35,17 +33,23 @@ public class waveManager : MonoBehaviour
     public static int currentWaveNum = 0;//starting at 0   
     waveConfiguration currentWave;
     
-    bool waveRunning = false;
+    public bool waveRunning = false;
+    bool beginOnce = true;
     // Start is called before the first frame update
     void Start()
     {
-        currentWaveNum = 0;
-        startWave();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(mainManager.gameStart && beginOnce)
+        {
+            beginOnce = false;
+            currentWaveNum = 0;
+            startWave();
+        }
         runWave();
     }
     void waveEnd()

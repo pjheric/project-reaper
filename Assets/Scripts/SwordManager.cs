@@ -21,9 +21,10 @@ public class SwordManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("Hello");
         victimEntity = other.GetComponent<Entity>();
 
-        if (gameObject.transform.parent.name == "Gang-Lim")
+        if (gameObject.transform.parent.GetComponent<GangLimAttackingHandler>() != null)
         {
             if (GLAttackHandler.swinging && victimEntity != null && !victimEntity.isFriendly)
             {
