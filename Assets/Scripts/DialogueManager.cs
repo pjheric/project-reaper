@@ -12,13 +12,16 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] Image Speaker1Image;
     [SerializeField] Image Speaker2Image;
     [SerializeField] TextMeshProUGUI SpeakerName;
-    [SerializeField] TextMeshProUGUI DialogueLine; 
-    //Each wave = 1 spreadsheet CSV file; 
-    //Each "box" of dialogue = 1 row 
-    //Col 1 starts with either "M" or "G"- speaker name
-    //Col 2 is where the actual dialogue is
-    [SerializeField] public List<string> dataSheet = new List<string>();
-    public int currentIndex = 0; 
+    [SerializeField] TextMeshProUGUI DialogueLine;
+
+    //All dialogue is just an array of list of strings
+    //Array index: wave (0, 1, 2, 3, 4)
+    //List index: actual dialogue 
+    public List<string>[] dialogue = new List<string>[5]; 
+    //Each dialogue starts with either M or G then space then the actual dialogue;
+    //This is to distinguish the name of the speaker
+    public int currentIndex = 0;
+    public int currentWave = waveManager.currentWaveNum - 1; 
     public void Start()
     {
     }
@@ -28,17 +31,11 @@ public class DialogueManager : MonoBehaviour
         DialoguePanel.SetActive(true); 
         //First, freeze time
         Time.timeScale = 0;
-        //Read the appropriate CSV file based on the current wave number
-        string currentWave = waveManager.currentWaveNum.ToString();
-        string fileName = "Dialogue" + currentWave + ".csv";
-        string readFromFilePath = Path.Combine(Application.streamingAssetsPath, fileName);
-        dataSheet = File.ReadAllLines(readFromFilePath).ToList();
-        DisplayDialogue(dataSheet[currentIndex].Split(','));
     }
-    public void DisplayDialogue(string[] content)
+    public void DisplayDialogue(string content)
     {
-        string speakername = content[0];
-        string speakerBody = content[1]; 
+        string speakername = content.Substring(0, 1);
+        string speakerBody = content.Substring(2); 
         if(speakername == "M")
         {
             SpeakerName.text = "Morrigan";
@@ -56,13 +53,13 @@ public class DialogueManager : MonoBehaviour
     }
     public void OnPressNextButton()
     {
-        if(currentIndex == dataSheet.Count - 1)
+        if(currentIndex == dialogue[currentWave].Count - 1)
         {
             EndDialogue();
             return; 
         }
         currentIndex += 1;
-        DisplayDialogue(dataSheet[currentIndex].Split(','));
+        DisplayDialogue(dialogue[currentWave][currentIndex]);
     }
 
     public void EndDialogue()

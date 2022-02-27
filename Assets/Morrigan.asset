@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc2edfc36cbebf34d998369f354027da, type: 3}
+  m_Name: Morrigan
+  m_EditorClassIdentifier: 
+  charName: Morrigan
+  charSubname: Spear of War
+  charFullImage: {fileID: 21300000, guid: fe0021d944599824dbc65d6c0f0d98eb, type: 3}
+  charIngameImage: {fileID: 21300000, guid: 17fc8763b0e69f0469460ae71a082181, type: 3}
+  charBio: "Perhaps always the most battle-ready of the death deities, the Morrigan
+    serves as battle mistress for the gods\u2019 different encounters against great
+    threats. A Celtic death goddess that encourages her warriors and foretells the
+    enemy\u2019s defeat, the Morrigan always has her spear and rallying cries ready
+    to turn the tides in her favor. Her lightning fast spear strikes ensure that
+    the underworlds never fall to any dark forces and are protected for eternity."
+  charSkillDescription:
+  - Morrigan gains attack speed based on the number of enemies around her.
+  - Morrigan lunges forward with her spear, dealing damage in an area in front of
+    her.
+  - Morrigan throws her spear, dealing heavy damage to all enemies in a line. Afterwards,
+    her passive bonuses are doubled.

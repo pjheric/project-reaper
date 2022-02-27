@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc2edfc36cbebf34d998369f354027da, type: 3}
+  m_Name: Hinenuitepo
+  m_EditorClassIdentifier: 
+  charName: "Hine-nui-te-p\u014D"
+  charSubname: Shephard of Souls
+  charFullImage: {fileID: 21300000, guid: 8c408ddb947832e44b552313aad7d638, type: 3}
+  charIngameImage: {fileID: 21300000, guid: 8c408ddb947832e44b552313aad7d638, type: 3}
+  charBio: "Hine-nui-te-po remains one of the gentlest rulers of the different afterlifes,
+    ruling over Rarohenga, the Maori \u201Cunderworld\u201D of peace and light. She
+    serves as both guide and protector, shepherding the souls of the dead to the
+    afterlife. Though not as physically powerful as her peers, Hine-nui-te-po has
+    vowed to protect the dead with all she can. Her desire to protect manifests itself
+    in supportive powers to enable her and her allies in battle so they can keep
+    the dead safe from otherworldly threats."
+  charSkillDescription:
+  - "Hine-nui-te-p\u014D's attacks leave Nightfall stacks on enemies, which deals
+    extra damage and immobilizes them when another ally attacks them."
+  - "Hine-nui-te-p\u014D sweeps her war club in a wide cone, dealing damage and knocking
+    back enemies."
+  - "Hine-nui-te-p\u014D slams the ground with her war club, knocking back enemies
+    and creating a zone of invulnerability around her."

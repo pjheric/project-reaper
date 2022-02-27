@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class waveManager : MonoBehaviour
 {
+    public DialogueManager dm;
+    [SerializeField] GameObject dmParent; 
     public GameObject basicEnemyPrefab;
     [SerializeField]
     GameObject locus;
@@ -38,7 +40,7 @@ public class waveManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        dm = dmParent.GetComponent<DialogueManager>();
     }
 
     // Update is called once per frame
@@ -65,6 +67,7 @@ public class waveManager : MonoBehaviour
     {
         waveRunning = true;
         currentWave = waves[currentWaveNum];
+        dm.StartDialogue(); 
     }
     void runWave()
     {
