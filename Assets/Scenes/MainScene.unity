@@ -2517,18 +2517,19 @@ MonoBehaviour:
   prefabs:
   - {fileID: 695591817594053590, guid: ad3cbcad8eb1b5a4385713a1321c93bf, type: 3}
   - {fileID: 340009948643149207, guid: 7ab4ff535bd87614b90a94abf4ef483f, type: 3}
-  - {fileID: 695591817594053590, guid: ad3cbcad8eb1b5a4385713a1321c93bf, type: 3}
+  - {fileID: 862489503829160335, guid: 16c16f0c33cd7944a8e6d7db27d64d52, type: 3}
   - {fileID: 695591817594053590, guid: ad3cbcad8eb1b5a4385713a1321c93bf, type: 3}
   locus: {fileID: 1810681851}
   player1: {fileID: 0}
   player2: {fileID: 0}
   mapRadius: 80
+  waveSpawnsPerSecond: 4
   waves:
-  - enemyCountsWave: 3c000000140000000000000000000000
-  - enemyCountsWave: 78000000280000000000000000000000
-  - enemyCountsWave: 00000000000000000000000000000000
-  - enemyCountsWave: 00000000000000000000000000000000
-  - enemyCountsWave: 00000000000000000000000000000000
+  - enemyCountsWave: 3c000000140000000400000000000000
+  - enemyCountsWave: 780000001e0000000800000000000000
+  - enemyCountsWave: f0000000280000001000000000000000
+  - enemyCountsWave: 40010000320000002000000000000000
+  - enemyCountsWave: 2c0100003c0000004000000000000000
   waveRunning: 0
 --- !u!4 &1410811744
 Transform:

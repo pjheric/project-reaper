@@ -18,6 +18,7 @@ public class waveManager : MonoBehaviour
     public GameObject player1;
     public GameObject player2;
     [SerializeField] float mapRadius;
+    [SerializeField] float waveSpawnsPerSecond;
 
     [System.Serializable]
     public struct waveConfiguration
@@ -77,7 +78,7 @@ public class waveManager : MonoBehaviour
     {
         t += Time.deltaTime;
         //every 0.2 seconds while the wave is running do a spawn tick
-        if (t > 0.2f && waveRunning)
+        if (t > (1.0f/waveSpawnsPerSecond) && waveRunning)
         {
             //go through the 4 enemy types
             for (int i = 0; i < prefabs.Length; i += 1)
