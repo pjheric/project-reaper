@@ -2514,32 +2514,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dm: {fileID: 0}
   dmParent: {fileID: 1320312392}
-  basicEnemyPrefab: {fileID: 695591817594053590, guid: ad3cbcad8eb1b5a4385713a1321c93bf, type: 3}
+  prefabs:
+  - {fileID: 695591817594053590, guid: ad3cbcad8eb1b5a4385713a1321c93bf, type: 3}
+  - {fileID: 340009948643149207, guid: 7ab4ff535bd87614b90a94abf4ef483f, type: 3}
+  - {fileID: 695591817594053590, guid: ad3cbcad8eb1b5a4385713a1321c93bf, type: 3}
+  - {fileID: 695591817594053590, guid: ad3cbcad8eb1b5a4385713a1321c93bf, type: 3}
   locus: {fileID: 1810681851}
   player1: {fileID: 0}
   player2: {fileID: 0}
   mapRadius: 80
   waves:
-  - basicEnemySpawnCount: 1
-    fastEnemySpawnCount: 0
-    tankEnemySpawnCount: 0
-    buffEnemySpawnCount: 0
-  - basicEnemySpawnCount: 1
-    fastEnemySpawnCount: 0
-    tankEnemySpawnCount: 0
-    buffEnemySpawnCount: 0
-  - basicEnemySpawnCount: 1
-    fastEnemySpawnCount: 0
-    tankEnemySpawnCount: 0
-    buffEnemySpawnCount: 0
-  - basicEnemySpawnCount: 1
-    fastEnemySpawnCount: 0
-    tankEnemySpawnCount: 0
-    buffEnemySpawnCount: 0
-  - basicEnemySpawnCount: 1
-    fastEnemySpawnCount: 0
-    tankEnemySpawnCount: 0
-    buffEnemySpawnCount: 0
+  - enemyCountsWave: 3c000000140000000000000000000000
+  - enemyCountsWave: 78000000280000000000000000000000
+  - enemyCountsWave: 00000000000000000000000000000000
+  - enemyCountsWave: 00000000000000000000000000000000
+  - enemyCountsWave: 00000000000000000000000000000000
   waveRunning: 0
 --- !u!4 &1410811744
 Transform:
@@ -3820,7 +3809,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1861479386
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4125,7 +4114,7 @@ MonoBehaviour:
   locusHealthText: {fileID: 1907716098}
   waveEnemyText: {fileID: 655519250}
   gangHealth: {fileID: 959764528}
-  morHealth: {fileID: 0}
+  morHealth: {fileID: 1478175202}
   failureScreen: {fileID: 1400772590}
   failureText: {fileID: 793814830}
   playerInputManager: {fileID: 1959467254}

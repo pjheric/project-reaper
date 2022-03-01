@@ -71,6 +71,8 @@ MonoBehaviour:
   acceleration: 3
   maxSpeed: 2
   spriteObjSprite: {fileID: 695591818455457763}
+  edgeOfScreen: {fileID: 0}
+  edgeOfScreen2: {fileID: 0}
 --- !u!114 &695591817594053586
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -46,25 +46,27 @@ public class Enemy : MonoBehaviour
             waveManager.enemyCount -=1;
         }
     }
-    public void moveTowardsLocus()
+    //will both move towards the target and also stop to attack when close enough
+    public void moveAndAttack(GameObject target)
     {
         tBACounter += Time.deltaTime;
-        float attackStartDistance = attackRange + locus.GetComponent<CircleCollider2D>().radius;
-        if (Vector2.Distance((Vector3)locus.GetComponent<CircleCollider2D>().offset+locus.transform.position, transform.position)> attackStartDistance)
+        float attackStartDistance = attackRange + target.GetComponent<CapsuleCollider2D>().size.y/1.9f;
+        if (Vector2.Distance((Vector3)target.GetComponent<CapsuleCollider2D>().offset+target.transform.position, transform.position)> attackStartDistance)
         {
             if(isAttacking == false){
-                move(locus.transform.position);
+                move(target.transform.position);
             }
         }
         else
         {  
-            attackBasic(locus, attackStartDistance);  
+            attackBasic(target, attackStartDistance);  
         }
 
     }
-    public void moveTowardsNearestPlayer()
+    public void moveandAttackNearestPlayer()
     {
-
+        GameObject target = (Vector3.Distance(transform.position, player1.transform.position) < Vector3.Distance(transform.position, player2.transform.position)) ? player1: player2;
+        moveAndAttack(target);
     }
     public void checkDeath()
     {
@@ -76,12 +78,12 @@ public class Enemy : MonoBehaviour
 
     public void CheckIfPlayerAttackable()
     {
-        float attackStartDistance =  attackRange + player1.GetComponent<CapsuleCollider2D>().size.y;
+        float attackStartDistance =  attackRange + player1.GetComponent<CapsuleCollider2D>().size.y/1.9f;
         if (Vector2.Distance((Vector3)player1.GetComponent<CapsuleCollider2D>().offset+player1.transform.position, transform.position) < attackStartDistance)
         {
             attackBasic(player1, attackStartDistance);
         }
-        attackStartDistance =  attackRange + player2.GetComponent<CapsuleCollider2D>().size.y;
+        attackStartDistance =  attackRange + player2.GetComponent<CapsuleCollider2D>().size.y/1.9f;
         if (Vector2.Distance((Vector3)player2.GetComponent<CapsuleCollider2D>().offset+player2.transform.position, transform.position) < attackStartDistance)
         {
             attackBasic(player2, attackStartDistance);
@@ -133,6 +135,7 @@ public class Enemy : MonoBehaviour
 
     }
 
+    //will move to the point
     public void move(Vector2 targetPos)
     {
         Vector2 direction = targetPos - (Vector2)transform.position;
@@ -148,5 +151,12 @@ public class Enemy : MonoBehaviour
         {
             sprite.flipX = false;
         }
+    }
+
+    //will continue infinetly in that direction rather than going to a specific point
+    public void moveDir(Vector2 targetDir)
+    {
+        Vector2 direction = targetDir + (Vector2)transform.position;
+        move(direction);
     }
 }

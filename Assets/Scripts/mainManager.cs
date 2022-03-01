@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class mainManager : MonoBehaviour
 {
@@ -35,19 +36,6 @@ public class mainManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        fkdf();
-    }
-    void fkdf()
-    {
-        int playerNo = 0;
-        foreach(InputDevice device in InputSystem.devices)
-        {
-            //playerInputManager.JoinPlayer(playerNo++, playerNo++, null, device);
-            Debug.Log(device);
-            Debug.Log(device.deviceId);
-            Debug.Log(device.aliases);
-            Debug.Log(device.allControls);
-        }
     }
     void OnPlayerJoined(PlayerInput input)
     {
@@ -95,13 +83,17 @@ public class mainManager : MonoBehaviour
         }
         if(locus.GetComponent<Entity>().currentHealth<=0 && gameOver == false)
         {
-            gameOver = true;
-            Time.timeScale = 0.1f;
-            failureScreen.SetActive(true);
-            failureText.gameObject.SetActive(true);
-            StartCoroutine(fadeInFailText());
-            locusHealthText.gameObject.SetActive(false);
+            gameOverFunc();
         }
+    }
+    public void gameOverFunc()
+    {
+        gameOver = true;
+        Time.timeScale = 0.1f;
+        failureScreen.SetActive(true);
+        failureText.gameObject.SetActive(true);
+        StartCoroutine(fadeInFailText());
+        locusHealthText.gameObject.SetActive(false);
     }
     IEnumerator fadeInFailText()
     {
@@ -112,5 +104,7 @@ public class mainManager : MonoBehaviour
             t += Time.unscaledDeltaTime;
             failureText.color = new Color(failureText.color.r,failureText.color.g,failureText.color.b,t/3);        
         }
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene("MainScene");
     }
 }
