@@ -17,13 +17,19 @@ public class DialogueManager : MonoBehaviour
     //All dialogue is just an array of list of strings
     //Array index: wave (0, 1, 2, 3, 4)
     //List index: actual dialogue 
-    public List<string>[] dialogue = new List<string>[5]; 
+    [System.Serializable]
+    public struct DialogueWrapper
+    {
+        public List<string> lines;
+    }
+    public List<DialogueWrapper> dialogue = new List<DialogueWrapper>(); 
     //Each dialogue starts with either M or G then space then the actual dialogue;
     //This is to distinguish the name of the speaker
     public int currentIndex = 0;
     public int currentWave = waveManager.currentWaveNum - 1; 
     public void Start()
     {
+        StartDialogue(); 
     }
 
     public void StartDialogue()
@@ -53,13 +59,13 @@ public class DialogueManager : MonoBehaviour
     }
     public void OnPressNextButton()
     {
-        if(currentIndex == dialogue[currentWave].Count - 1)
+        if(currentIndex == dialogue[currentWave].lines.Count - 1)
         {
             EndDialogue();
             return; 
         }
         currentIndex += 1;
-        DisplayDialogue(dialogue[currentWave][currentIndex]);
+        DisplayDialogue(dialogue[currentWave].lines[currentIndex]);
     }
 
     public void EndDialogue()

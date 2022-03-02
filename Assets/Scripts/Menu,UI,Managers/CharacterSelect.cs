@@ -69,14 +69,6 @@ public class CharacterSelect : MonoBehaviour
         {
             currentIndex -= 1; 
         }
-        if(currentPlayer == 1)
-        {
-            player1Selection = currentIndex; 
-        }
-        else
-        {
-            player2Selection = currentIndex; 
-        }
         UpdateCharacter(); 
     }
 
@@ -90,14 +82,6 @@ public class CharacterSelect : MonoBehaviour
         {
             currentIndex += 1; 
         }
-        if(currentPlayer == 1)
-        {
-            player1Selection = currentIndex; 
-        }
-        else
-        {
-            player2Selection = currentIndex; 
-        }
         UpdateCharacter(); 
     }
 
@@ -105,6 +89,7 @@ public class CharacterSelect : MonoBehaviour
     {
         if(currentPlayer == 1)
         {
+            player1Selection = currentIndex;
             currentPlayer = 2;
             currentIndex = 0;
             UpdateCharacter();
@@ -112,6 +97,7 @@ public class CharacterSelect : MonoBehaviour
         }
         else if (currentPlayer == 2)
         {
+            player2Selection = currentIndex;
             //Start the game with the selected characters
         }
     }
