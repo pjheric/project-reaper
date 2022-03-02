@@ -7,7 +7,6 @@ using TMPro;
 
 public class settings : MonoBehaviour
 {
-    [SerializeField] private GameObject settingsMenu;
 
     [Header("Sound")]
     [SerializeField] private AudioMixer mixer;
@@ -20,15 +19,13 @@ public class settings : MonoBehaviour
     [SerializeField] private TMP_Dropdown resolutionDropdown;
     [SerializeField] private Toggle windowedToggle;
 
+
+    [SerializeField] private GameObject StartMenuPanel; 
     private void Start()
     {
         GetSettings();
     }
 
-    public void ToggleSettings()
-    {
-        settingsMenu.SetActive(!settingsMenu.activeSelf);
-    }
 
     public void SetVolume()
     {
@@ -141,5 +138,11 @@ public class settings : MonoBehaviour
             windowedToggle.isOn = false;
         }
         SetWindowed();
+    }
+
+    public void OnPressBack()
+    {
+        this.gameObject.SetActive(false);
+        StartMenuPanel.SetActive(true); 
     }
 }
