@@ -20,28 +20,30 @@ public class edgeScreenIndicatorManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float x = playerCamera.WorldToScreenPoint(locus.transform.position).x;
-        float y = playerCamera.WorldToScreenPoint(locus.transform.position).y;
-        //print(Screen.width+", "+ Screen.height+" ?----? "+x.x+", "+ x.y);
-        bool isOffScreen = false;
-        if(y> Screen.height*1.018f || y<  -1*Screen.height*0.73f || (playerNum == 1 && (x> Screen.width*0.54f || x < -Screen.width*0.07938f)) || (playerNum == 2 && x>Screen.width*1.0282f || playerNum == 2 && x< Screen.width*0.46f))
+        if (PersistentData.isGameStarted)
         {
-            locusIndicator.SetActive(true);
-            if(playerNum == 1)
+            float x = playerCamera.WorldToScreenPoint(locus.transform.position).x;
+            float y = playerCamera.WorldToScreenPoint(locus.transform.position).y;
+            //print(Screen.width+", "+ Screen.height+" ?----? "+x.x+", "+ x.y);
+            bool isOffScreen = false;
+            if (y > Screen.height * 1.018f || y < -1 * Screen.height * 0.73f || (playerNum == 1 && (x > Screen.width * 0.54f || x < -Screen.width * 0.07938f)) || (playerNum == 2 && x > Screen.width * 1.0282f || playerNum == 2 && x < Screen.width * 0.46f))
             {
-                locusIndicator.transform.position = new Vector2(Mathf.Clamp(x, Screen.width * 0.03125f, (Screen.width/2)*0.9375f), Mathf.Clamp(y,Screen.height * 0.07407f,Screen.height * 0.9259f));
+                locusIndicator.SetActive(true);
+                if (playerNum == 1)
+                {
+                    locusIndicator.transform.position = new Vector2(Mathf.Clamp(x, Screen.width * 0.03125f, (Screen.width / 2) * 0.9375f), Mathf.Clamp(y, Screen.height * 0.07407f, Screen.height * 0.9259f));
+                }
+                if (playerNum == 2)
+                {
+                    locusIndicator.transform.position = new Vector2(Mathf.Clamp(x, Screen.width / 2 + Screen.width * 0.03125f, Screen.width / 2 + (Screen.width / 2) * 0.9375f), Mathf.Clamp(y, Screen.height * 0.07407f, Screen.height * 0.9259f));
+                }
+                isOffScreen = true;
             }
-            if(playerNum == 2)
+            else
             {
-                locusIndicator.transform.position = new Vector2(Mathf.Clamp(x, Screen.width/2 + Screen.width * 0.03125f, Screen.width/2 + (Screen.width/2)*0.9375f), Mathf.Clamp(y,Screen.height * 0.07407f,Screen.height * 0.9259f));
+                locusIndicator.SetActive(false);
             }
-            isOffScreen = true;
         }
-        else
-        {      
-            locusIndicator.SetActive(false);
-        }
-       
 
 
         // if ((locus.transform.position.x > player.transform.position.x + width / 4 || locus.transform.position.x < player.transform.position.x - width / 2) || (locus.transform.position.y > player.transform.position.y + height / 2 || locus.transform.position.y < player.transform.position.y - height / 2))

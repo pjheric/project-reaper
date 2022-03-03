@@ -31,7 +31,7 @@ public class mainManager : MonoBehaviour
     [SerializeField] GameObject locusEdgeOfScreen2;
 
     
-    public static bool gameStart = false;
+    //public static bool gameStart = false;
     public static bool gameOver = false;
     // Start is called before the first frame update
     void Start()
@@ -52,7 +52,7 @@ public class mainManager : MonoBehaviour
             input.gameObject.GetComponent<edgeScreenIndicatorManager>().locusIndicator = locusEdgeOfScreen2;
             input.gameObject.GetComponent<Player>().healthBar = morHealth;
             WM.player2 = input.gameObject;
-            gameStart = true;//both chars connected begin the game
+            //gameStart = true;//both chars connected begin the game
         }
     }
     // Update is called once per frame

@@ -51,7 +51,7 @@ public class waveManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (mainManager.gameStart && beginOnce)
+        if (/*mainManager.gameStart*/ PersistentData.isGameStarted && beginOnce)
         {
             beginOnce = false;
             currentWaveNum = 0;

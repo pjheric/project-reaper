@@ -16,6 +16,9 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        healthBar.value = entity.currentHealth;
+        if (PersistentData.isGameStarted)
+        {
+            healthBar.value = entity.currentHealth;
+        }
     }
 }
