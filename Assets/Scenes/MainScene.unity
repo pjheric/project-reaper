@@ -2351,7 +2351,6 @@ MonoBehaviour:
     - G I must agree- we both haven't been out on the battlefield in so long.
     - M It's good to be back.
   currentIndex: 0
-  currentWave: -1
 --- !u!1001 &1329725495
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2534,7 +2533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a72bbe68bb59c249ba5f47b9ec330f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dm: {fileID: 0}
+  dm: {fileID: 1320312394}
   dmParent: {fileID: 1320312392}
   prefabs:
   - {fileID: 695591817594053590, guid: ad3cbcad8eb1b5a4385713a1321c93bf, type: 3}
@@ -4336,7 +4335,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1959467256}
   - component: {fileID: 1959467255}
-  - component: {fileID: 1959467254}
   m_Layer: 0
   m_Name: mainManager
   m_TagString: Untagged
@@ -4344,50 +4342,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1959467254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1959467253}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 621567455fd1c4ceb811cc8a00b6a1a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_NotificationBehavior: 0
-  m_MaxPlayerCount: 2
-  m_AllowJoining: 1
-  m_JoinBehavior: 0
-  m_PlayerJoinedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_PlayerLeftEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_JoinAction:
-    m_UseReference: 0
-    m_Action:
-      m_Name: Join
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: 9f9a4d1f-ac9b-4e80-a08e-07ded8078a96
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: 0}
-  m_PlayerPrefab: {fileID: 5816358765159570280, guid: bfe4fc19ca32e384c97e1112098b488f, type: 3}
-  m_SplitScreen: 0
-  m_MaintainAspectRatioInSplitScreen: 0
-  m_FixedNumberOfSplitScreens: -1
-  m_SplitScreenRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
 --- !u!114 &1959467255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4408,7 +4362,7 @@ MonoBehaviour:
   morHealth: {fileID: 1478175202}
   failureScreen: {fileID: 1400772590}
   failureText: {fileID: 793814830}
-  playerInputManager: {fileID: 1959467254}
+  playerInputManager: {fileID: 0}
   gang: {fileID: 5816358765159570280, guid: bfe4fc19ca32e384c97e1112098b488f, type: 3}
   mor: {fileID: 7125789978835377189, guid: 96eca3424c5d70842b483a60ef83e0b3, type: 3}
   locusEdgeOfScreen1: {fileID: 1644276471}

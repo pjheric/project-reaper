@@ -72,7 +72,7 @@ public class waveManager : MonoBehaviour
     {
         waveRunning = true;
         currentWave = waves[currentWaveNum];
-        //dm.StartDialogue(); TEMP
+        dm.StartDialogue(); 
     }
     void runWave()
     {

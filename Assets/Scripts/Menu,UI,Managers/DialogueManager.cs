@@ -25,11 +25,9 @@ public class DialogueManager : MonoBehaviour
     public List<DialogueWrapper> dialogue = new List<DialogueWrapper>(); 
     //Each dialogue starts with either M or G then space then the actual dialogue;
     //This is to distinguish the name of the speaker
-    public int currentIndex = 0;
-    public int currentWave = waveManager.currentWaveNum - 1; 
+    public int currentIndex = 0; 
     public void Start()
     {
-        StartDialogue(); 
     }
 
     public void StartDialogue()
@@ -37,6 +35,7 @@ public class DialogueManager : MonoBehaviour
         DialoguePanel.SetActive(true); 
         //First, freeze time
         Time.timeScale = 0;
+        DisplayDialogue(dialogue[waveManager.currentWaveNum].lines[currentIndex]); 
     }
     public void DisplayDialogue(string content)
     {
@@ -59,13 +58,13 @@ public class DialogueManager : MonoBehaviour
     }
     public void OnPressNextButton()
     {
-        if(currentIndex == dialogue[currentWave].lines.Count - 1)
+        if(currentIndex == dialogue[waveManager.currentWaveNum].lines.Count - 1)
         {
             EndDialogue();
             return; 
         }
         currentIndex += 1;
-        DisplayDialogue(dialogue[currentWave].lines[currentIndex]);
+        DisplayDialogue(dialogue[waveManager.currentWaveNum].lines[currentIndex]);
     }
 
     public void EndDialogue()

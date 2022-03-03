@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement; 
 using TMPro; 
 public class CharacterSelect : MonoBehaviour
 {
+    [SerializeField] PlayerInputManager pim; 
     [SerializeField] CharacterData[] CharDataArray; //This contains all character data
+    //All the UI stuff
     [SerializeField] TextMeshProUGUI characterSelectTitle; 
     [SerializeField] TextMeshProUGUI charName;
     [SerializeField] TextMeshProUGUI charSubname; 
@@ -16,8 +20,11 @@ public class CharacterSelect : MonoBehaviour
     [SerializeField] Image charIngame;
     [SerializeField] Image charFullBody;
 
-    [SerializeField] GameObject selectButton;
 
+    [SerializeField] GameObject jointext; 
+    [SerializeField] Button selectButton;
+    [SerializeField] GameObject nextButton; 
+    [SerializeField] UnityEngine.EventSystems.EventSystem eventsystem; 
     private int currentIndex; //Index of chardataarray that the menu is currently on; 0-3
     private int currentPlayer; //Number of current player; either 1 or 2
 
@@ -47,15 +54,16 @@ public class CharacterSelect : MonoBehaviour
 
         if(currentIndex == 2 || currentIndex == 3)
         {
-            selectButton.SetActive(false); 
+            selectButton.interactable = false; 
         }
         else if(currentPlayer == 2 && currentIndex == player1Selection) //Prevent player 2 from selecting duplicates
         {
-            selectButton.SetActive(false); 
+            selectButton.interactable = false ;
+            eventsystem.SetSelectedGameObject(nextButton); 
         }
         else
         {
-            selectButton.SetActive(true); 
+            selectButton.interactable = true; 
         }
     }
 
@@ -99,6 +107,25 @@ public class CharacterSelect : MonoBehaviour
         {
             player2Selection = currentIndex;
             //Start the game with the selected characters
+        }
+    }
+    void OnPlayerJoined(PlayerInput input)
+    {
+        //input.gameObject.GetComponent<edgeScreenIndicatorManager>().locus = locus;
+        if (pim.playerCount == 1)
+        {
+            //input.gameObject.GetComponent<edgeScreenIndicatorManager>().locusIndicator = locusEdgeOfScreen1;
+            //input.gameObject.GetComponent<Player>().healthBar = gangHealth;
+            //WM.player1 = input.gameObject;
+            pim.playerPrefab = CharDataArray[player2Selection].charPrefab; //so that the next join is morrigan
+        }
+        else
+        {
+            SceneManager.LoadScene("MainScene"); 
+            //input.gameObject.GetComponent<edgeScreenIndicatorManager>().locusIndicator = locusEdgeOfScreen2;
+            //input.gameObject.GetComponent<Player>().healthBar = morHealth;
+            //WM.player2 = input.gameObject;
+            //gameStart = true;//both chars connected begin the game
         }
     }
 }

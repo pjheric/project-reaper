@@ -28,3 +28,4 @@ MonoBehaviour:
   - Gang-lim swipes his sword, dealing damage in a wide cone.
   - Gang-lim becomes a tornado, continuously dealing damage over time for 3 seconds
     in a circle.
+  charPrefab: {fileID: 5816358765159570280, guid: bfe4fc19ca32e384c97e1112098b488f, type: 3}
