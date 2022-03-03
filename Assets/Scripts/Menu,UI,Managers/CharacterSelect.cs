@@ -25,8 +25,8 @@ public class CharacterSelect : MonoBehaviour
     [SerializeField] Button selectButton;
     [SerializeField] GameObject nextButton; 
     [SerializeField] UnityEngine.EventSystems.EventSystem eventsystem; 
-    private int currentIndex; //Index of chardataarray that the menu is currently on; 0-3
-    private int currentPlayer; //Number of current player; either 1 or 2
+    public int currentIndex; //Index of chardataarray that the menu is currently on; 0-3
+    public int currentPlayer; //Number of current player; either 1 or 2
 
     //Character number of the selected character for each player; either 0 or 1
     public int player1Selection;
@@ -58,7 +58,7 @@ public class CharacterSelect : MonoBehaviour
         }
         else if(currentPlayer == 2 && currentIndex == player1Selection) //Prevent player 2 from selecting duplicates
         {
-            selectButton.interactable = false ;
+            selectButton.interactable = false;
             eventsystem.SetSelectedGameObject(nextButton); 
         }
         else
@@ -72,31 +72,22 @@ public class CharacterSelect : MonoBehaviour
 
     public void OnPressPrev()
     {
-        if(currentIndex == 0)
-        {
-            currentIndex = CharDataArray.Length - 1;
-            Debug.Log(currentIndex);
-        }
-        else
-        {
-            currentIndex -= 1;
-            Debug.Log(currentIndex);
-        }
+        Debug.Log("pressPrev");
+        currentIndex -=1;
+        Debug.Log(currentIndex);
+        currentIndex = (currentIndex%4 + 4)%4;
+        Debug.Log(currentIndex);
         UpdateCharacter(); 
     }
 
     public void OnPressNext()
     {
-        if(currentIndex == CharDataArray.Length - 1)
-        {
-            currentIndex = 0;
-            Debug.Log(currentIndex);
-        }
-        else
-        {
-            currentIndex += 1;
-            Debug.Log(currentIndex);
-        }
+        Debug.Log("pressNext");
+        currentIndex +=1;
+        Debug.Log(currentIndex);
+        currentIndex = (currentIndex%4 + 4)%4;
+        Debug.Log(currentIndex);
+
         UpdateCharacter(); 
     }
 
@@ -104,16 +95,21 @@ public class CharacterSelect : MonoBehaviour
     {
         if(currentPlayer == 1)
         {
+            Debug.Log(currentIndex);
             player1Selection = currentIndex;
             currentPlayer = 2;
             currentIndex = 0;
             UpdateCharacter();
             characterSelectTitle.text = "CHOOSE YOUR REAPER (P2)";
             Debug.Log("Called"); 
+            Debug.Log("PLY1");
+            Debug.Log(player1Selection);
+
         }
         else if (currentPlayer == 2)
         {
             player2Selection = currentIndex;
+            Debug.Log("PLY2");
             Debug.Log(player1Selection);
             Debug.Log(player2Selection);
             //Start the game with the selected characters
