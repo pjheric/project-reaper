@@ -11,7 +11,6 @@ enum enemyType
 public class waveManager : MonoBehaviour
 {
 
-    public DialogueManager dm;
     [SerializeField] GameObject dmParent;
     [SerializeField] public GameObject[] prefabs = new GameObject[4];
     [SerializeField] GameObject locus;
@@ -45,7 +44,7 @@ public class waveManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        dm = dmParent.GetComponent<DialogueManager>();
+        //dm = dmParent.GetComponent<DialogueManager>();
     }
 
     // Update is called once per frame
@@ -68,11 +67,11 @@ public class waveManager : MonoBehaviour
         player2.GetComponent<Entity>().addHealth(1000);//heal to full
         Invoke("startWave", 5);
     }
-    void startWave()
+    public void startWave()
     {
         waveRunning = true;
+        currentWaveNum++; 
         currentWave = waves[currentWaveNum];
-        dm.StartDialogue(); 
     }
     void runWave()
     {

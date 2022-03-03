@@ -7,7 +7,8 @@ using System.IO;
 using System.Linq; 
 public class DialogueManager : MonoBehaviour
 {
-    [SerializeField] GameObject DialoguePanel; 
+    [SerializeField] GameObject DialoguePanel;
+    [SerializeField] mainManager mm; 
     //Dialogue is triggered at the beginning of every wave
     [SerializeField] Image Speaker1Image;
     [SerializeField] Image Speaker2Image;
@@ -26,9 +27,6 @@ public class DialogueManager : MonoBehaviour
     //Each dialogue starts with either M or G then space then the actual dialogue;
     //This is to distinguish the name of the speaker
     public int currentIndex = 0; 
-    public void Start()
-    {
-    }
 
     public void StartDialogue()
     {
@@ -71,6 +69,14 @@ public class DialogueManager : MonoBehaviour
     {
         currentIndex = 0;
         DialoguePanel.SetActive(false);
-        Time.timeScale = 1f; 
+        Time.timeScale = 1f;
+        if (waveManager.currentWaveNum == 0)
+        {
+            mm.gameStartFunc();
+        }
+        else
+        {
+            
+        }
     }
 }
