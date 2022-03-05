@@ -17,13 +17,13 @@ public class Entity : MonoBehaviour
     public SpriteRenderer spriteObjSprite;
     public Image edgeOfScreen; // can be null
     public Image edgeOfScreen2; // can be null
-
+    public Color originalColor;
     
-    // // Start is called before the first frame update
-    // void Start()
-    // {
-        
-    // }
+    // Start is called before the first frame update
+    void Start()
+    {
+        originalColor = spriteObjSprite.color;
+    }
 
     // // Update is called once per frame
     // void Update()
@@ -63,14 +63,14 @@ public class Entity : MonoBehaviour
     }
     public void resetColor()
     {
-        spriteObjSprite.color = Color.white;
+        spriteObjSprite.color = originalColor;
         if(edgeOfScreen != null)
         {
-            edgeOfScreen.color = Color.white;
+            edgeOfScreen.color = originalColor;
         }
         if(edgeOfScreen2 != null)
         {
-            edgeOfScreen2.color = Color.white;
+            edgeOfScreen2.color = originalColor;
         }
     }
     
