@@ -24,6 +24,10 @@ public class mainManager : MonoBehaviour
     GameObject failureScreen;
     [SerializeField]
     TextMeshProUGUI failureText;
+    [SerializeField]
+    Image failureMainMenuButtonImage;
+    [SerializeField]
+    TextMeshProUGUI failureMainMenuButtonText;
     [SerializeField] PlayerInputManager playerInputManager;
     [SerializeField] GameObject gang;
     [SerializeField] GameObject mor;
@@ -92,6 +96,7 @@ public class mainManager : MonoBehaviour
         Time.timeScale = 0.1f;
         failureScreen.SetActive(true);
         failureText.gameObject.SetActive(true);
+        failureMainMenuButtonImage.gameObject.SetActive(true);
         StartCoroutine(fadeInFailText());
         locusHealthText.gameObject.SetActive(false);
     }
@@ -102,9 +107,17 @@ public class mainManager : MonoBehaviour
         {
             yield return new WaitForEndOfFrame();
             t += Time.unscaledDeltaTime;
-            failureText.color = new Color(failureText.color.r,failureText.color.g,failureText.color.b,t/3);        
+            failureText.color = new Color(failureText.color.r,failureText.color.g,failureText.color.b,t/3);  
+            failureMainMenuButtonImage.color = new Color(failureMainMenuButtonImage.color.r,failureMainMenuButtonImage.color.g,failureMainMenuButtonImage.color.b,t/3);     
+            failureMainMenuButtonText.color = new Color(failureMainMenuButtonText.color.r,failureMainMenuButtonText.color.g,failureMainMenuButtonText.color.b,t/3);     
+
         }
         yield return new WaitForSeconds(3);
         SceneManager.LoadScene("MainScene");
+    }
+
+    public void returnToMainMenu() 
+    {
+        SceneManager.LoadScene("Start Menu");
     }
 }

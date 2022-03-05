@@ -99,6 +99,7 @@ public class CharacterSelect : MonoBehaviour
             player1Selection = currentIndex;
             currentPlayer = 2;
             currentIndex = 0;
+            pim.playerPrefab = CharDataArray[player1Selection].charPrefab; //so that the next join is morrigan
             UpdateCharacter();
             characterSelectTitle.text = "CHOOSE YOUR REAPER (P2)";
             Debug.Log("Called"); 
