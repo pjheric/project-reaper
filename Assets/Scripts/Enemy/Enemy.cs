@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField]
-    Entity entity;
-    [SerializeField]
-    SpriteRenderer sprite;
-    [SerializeField]
-    Color baseColor;
+    [SerializeField] Entity entity;
+    [SerializeField] SpriteRenderer sprite;
+    [SerializeField] Animator anim;
+
     
 
     static int enemyCount;
@@ -28,17 +26,18 @@ public class Enemy : MonoBehaviour
     public GameObject player1;
     public GameObject player2;
 
-    // // Start is called before the first frame update
-    // void Start()
-    // {
-        
-    // }
+    // Start is called before the first frame update
+    void Start()
+    {
+        anim.SetFloat("attackSpeed", 0.2916666f/timeBetweenAttacks);
+    }
 
     // // Update is called once per frame
     // void Update()
     // {
         
     // }
+
     void OnDestroy()
     {
         if(gameObject.scene.isLoaded) //Was Deleted
@@ -96,6 +95,7 @@ public class Enemy : MonoBehaviour
         {
             tBACounter = 0.0f;//redundant
             isAttacking = true;
+            anim.SetTrigger("attack");
             StartCoroutine(attackDelayer(target, attackStartDistance));
         }
     }
@@ -103,16 +103,16 @@ public class Enemy : MonoBehaviour
     IEnumerator attackDelayer(GameObject target, float attackStartDistance)
     {
         float t = 0.0f;
+
         while(true)
         {
             t += Time.deltaTime;
-            sprite.color = new Color(1-t/attackSpeed,1-t/attackSpeed,1,1);
             if (t > attackSpeed)
             {
                 if (Vector2.Distance(target.transform.position+(Vector3)target.GetComponent<Collider2D>().offset, transform.position)<= attackStartDistance)
                 {
                     //ACTUAL ATTACK
-                    sprite.color = Color.red;
+                    sprite.color = Color.blue;
                     target.GetComponent<Entity>().currentHealth -= attackDamage;
                     target.GetComponent<Entity>().hurtColor();
                     target.GetComponent<Entity>().knockBack(attackKnockBackDistance,this.gameObject);
@@ -121,7 +121,7 @@ public class Enemy : MonoBehaviour
                 }
                 isAttacking = false;
                 tBACounter = 0.0f;
-                sprite.color = baseColor;//return to normal
+                sprite.color = entity.originalColor;//return to normal
                 break;
             }
             yield return new WaitForEndOfFrame();
