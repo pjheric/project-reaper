@@ -92,8 +92,11 @@ public class ErraticEnemy : MonoBehaviour
             {
                 erraticMoveDecide();
                 currentZigTime = 0.0f;
-            }   
-            erraticMove();  
+            } 
+            if(enemy.isAttacking == false)
+            {  
+                erraticMove();  
+            }
         } 
     }
 
