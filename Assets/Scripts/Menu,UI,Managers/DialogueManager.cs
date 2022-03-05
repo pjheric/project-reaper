@@ -8,6 +8,8 @@ using System.Linq;
 public class DialogueManager : MonoBehaviour
 {
     [SerializeField] GameObject DialoguePanel; 
+    [SerializeField] GameObject inGameUI; 
+    
     [SerializeField] mainManager mm; 
     [SerializeField] waveManager wm; 
     //Dialogue is triggered at the beginning of every wave
@@ -32,6 +34,7 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue()
     {
         DialoguePanel.SetActive(true); 
+        inGameUI.SetActive(false);
         //First, freeze time
         Time.timeScale = 0;
         DisplayDialogue(dialogue[waveManager.currentWaveNum].lines[currentIndex]); 
@@ -70,6 +73,7 @@ public class DialogueManager : MonoBehaviour
     {
         currentIndex = 0;
         DialoguePanel.SetActive(false);
+        inGameUI.SetActive(true);
         Time.timeScale = 1f;
         if (waveManager.currentWaveNum == 0)
         {

@@ -16,6 +16,7 @@ public class mainManager : MonoBehaviour
     [SerializeField] Slider gangHealth;
     [SerializeField] Slider morHealth;
     [SerializeField] GameObject failureScreen;
+    [SerializeField] GameObject inGameUI;
     [SerializeField] TextMeshProUGUI failureText;
     [SerializeField] Image failureMainMenuButtonImage;
     [SerializeField] TextMeshProUGUI failureMainMenuButtonText;
@@ -24,6 +25,8 @@ public class mainManager : MonoBehaviour
     [SerializeField] GameObject mor;
     [SerializeField] GameObject locusEdgeOfScreen1;
     [SerializeField] GameObject locusEdgeOfScreen2;
+    [SerializeField] GameObject playerEdgeOfScreen1;
+    [SerializeField] GameObject playerEdgeOfScreen2;
 
     
     //public static bool gameStart = false;
@@ -89,11 +92,15 @@ public class mainManager : MonoBehaviour
         {
             DontDestroyInput.player1.GetComponent<edgeScreenIndicatorManager>().locusIndicator = locusEdgeOfScreen1;
             DontDestroyInput.player1.GetComponent<edgeScreenIndicatorManager>().locus = locus;
+            DontDestroyInput.player1.GetComponent<edgeScreenIndicatorManager>().otherPlayerIndicator = playerEdgeOfScreen1;
+            DontDestroyInput.player1.GetComponent<edgeScreenIndicatorManager>().otherPlayer = DontDestroyInput.player2;
             DontDestroyInput.player1.GetComponent<Player>().healthBar = gangHealth;
             WM.player1 = DontDestroyInput.player1;
 
             DontDestroyInput.player2.GetComponent<edgeScreenIndicatorManager>().locusIndicator = locusEdgeOfScreen2;
             DontDestroyInput.player2.GetComponent<edgeScreenIndicatorManager>().locus = locus;
+            DontDestroyInput.player2.GetComponent<edgeScreenIndicatorManager>().otherPlayerIndicator = playerEdgeOfScreen2;
+            DontDestroyInput.player2.GetComponent<edgeScreenIndicatorManager>().otherPlayer = DontDestroyInput.player1;
             DontDestroyInput.player2.GetComponent<Player>().healthBar = morHealth;
             WM.player2 = DontDestroyInput.player2;
         }
@@ -101,15 +108,20 @@ public class mainManager : MonoBehaviour
         {
             DontDestroyInput.player1.GetComponent<edgeScreenIndicatorManager>().locusIndicator = locusEdgeOfScreen2;
             DontDestroyInput.player1.GetComponent<edgeScreenIndicatorManager>().locus = locus;
+            DontDestroyInput.player1.GetComponent<edgeScreenIndicatorManager>().otherPlayerIndicator = playerEdgeOfScreen2;
+            DontDestroyInput.player1.GetComponent<edgeScreenIndicatorManager>().otherPlayer = DontDestroyInput.player2;
             DontDestroyInput.player1.GetComponent<Player>().healthBar = morHealth;
             WM.player1 = DontDestroyInput.player1;
 
             DontDestroyInput.player2.GetComponent<edgeScreenIndicatorManager>().locusIndicator = locusEdgeOfScreen1;
             DontDestroyInput.player2.GetComponent<edgeScreenIndicatorManager>().locus = locus;
+            DontDestroyInput.player2.GetComponent<edgeScreenIndicatorManager>().otherPlayerIndicator = playerEdgeOfScreen1;
+            DontDestroyInput.player2.GetComponent<edgeScreenIndicatorManager>().otherPlayer = DontDestroyInput.player1;
             DontDestroyInput.player2.GetComponent<Player>().healthBar = gangHealth;
             WM.player2 = DontDestroyInput.player2;
         }
         PersistentData.isGameStarted = true; 
+        inGameUI.SetActive(true);
 
     }
     public void gameOverFunc()
@@ -117,6 +129,7 @@ public class mainManager : MonoBehaviour
         gameOver = true;
         Time.timeScale = 0.1f;
         failureScreen.SetActive(true);
+        inGameUI.SetActive(false);
         failureText.gameObject.SetActive(true);
         failureMainMenuButtonImage.gameObject.SetActive(true);
         locusHealthText.gameObject.SetActive(false);
