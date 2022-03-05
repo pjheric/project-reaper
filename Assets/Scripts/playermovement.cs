@@ -81,11 +81,6 @@ public class playermovement : MonoBehaviour
             rb.AddForce(move * entity.acceleration *1000 * Time.deltaTime * maxSpeedLimiter);
             directionObj.up = GetComponent<Rigidbody2D>().velocity;
         }
-        if(Vector2.Distance(Vector2.zero, transform.position)> 150)//TEMP
-        {
-            rb.velocity = (-transform.position.normalized *2000);
-
-        }
         dashWaitTimeTimer += Time.deltaTime;     
         //Dash
         dashAction.started += context => dash();

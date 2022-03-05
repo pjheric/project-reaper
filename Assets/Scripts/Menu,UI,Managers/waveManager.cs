@@ -17,6 +17,7 @@ public class waveManager : MonoBehaviour
     public GameObject player1;
     public GameObject player2;
     [SerializeField] float mapRadius;
+    public static float publicMapRadius;
     [SerializeField] float waveSpawnsPerSecond;
 
     [System.Serializable]
@@ -44,6 +45,7 @@ public class waveManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        publicMapRadius = mapRadius;//to give easier access
     }
 
     // Update is called once per frame
