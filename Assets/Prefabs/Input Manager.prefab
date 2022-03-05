@@ -10,12 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3340141978658157603}
   - component: {fileID: 9084896736634703649}
-<<<<<<< Updated upstream
-=======
-  - component: {fileID: 181700292}
-  - component: {fileID: 181700295}
-  - component: {fileID: 181700296}
->>>>>>> Stashed changes
   m_Layer: 0
   m_Name: Input Manager
   m_TagString: Untagged
@@ -52,11 +46,7 @@ MonoBehaviour:
   m_NotificationBehavior: 0
   m_MaxPlayerCount: 2
   m_AllowJoining: 1
-<<<<<<< Updated upstream
   m_JoinBehavior: 0
-=======
-  m_JoinBehavior: 1
->>>>>>> Stashed changes
   m_PlayerJoinedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -72,27 +62,7 @@ MonoBehaviour:
       m_Id: 9f9a4d1f-ac9b-4e80-a08e-07ded8078a96
       m_Processors: 
       m_Interactions: 
-<<<<<<< Updated upstream
       m_SingletonActionBindings: []
-=======
-      m_SingletonActionBindings:
-      - m_Name: 
-        m_Id: f7608b2d-4fff-4067-91e1-0afb8a87daa0
-        m_Path: <Gamepad>/buttonNorth
-        m_Interactions: 
-        m_Processors: 
-        m_Groups: 
-        m_Action: Join
-        m_Flags: 0
-      - m_Name: 
-        m_Id: f38a9e19-776b-4e4d-943a-6f536ecb1041
-        m_Path: <Keyboard>/q
-        m_Interactions: 
-        m_Processors: 
-        m_Groups: 
-        m_Action: Join
-        m_Flags: 0
->>>>>>> Stashed changes
       m_Flags: 0
     m_Reference: {fileID: 0}
   m_PlayerPrefab: {fileID: 5816358765159570280, guid: bfe4fc19ca32e384c97e1112098b488f, type: 3}
@@ -105,65 +75,3 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
-<<<<<<< Updated upstream
-=======
---- !u!114 &181700292
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3477030930051667053}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c4893dc2fd20c242822ccc57b98db0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &181700295
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3477030930051667053}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb8cedd00afe02349812dac805942471, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &181700296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3477030930051667053}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ccaed6952b6e9d43932152b67692757, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pim: {fileID: 9084896736634703649}
-  CharDataArray:
-  - {fileID: 11400000, guid: 3075b1f7e12bf644f914a15efeb66477, type: 2}
-  - {fileID: 11400000, guid: c366cdba4fcb1a1478654cce7a3d0b17, type: 2}
-  - {fileID: 11400000, guid: 1ecd52c2b42773e44955eba9bd1b0a50, type: 2}
-  - {fileID: 11400000, guid: e8f822771634e75478ff4b2834db0f77, type: 2}
-  characterSelectTitle: {fileID: 0}
-  charName: {fileID: 0}
-  charSubname: {fileID: 0}
-  charBio: {fileID: 0}
-  charPassive: {fileID: 0}
-  charBasic: {fileID: 0}
-  charSpecial: {fileID: 0}
-  charIngame: {fileID: 0}
-  charFullBody: {fileID: 0}
-  jointext: {fileID: 0}
-  selectButton: {fileID: 0}
-  nextButton: {fileID: 0}
-  eventsystem: {fileID: 0}
-  currentIndex: 0
-  currentPlayer: 0
-  player1Selection: 0
-  player2Selection: 0
->>>>>>> Stashed changes
