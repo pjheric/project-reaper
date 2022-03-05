@@ -945,7 +945,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 1698855733}
+  m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &593898567
@@ -2290,7 +2290,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1320312393
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2324,7 +2324,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DialoguePanel: {fileID: 1320312392}
-  mm: {fileID: 1959467255}
   Speaker1Image: {fileID: 423776671}
   Speaker2Image: {fileID: 1691861802}
   SpeakerName: {fileID: 373724531}
@@ -2534,6 +2533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a72bbe68bb59c249ba5f47b9ec330f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dm: {fileID: 1320312394}
   dmParent: {fileID: 1320312392}
   prefabs:
   - {fileID: 695591817594053590, guid: ad3cbcad8eb1b5a4385713a1321c93bf, type: 3}
@@ -3564,7 +3564,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 1, g: 0.9984991, b: 0.5801887, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -4354,7 +4354,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 215fb666ab763784a8285e1b4abc44ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dm: {fileID: 1320312394}
   WM: {fileID: 1410811743}
   locus: {fileID: 1810681851}
   locusHealthText: {fileID: 1907716098}

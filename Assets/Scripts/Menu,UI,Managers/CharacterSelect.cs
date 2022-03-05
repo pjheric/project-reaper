@@ -101,7 +101,6 @@ public class CharacterSelect : MonoBehaviour
             currentIndex = 0;
             UpdateCharacter();
             characterSelectTitle.text = "CHOOSE YOUR REAPER (P2)";
-            pim.playerPrefab = CharDataArray[player1Selection].charPrefab; 
             Debug.Log("Called"); 
             Debug.Log("PLY1");
             Debug.Log(player1Selection);
@@ -122,7 +121,6 @@ public class CharacterSelect : MonoBehaviour
         if (pim.playerCount == 1)
         {
             Debug.Log("1 player");
-            DontDestroyInput.player1 = input.gameObject; 
             //input.gameObject.GetComponent<edgeScreenIndicatorManager>().locusIndicator = locusEdgeOfScreen1;
             //input.gameObject.GetComponent<Player>().healthBar = gangHealth;
             //WM.player1 = input.gameObject;
@@ -131,7 +129,6 @@ public class CharacterSelect : MonoBehaviour
         else if (pim.playerCount == 2)
         {
             Debug.Log("Success");
-            DontDestroyInput.player2 = input.gameObject;
             SceneManager.LoadScene("MainScene"); 
             //input.gameObject.GetComponent<edgeScreenIndicatorManager>().locusIndicator = locusEdgeOfScreen2;
             //input.gameObject.GetComponent<Player>().healthBar = morHealth;

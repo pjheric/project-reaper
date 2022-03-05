@@ -8,46 +8,53 @@ using UnityEngine.SceneManagement;
 
 public class mainManager : MonoBehaviour
 {
-    [SerializeField] DialogueManager dm; 
-    [SerializeField] waveManager WM;
-    [SerializeField] GameObject locus;
-    [SerializeField] TextMeshProUGUI locusHealthText;
-    [SerializeField] TextMeshProUGUI waveEnemyText;
-    [SerializeField] Slider gangHealth;
-    [SerializeField] Slider morHealth;
-    [SerializeField] GameObject failureScreen;
-    [SerializeField] TextMeshProUGUI failureText;
+    [SerializeField]
+    waveManager WM;
+    [SerializeField]
+    GameObject locus;
+    [SerializeField]
+    TextMeshProUGUI locusHealthText;
+    [SerializeField]
+    TextMeshProUGUI waveEnemyText;
+    [SerializeField]
+    Slider gangHealth;
+    [SerializeField]
+    Slider morHealth;
+    [SerializeField]
+    GameObject failureScreen;
+    [SerializeField]
+    TextMeshProUGUI failureText;
     [SerializeField] PlayerInputManager playerInputManager;
     [SerializeField] GameObject gang;
     [SerializeField] GameObject mor;
     [SerializeField] GameObject locusEdgeOfScreen1;
     [SerializeField] GameObject locusEdgeOfScreen2;
 
+    
     //public static bool gameStart = false;
     public static bool gameOver = false;
     // Start is called before the first frame update
     void Start()
     {
-        dm.StartDialogue(); 
     }
-    //void OnPlayerJoined(PlayerInput input)
-    //{
-    //    input.gameObject.GetComponent<edgeScreenIndicatorManager>().locus = locus;
-    //    if(playerInputManager.playerCount == 1)
-    //    {
-    //        input.gameObject.GetComponent<edgeScreenIndicatorManager>().locusIndicator = locusEdgeOfScreen1;
-    //        input.gameObject.GetComponent<Player>().healthBar = gangHealth;
-    //        WM.player1 = input.gameObject;
-    //        playerInputManager.playerPrefab = mor;//so that the next join is morrigan
-    //    }
-    //    else
-    //    {
-    //        input.gameObject.GetComponent<edgeScreenIndicatorManager>().locusIndicator = locusEdgeOfScreen2;
-    //        input.gameObject.GetComponent<Player>().healthBar = morHealth;
-    //        WM.player2 = input.gameObject;
-    //        //gameStart = true;//both chars connected begin the game
-    //    }
-    //}
+    void OnPlayerJoined(PlayerInput input)
+    {
+        input.gameObject.GetComponent<edgeScreenIndicatorManager>().locus = locus;
+        if(playerInputManager.playerCount == 1)
+        {
+            input.gameObject.GetComponent<edgeScreenIndicatorManager>().locusIndicator = locusEdgeOfScreen1;
+            input.gameObject.GetComponent<Player>().healthBar = gangHealth;
+            WM.player1 = input.gameObject;
+            playerInputManager.playerPrefab = mor;//so that the next join is morrigan
+        }
+        else
+        {
+            input.gameObject.GetComponent<edgeScreenIndicatorManager>().locusIndicator = locusEdgeOfScreen2;
+            input.gameObject.GetComponent<Player>().healthBar = morHealth;
+            WM.player2 = input.gameObject;
+            //gameStart = true;//both chars connected begin the game
+        }
+    }
     // Update is called once per frame
     void Update()
     {
@@ -87,31 +94,6 @@ public class mainManager : MonoBehaviour
         failureText.gameObject.SetActive(true);
         StartCoroutine(fadeInFailText());
         locusHealthText.gameObject.SetActive(false);
-    }
-    public void gameStartFunc()
-    {
-        if (DontDestroyInput.player1.GetComponent<GLkit>() != null)
-        {
-            DontDestroyInput.player1.GetComponent<edgeScreenIndicatorManager>().locusIndicator = locusEdgeOfScreen1;
-            DontDestroyInput.player1.GetComponent<Player>().healthBar = gangHealth;
-            WM.player1 = DontDestroyInput.player1;
-
-            DontDestroyInput.player2.GetComponent<edgeScreenIndicatorManager>().locusIndicator = locusEdgeOfScreen2;
-            DontDestroyInput.player2.GetComponent<Player>().healthBar = morHealth;
-            WM.player2 = DontDestroyInput.player2;
-        }
-        else
-        {
-            DontDestroyInput.player1.GetComponent<edgeScreenIndicatorManager>().locusIndicator = locusEdgeOfScreen2;
-            DontDestroyInput.player1.GetComponent<Player>().healthBar = morHealth;
-            WM.player1 = DontDestroyInput.player1;
-
-            DontDestroyInput.player2.GetComponent<edgeScreenIndicatorManager>().locusIndicator = locusEdgeOfScreen1;
-            DontDestroyInput.player2.GetComponent<Player>().healthBar = gangHealth;
-            WM.player2 = DontDestroyInput.player2;
-        }
-        PersistentData.isGameStarted = true; 
-
     }
     IEnumerator fadeInFailText()
     {
