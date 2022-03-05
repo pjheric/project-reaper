@@ -36,24 +36,6 @@ public class mainManager : MonoBehaviour
     {
         dm.StartDialogue();
     }
-    // void OnPlayerJoined(PlayerInput input)
-    // {
-    //     input.gameObject.GetComponent<edgeScreenIndicatorManager>().locus = locus;
-    //     if(playerInputManager.playerCount == 1)
-    //     {
-    //         input.gameObject.GetComponent<edgeScreenIndicatorManager>().locusIndicator = locusEdgeOfScreen1;
-    //         input.gameObject.GetComponent<Player>().healthBar = gangHealth;
-    //         WM.player1 = input.gameObject;
-    //         playerInputManager.playerPrefab = mor;//so that the next join is morrigan
-    //     }
-    //     else
-    //     {
-    //         input.gameObject.GetComponent<edgeScreenIndicatorManager>().locusIndicator = locusEdgeOfScreen2;
-    //         input.gameObject.GetComponent<Player>().healthBar = morHealth;
-    //         WM.player2 = input.gameObject;
-    //         //gameStart = true;//both chars connected begin the game
-    //     }
-    // }
     // Update is called once per frame
     void Update()
     {
