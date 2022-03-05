@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charName: "Hine-nui-te-p\u014D"
   charSubname: Shephard of Souls
-  charFullImage: {fileID: 21300000, guid: 8c408ddb947832e44b552313aad7d638, type: 3}
-  charIngameImage: {fileID: 21300000, guid: 8c408ddb947832e44b552313aad7d638, type: 3}
+  charFullImage: {fileID: 21300000, guid: c1b3bba15f1a556408ac84d0802acfcd, type: 3}
+  charIngameImage: {fileID: 21300000, guid: 580b8f70464af7e428196222b8369d7b, type: 3}
   charBio: "Hine-nui-te-po remains one of the gentlest rulers of the different afterlifes,
     ruling over Rarohenga, the Maori \u201Cunderworld\u201D of peace and light. She
     serves as both guide and protector, shepherding the souls of the dead to the
@@ -30,3 +30,4 @@ MonoBehaviour:
     back enemies."
   - "Hine-nui-te-p\u014D slams the ground with her war club, knocking back enemies
     and creating a zone of invulnerability around her."
+  charPrefab: {fileID: 0}

@@ -15,7 +15,9 @@ public class DialogueManager : MonoBehaviour
     //Dialogue is triggered at the beginning of every wave
     [SerializeField] Image Speaker1Image;
     [SerializeField] Image Speaker2Image;
-    [SerializeField] TextMeshProUGUI SpeakerName;
+
+    [SerializeField] GameObject SpeakerName1;
+    [SerializeField] GameObject SpeakerName2;
     [SerializeField] TextMeshProUGUI DialogueLine;
 
     //All dialogue is just an array of list of strings
@@ -41,20 +43,19 @@ public class DialogueManager : MonoBehaviour
     }
     public void DisplayDialogue(string content)
     {
-        string speakername = content.Substring(0, 1);
-        string speakerBody = content.Substring(2); 
-        if(speakername == "M")
+        char speakername = content[0];
+        Debug.Log(speakername); 
+        string speakerBody = content.Substring(2);
+        Debug.Log(speakerBody); 
+        if(speakername == 'M')
         {
-            SpeakerName.text = "Morrigan";
-            //Set alpha of "opposite speaker image" to 150; blur out the other side
-            Image OppositeImage = Speaker1Image.GetComponent<Image>();
-            OppositeImage.color = new Color(OppositeImage.color.r, OppositeImage.color.g, OppositeImage.color.b, 150f);
+            SpeakerName1.SetActive(false);
+            SpeakerName2.SetActive(true); 
         }
-        else
+        else if(speakername == 'G')
         {
-            SpeakerName.text = "Gang-lim";
-            Image OppositeImage = Speaker2Image.GetComponent<Image>();
-            OppositeImage.color = new Color(OppositeImage.color.r, OppositeImage.color.g, OppositeImage.color.b, 150f);
+            SpeakerName1.SetActive(true);
+            SpeakerName2.SetActive(false);
         }
         DialogueLine.text = speakerBody; 
     }

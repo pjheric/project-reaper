@@ -21,7 +21,6 @@ public class CharacterSelect : MonoBehaviour
     [SerializeField] Image charFullBody;
 
 
-    [SerializeField] GameObject jointext; 
     [SerializeField] Button selectButton;
     [SerializeField] GameObject nextButton; 
     [SerializeField] UnityEngine.EventSystems.EventSystem eventsystem; 
@@ -110,6 +109,7 @@ public class CharacterSelect : MonoBehaviour
         else if (currentPlayer == 2)
         {
             player2Selection = currentIndex;
+            characterSelectTitle.text = "PRESS Y TO LOCK IN"; 
             Debug.Log("PLY2");
             Debug.Log(player1Selection);
             Debug.Log(player2Selection);
