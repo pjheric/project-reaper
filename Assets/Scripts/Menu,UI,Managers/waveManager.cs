@@ -72,6 +72,7 @@ public class waveManager : MonoBehaviour
     {
         waveRunning = true;
         currentWave = waves[currentWaveNum];
+        t= 40.0f;//to make sure it starts by spawning
     }
     void runWave()
     {
@@ -83,11 +84,14 @@ public class waveManager : MonoBehaviour
             for (int i = 0; i < prefabs.Length; i += 1)
             {
                 //spawn the enemy
+                Debug.Log(enemyCount);
                 SpawnEnemy((enemyType)i);
+                Debug.Log(enemyCount);
             }
             t = 0.0f;
 
         }
+        Debug.Log(enemyCount);
         if (enemyCount <= 0 && waveRunning)
         {
             waveEnd();

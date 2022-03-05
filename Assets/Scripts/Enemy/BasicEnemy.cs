@@ -26,7 +26,6 @@ public class BasicEnemy : MonoBehaviour
         if(gameObject.scene.isLoaded) //Was Deleted
         {
             waveManager.enemyCounts[(int)enemyType.basic] -=1;
-            waveManager.enemyCount -= 1;
         }
     }
     public void act(GameObject locus)//called every update
