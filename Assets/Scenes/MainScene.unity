@@ -2457,6 +2457,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DialoguePanel: {fileID: 1320312392}
+  mm: {fileID: 1959467255}
+  wm: {fileID: 1410811743}
   Speaker1Image: {fileID: 423776671}
   Speaker2Image: {fileID: 1691861802}
   SpeakerName: {fileID: 373724531}
@@ -2802,7 +2804,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dm: {fileID: 1320312394}
-  dmParent: {fileID: 1320312392}
   prefabs:
   - {fileID: 695591817594053590, guid: ad3cbcad8eb1b5a4385713a1321c93bf, type: 3}
   - {fileID: 340009948643149207, guid: 7ab4ff535bd87614b90a94abf4ef483f, type: 3}
@@ -4622,6 +4623,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 215fb666ab763784a8285e1b4abc44ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dm: {fileID: 1320312394}
   WM: {fileID: 1410811743}
   locus: {fileID: 1810681851}
   locusHealthText: {fileID: 1907716098}

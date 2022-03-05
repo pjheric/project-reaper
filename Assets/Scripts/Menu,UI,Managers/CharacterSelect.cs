@@ -122,19 +122,15 @@ public class CharacterSelect : MonoBehaviour
         if (pim.playerCount == 1)
         {
             Debug.Log("1 player");
-            //input.gameObject.GetComponent<edgeScreenIndicatorManager>().locusIndicator = locusEdgeOfScreen1;
-            //input.gameObject.GetComponent<Player>().healthBar = gangHealth;
-            //WM.player1 = input.gameObject;
+            DontDestroyInput.player1 = input.gameObject; 
             pim.playerPrefab = CharDataArray[player2Selection].charPrefab; //so that the next join is morrigan
         }
         else if (pim.playerCount == 2)
         {
             Debug.Log("Success");
+            DontDestroyInput.player2 = input.gameObject;
             SceneManager.LoadScene("MainScene"); 
-            //input.gameObject.GetComponent<edgeScreenIndicatorManager>().locusIndicator = locusEdgeOfScreen2;
-            //input.gameObject.GetComponent<Player>().healthBar = morHealth;
-            //WM.player2 = input.gameObject;
-            //gameStart = true;//both chars connected begin the game
+
         }
         else
         {

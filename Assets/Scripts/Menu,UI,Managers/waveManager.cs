@@ -11,8 +11,7 @@ enum enemyType
 public class waveManager : MonoBehaviour
 {
 
-    public DialogueManager dm;
-    [SerializeField] GameObject dmParent;
+    [SerializeField] DialogueManager dm;
     [SerializeField] public GameObject[] prefabs = new GameObject[4];
     [SerializeField] GameObject locus;
     public GameObject player1;
@@ -37,7 +36,7 @@ public class waveManager : MonoBehaviour
                                                  // public static int tankEnemyCount;
                                                  // public static int buffEnemyCount;
     public static int enemyCount;
-    public static int currentWaveNum = 0;//starting at 0   
+    public static int currentWaveNum = 0;//will be -1 until the game has started
     waveConfiguration currentWave;
 
     public bool waveRunning = false;
@@ -45,16 +44,14 @@ public class waveManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        dm = dmParent.GetComponent<DialogueManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (/*mainManager.gameStart*/ PersistentData.isGameStarted && beginOnce)
+        if (PersistentData.isGameStarted && beginOnce)
         {
             beginOnce = false;
-            currentWaveNum = 0;
             startWave();
         }
         runWave();
@@ -62,17 +59,17 @@ public class waveManager : MonoBehaviour
     void waveEnd()
     {
         waveRunning = false;
-        currentWaveNum += 1;
+        currentWaveNum++;//increases to the next wave here so that the dialogue displays the next waves stuff
         locus.GetComponent<Entity>().addHealth(50);
         player1.GetComponent<Entity>().addHealth(1000);//heal to full
         player2.GetComponent<Entity>().addHealth(1000);//heal to full
-        Invoke("startWave", 5);
+        //will call to start dialogue manager, control will bounce back and forth between them MM -> DM -> WM -> DM -> WM etc
+        dm.StartDialogue();
     }
-    void startWave()
+    public void startWave()
     {
         waveRunning = true;
         currentWave = waves[currentWaveNum];
-        dm.StartDialogue(); 
     }
     void runWave()
     {
