@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 
 public class TestMorriganAttackingHandler : MonoBehaviour
 {
-
     [SerializeField] Mkit morriganKit;
 
     [SerializeField] GameObject sword;
@@ -37,7 +36,10 @@ public class TestMorriganAttackingHandler : MonoBehaviour
 
     public void OnFire(InputValue value)
     {
-        BasicAttack();
+        if (lockPlayerManager.morriganLock == false)
+        {
+            BasicAttack();
+        }
     }
 
     void BasicAttack()
@@ -59,9 +61,9 @@ public class TestMorriganAttackingHandler : MonoBehaviour
                 if (x.transform.tag == "enemy")
                 {
                     var victimEntity = x.GetComponent<Entity>();
-                    victimEntity.currentHealth -= morriganKit.BasicAttackDamage(victimEntity);
+                    victimEntity.currentHealth -= morriganKit.BasicAttackDamage;
                     Debug.Log("enemy hit! health: " + victimEntity.currentHealth);
-                    victimEntity.knockBack(morriganKit.BasicAttackKnockback(), transform.gameObject);
+                    victimEntity.knockBack(morriganKit.BasicAttackKnockback, transform.gameObject);
                     victimEntity.hurtColor();
 
                 }
@@ -75,9 +77,9 @@ public class TestMorriganAttackingHandler : MonoBehaviour
 
     private void Update()
     {
-        
+        morriganKit.TrackPassive();
         ManageWeapon();
-        delayTimer += Time.deltaTime;
+        delayTimer += Time.deltaTime * (morriganKit.GetPassiveBonusAttackSpeed/100 + 1);
 
         if (delayTimer >= swingDelayTime)
         {

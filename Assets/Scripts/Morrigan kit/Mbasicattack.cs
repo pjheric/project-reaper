@@ -5,9 +5,8 @@ using UnityEngine;
 public class Mbasicattack : Mpassive
 {
     // returns autoattack damage.
-    public float ManageBasicAttack(Entity enemy)
+    public float ManageBasicAttack()
     {
-        // would also have passive here
-        return BaseDamage();
+        return BaseDamage;
     }
 }

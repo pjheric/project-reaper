@@ -53,7 +53,7 @@ public class playermovement : MonoBehaviour
 
     void Update()
     {
-        if ((gameObject.transform.parent.GetComponent<GangLimAttackingHandler>() != null && lockPlayerManager.ganglimLock ==false) || (gameObject.transform.parent.GetComponent<TestMorriganAttackingHandler>() != null && lockPlayerManager.morriganLock ==false))
+        if ((gameObject.transform.GetComponent<GangLimAttackingHandler>() != null && lockPlayerManager.ganglimLock ==false) || (gameObject.transform.GetComponent<TestMorriganAttackingHandler>() != null && lockPlayerManager.morriganLock ==false))
         {
             moveManager();
         }

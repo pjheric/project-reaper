@@ -33,7 +33,10 @@ public class GangLimAttackingHandler : MonoBehaviour
 
     public void OnFire(InputValue value)
     {
-        BasicAttack();
+        if (GetComponent<GLspecial>().CanBasicAttack == true && lockPlayerManager.ganglimLock == false)
+        {
+            BasicAttack();
+        }
     }
 
     private void BasicAttack()

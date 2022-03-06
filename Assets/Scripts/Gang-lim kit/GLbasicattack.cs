@@ -9,11 +9,11 @@ public class GLbasicattack : GLpassive
     {
         if (TrackPassive())
         {
-            return BaseDamage() + CalculatePassiveDamage(enemy);
+            return BaseDamage + CalculatePassiveDamage(enemy);
         }
         else
         {
-            return BaseDamage();
+            return BaseDamage;
         }
     }
 }

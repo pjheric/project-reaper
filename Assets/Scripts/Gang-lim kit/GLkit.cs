@@ -18,6 +18,8 @@ public class GLkit : MonoBehaviour
 
     public float BasicAttackKnockback()
     {
-        return basicAttack.BaseKnockback();
+        return basicAttack.BaseKnockback;
     }
+
+    public bool CanBasicAttack { get { return basicAttack; } }
 }
