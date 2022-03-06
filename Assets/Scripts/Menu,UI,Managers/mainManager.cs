@@ -15,11 +15,19 @@ public class mainManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI waveEnemyText;
     [SerializeField] Slider gangHealth;
     [SerializeField] Slider morHealth;
+
     [SerializeField] GameObject failureScreen;
-    [SerializeField] GameObject inGameUI;
     [SerializeField] TextMeshProUGUI failureText;
     [SerializeField] Image failureMainMenuButtonImage;
     [SerializeField] TextMeshProUGUI failureMainMenuButtonText;
+
+    [SerializeField] GameObject inGameUI;
+
+    [SerializeField] GameObject victoryScreen;
+    [SerializeField] TextMeshProUGUI victoryText;
+    [SerializeField] Image victoryMainMenuButtonImage;
+    [SerializeField] TextMeshProUGUI victoryMainMenuButtonText;
+
     [SerializeField] PlayerInputManager pim;
     [SerializeField] GameObject gang;
     [SerializeField] GameObject mor;
@@ -106,6 +114,19 @@ public class mainManager : MonoBehaviour
         inGameUI.SetActive(true);
 
     }
+    public void gameWinFunc()
+    {
+        gameOver = true;
+        Time.timeScale = 0.1f;
+        victoryScreen.SetActive(true);
+        inGameUI.SetActive(false);
+        victoryText.gameObject.SetActive(true);
+        victoryMainMenuButtonImage.gameObject.SetActive(true);
+        locusHealthText.gameObject.SetActive(false);
+        PersistentData.isGameStarted = false;
+        StartCoroutine(fadeInFailOrWinText(victoryText, victoryMainMenuButtonImage, victoryMainMenuButtonText));
+    }
+
     public void gameOverFunc()
     {
         gameOver = true;
@@ -116,22 +137,23 @@ public class mainManager : MonoBehaviour
         failureMainMenuButtonImage.gameObject.SetActive(true);
         locusHealthText.gameObject.SetActive(false);
         PersistentData.isGameStarted = false;
-        StartCoroutine(fadeInFailText());
+        StartCoroutine(fadeInFailOrWinText(failureText, failureMainMenuButtonImage, failureMainMenuButtonText));
     }
-    IEnumerator fadeInFailText()
+
+    IEnumerator fadeInFailOrWinText(TextMeshProUGUI mainText, Image buttonImage, TextMeshProUGUI buttonText)
     {
         float t = 0.0f;
         while(t < 3.0f)
         {
             yield return new WaitForEndOfFrame();
             t += Time.unscaledDeltaTime;
-            failureText.color = new Color(failureText.color.r,failureText.color.g,failureText.color.b,t/3);  
-            failureMainMenuButtonImage.color = new Color(failureMainMenuButtonImage.color.r,failureMainMenuButtonImage.color.g,failureMainMenuButtonImage.color.b,t/3);     
-            failureMainMenuButtonText.color = new Color(failureMainMenuButtonText.color.r,failureMainMenuButtonText.color.g,failureMainMenuButtonText.color.b,t/3);     
+            mainText.color = new Color(mainText.color.r,mainText.color.g,mainText.color.b,t/3);  
+            buttonImage.color = new Color(buttonImage.color.r,buttonImage.color.g,buttonImage.color.b,t/3);     
+            buttonText.color = new Color(buttonText.color.r,buttonText.color.g,buttonText.color.b,t/3);     
 
         }
         yield return new WaitForSeconds(3);
-        SceneManager.LoadScene("MainScene");
+        //SceneManager.LoadScene("MainScene");
     }
 
     public void returnToMainMenu() 

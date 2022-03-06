@@ -12,6 +12,7 @@ public class waveManager : MonoBehaviour
 {
 
     [SerializeField] DialogueManager dm;
+    [SerializeField] mainManager mm;
     [SerializeField] public GameObject[] prefabs = new GameObject[4];
     [SerializeField] GameObject locus;
     public GameObject player1;
@@ -66,7 +67,13 @@ public class waveManager : MonoBehaviour
         player1.GetComponent<Entity>().addHealth(1000);//heal to full
         player2.GetComponent<Entity>().addHealth(1000);//heal to full
         //will call to start dialogue manager, control will bounce back and forth between them MM -> DM -> WM -> DM -> WM etc
-        dm.StartDialogue();
+        if(currentWaveNum <=4){
+            dm.StartDialogue();
+        }
+        else
+        {
+            mm.gameWinFunc();
+        }
     }
     public void startWave()
     {
