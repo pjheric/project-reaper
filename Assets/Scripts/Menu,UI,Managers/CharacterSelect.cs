@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement; 
 using TMPro; 
 public class CharacterSelect : MonoBehaviour
 {
+    [SerializeField] PlayerInputManager pim; 
     [SerializeField] CharacterData[] CharDataArray; //This contains all character data
+    //All the UI stuff
     [SerializeField] TextMeshProUGUI characterSelectTitle; 
     [SerializeField] TextMeshProUGUI charName;
     [SerializeField] TextMeshProUGUI charSubname; 
@@ -16,10 +20,12 @@ public class CharacterSelect : MonoBehaviour
     [SerializeField] Image charIngame;
     [SerializeField] Image charFullBody;
 
-    [SerializeField] GameObject selectButton;
 
-    private int currentIndex; //Index of chardataarray that the menu is currently on; 0-3
-    private int currentPlayer; //Number of current player; either 1 or 2
+    [SerializeField] Button selectButton;
+    [SerializeField] GameObject nextButton; 
+    [SerializeField] UnityEngine.EventSystems.EventSystem eventsystem; 
+    public int currentIndex; //Index of chardataarray that the menu is currently on; 0-3
+    public int currentPlayer; //Number of current player; either 1 or 2
 
     //Character number of the selected character for each player; either 0 or 1
     public int player1Selection;
@@ -29,7 +35,7 @@ public class CharacterSelect : MonoBehaviour
         characterSelectTitle.text = "CHOOSE YOUR REAPER (P1)";
         currentIndex = 0;
         currentPlayer = 1;
-        player1Selection = currentIndex;
+        //player1Selection = currentIndex;
         UpdateCharacter(); 
     }
 
@@ -47,41 +53,40 @@ public class CharacterSelect : MonoBehaviour
 
         if(currentIndex == 2 || currentIndex == 3)
         {
-            selectButton.SetActive(false); 
+            selectButton.interactable = false; 
         }
         else if(currentPlayer == 2 && currentIndex == player1Selection) //Prevent player 2 from selecting duplicates
         {
-            selectButton.SetActive(false); 
+            selectButton.interactable = false;
+            eventsystem.SetSelectedGameObject(nextButton); 
         }
         else
         {
-            selectButton.SetActive(true); 
+            selectButton.interactable = true; 
         }
+
+        //Debug.Log(player1Selection);
+        //Debug.Log(player2Selection);
     }
 
     public void OnPressPrev()
     {
-        if(currentIndex == 0)
-        {
-            currentIndex = CharDataArray.Length - 1; 
-        }
-        else
-        {
-            currentIndex -= 1; 
-        }
+        Debug.Log("pressPrev");
+        currentIndex -=1;
+        Debug.Log(currentIndex);
+        currentIndex = (currentIndex%4 + 4)%4;
+        Debug.Log(currentIndex);
         UpdateCharacter(); 
     }
 
     public void OnPressNext()
     {
-        if(currentIndex == CharDataArray.Length - 1)
-        {
-            currentIndex = 0; 
-        }
-        else
-        {
-            currentIndex += 1; 
-        }
+        Debug.Log("pressNext");
+        currentIndex +=1;
+        Debug.Log(currentIndex);
+        currentIndex = (currentIndex%4 + 4)%4;
+        Debug.Log(currentIndex);
+
         UpdateCharacter(); 
     }
 
@@ -89,16 +94,47 @@ public class CharacterSelect : MonoBehaviour
     {
         if(currentPlayer == 1)
         {
+            Debug.Log(currentIndex);
             player1Selection = currentIndex;
             currentPlayer = 2;
             currentIndex = 0;
+            pim.playerPrefab = CharDataArray[player1Selection].charPrefab; //so that the next join is morrigan
             UpdateCharacter();
-            characterSelectTitle.text = "CHOOSE YOUR REAPER (P2)"; 
+            characterSelectTitle.text = "CHOOSE YOUR REAPER (P2)";
+            Debug.Log("Called"); 
+            Debug.Log("PLY1");
+            Debug.Log(player1Selection);
+
         }
         else if (currentPlayer == 2)
         {
             player2Selection = currentIndex;
+            characterSelectTitle.text = "PRESS Y TO LOCK IN"; 
+            Debug.Log("PLY2");
+            Debug.Log(player1Selection);
+            Debug.Log(player2Selection);
             //Start the game with the selected characters
+        }
+    }
+    void OnPlayerJoined(PlayerInput input)
+    {
+        //input.gameObject.GetComponent<edgeScreenIndicatorManager>().locus = locus;
+        if (pim.playerCount == 1)
+        {
+            Debug.Log("1 player");
+            DontDestroyInput.player1 = input.gameObject; 
+            pim.playerPrefab = CharDataArray[player2Selection].charPrefab; //so that the next join is morrigan
+        }
+        else if (pim.playerCount == 2)
+        {
+            Debug.Log("Success");
+            DontDestroyInput.player2 = input.gameObject;
+            SceneManager.LoadScene("MainScene"); 
+
+        }
+        else
+        {
+            Debug.Log("Uh oh");
         }
     }
 }

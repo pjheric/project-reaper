@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charName: Nergal
   charSubname: Forgotten Plague
-  charFullImage: {fileID: 21300000, guid: 8c408ddb947832e44b552313aad7d638, type: 3}
-  charIngameImage: {fileID: 21300000, guid: 8c408ddb947832e44b552313aad7d638, type: 3}
+  charFullImage: {fileID: 21300000, guid: 3bb06832ed121214894dd1d5a1794b45, type: 3}
+  charIngameImage: {fileID: 21300000, guid: fb9a1817e09c2114e9446009368da2d1, type: 3}
   charBio: The gods have always been cautious about Nergal and their pestilent area
     of effect powers, but when all power is necessary, Nergal is sent to the frontlines
     to unleash their lethal plagues upon the enemy. The Mesopotamian deity of war
@@ -30,3 +30,4 @@ MonoBehaviour:
     hit.
   - Nergal becomes a cloud of living Plague, becoming invulnerable and leaving Plague
     to all enemies they pass through.
+  charPrefab: {fileID: 0}

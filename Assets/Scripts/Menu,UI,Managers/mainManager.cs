@@ -8,52 +8,43 @@ using UnityEngine.SceneManagement;
 
 public class mainManager : MonoBehaviour
 {
-    [SerializeField]
-    waveManager WM;
-    [SerializeField]
-    GameObject locus;
-    [SerializeField]
-    TextMeshProUGUI locusHealthText;
-    [SerializeField]
-    TextMeshProUGUI waveEnemyText;
-    [SerializeField]
-    Slider gangHealth;
-    [SerializeField]
-    Slider morHealth;
-    [SerializeField]
-    GameObject failureScreen;
-    [SerializeField]
-    TextMeshProUGUI failureText;
-    [SerializeField] PlayerInputManager playerInputManager;
+    [SerializeField] DialogueManager dm; 
+    [SerializeField] waveManager WM;
+    [SerializeField] GameObject locus;
+    [SerializeField] TextMeshProUGUI locusHealthText;
+    [SerializeField] TextMeshProUGUI waveEnemyText;
+    [SerializeField] Slider gangHealth;
+    [SerializeField] Slider morHealth;
+    [SerializeField] TextMeshProUGUI gangHealthNum;
+    [SerializeField] TextMeshProUGUI morHealthNum; 
+
+    [SerializeField] GameObject failureScreen;
+    [SerializeField] TextMeshProUGUI failureText;
+    [SerializeField] Image failureMainMenuButtonImage;
+    [SerializeField] TextMeshProUGUI failureMainMenuButtonText;
+
+    [SerializeField] GameObject inGameUI;
+
+    [SerializeField] GameObject victoryScreen;
+    [SerializeField] TextMeshProUGUI victoryText;
+    [SerializeField] Image victoryMainMenuButtonImage;
+    [SerializeField] TextMeshProUGUI victoryMainMenuButtonText;
+
+    [SerializeField] PlayerInputManager pim;
     [SerializeField] GameObject gang;
     [SerializeField] GameObject mor;
     [SerializeField] GameObject locusEdgeOfScreen1;
     [SerializeField] GameObject locusEdgeOfScreen2;
+    [SerializeField] GameObject playerEdgeOfScreen1;
+    [SerializeField] GameObject playerEdgeOfScreen2;
 
     
-    public static bool gameStart = false;
+    //public static bool gameStart = false;
     public static bool gameOver = false;
     // Start is called before the first frame update
     void Start()
     {
-    }
-    void OnPlayerJoined(PlayerInput input)
-    {
-        input.gameObject.GetComponent<edgeScreenIndicatorManager>().locus = locus;
-        if(playerInputManager.playerCount == 1)
-        {
-            //input.gameObject.GetComponent<edgeScreenIndicatorManager>().locusIndicator = locusEdgeOfScreen1;
-            //input.gameObject.GetComponent<Player>().healthBar = gangHealth;
-            //WM.player1 = input.gameObject;
-            //playerInputManager.playerPrefab = mor;//so that the next join is morrigan
-        //}
-        //else
-        //{
-            input.gameObject.GetComponent<edgeScreenIndicatorManager>().locusIndicator = locusEdgeOfScreen2;
-            input.gameObject.GetComponent<Player>().healthBar = morHealth;
-            WM.player2 = input.gameObject;
-            gameStart = true;//both chars connected begin the game
-        }
+        dm.StartDialogue();
     }
     // Update is called once per frame
     void Update()
@@ -86,25 +77,93 @@ public class mainManager : MonoBehaviour
             gameOverFunc();
         }
     }
+
+    public void gameStartFunc()
+    {
+        if (DontDestroyInput.player1.GetComponent<GLkit>() != null)
+        {
+            DontDestroyInput.player1.GetComponent<edgeScreenIndicatorManager>().locusIndicator = locusEdgeOfScreen1;
+            DontDestroyInput.player1.GetComponent<edgeScreenIndicatorManager>().locus = locus;
+            DontDestroyInput.player1.GetComponent<edgeScreenIndicatorManager>().otherPlayerIndicator = playerEdgeOfScreen1;
+            DontDestroyInput.player1.GetComponent<edgeScreenIndicatorManager>().otherPlayer = DontDestroyInput.player2;
+            DontDestroyInput.player1.GetComponent<Player>().healthBar = gangHealth;
+            DontDestroyInput.player1.GetComponent<Player>().healthText = gangHealthNum;
+            WM.player1 = DontDestroyInput.player1;
+
+            DontDestroyInput.player2.GetComponent<edgeScreenIndicatorManager>().locusIndicator = locusEdgeOfScreen2;
+            DontDestroyInput.player2.GetComponent<edgeScreenIndicatorManager>().locus = locus;
+            DontDestroyInput.player2.GetComponent<edgeScreenIndicatorManager>().otherPlayerIndicator = playerEdgeOfScreen2;
+            DontDestroyInput.player2.GetComponent<edgeScreenIndicatorManager>().otherPlayer = DontDestroyInput.player1;
+            DontDestroyInput.player2.GetComponent<Player>().healthBar = morHealth;
+            DontDestroyInput.player2.GetComponent<Player>().healthText = morHealthNum;
+            WM.player2 = DontDestroyInput.player2;
+        }
+        else
+        {
+            DontDestroyInput.player1.GetComponent<edgeScreenIndicatorManager>().locusIndicator = locusEdgeOfScreen2;
+            DontDestroyInput.player1.GetComponent<edgeScreenIndicatorManager>().locus = locus;
+            DontDestroyInput.player1.GetComponent<edgeScreenIndicatorManager>().otherPlayerIndicator = playerEdgeOfScreen2;
+            DontDestroyInput.player1.GetComponent<edgeScreenIndicatorManager>().otherPlayer = DontDestroyInput.player2;
+            DontDestroyInput.player1.GetComponent<Player>().healthBar = morHealth;
+            DontDestroyInput.player1.GetComponent<Player>().healthText = morHealthNum;
+            WM.player1 = DontDestroyInput.player1;
+
+            DontDestroyInput.player2.GetComponent<edgeScreenIndicatorManager>().locusIndicator = locusEdgeOfScreen1;
+            DontDestroyInput.player2.GetComponent<edgeScreenIndicatorManager>().locus = locus;
+            DontDestroyInput.player2.GetComponent<edgeScreenIndicatorManager>().otherPlayerIndicator = playerEdgeOfScreen1;
+            DontDestroyInput.player2.GetComponent<edgeScreenIndicatorManager>().otherPlayer = DontDestroyInput.player1;
+            DontDestroyInput.player2.GetComponent<Player>().healthBar = gangHealth;
+            DontDestroyInput.player2.GetComponent<Player>().healthText = gangHealthNum;
+            WM.player2 = DontDestroyInput.player2;
+        }
+        PersistentData.isGameStarted = true; 
+        inGameUI.SetActive(true);
+
+    }
+    public void gameWinFunc()
+    {
+        gameOver = true;
+        Time.timeScale = 0.1f;
+        victoryScreen.SetActive(true);
+        inGameUI.SetActive(false);
+        victoryText.gameObject.SetActive(true);
+        victoryMainMenuButtonImage.gameObject.SetActive(true);
+        locusHealthText.gameObject.SetActive(false);
+        PersistentData.isGameStarted = false;
+        StartCoroutine(fadeInFailOrWinText(victoryText, victoryMainMenuButtonImage, victoryMainMenuButtonText));
+    }
+
     public void gameOverFunc()
     {
         gameOver = true;
         Time.timeScale = 0.1f;
         failureScreen.SetActive(true);
+        inGameUI.SetActive(false);
         failureText.gameObject.SetActive(true);
-        StartCoroutine(fadeInFailText());
+        failureMainMenuButtonImage.gameObject.SetActive(true);
         locusHealthText.gameObject.SetActive(false);
+        PersistentData.isGameStarted = false;
+        StartCoroutine(fadeInFailOrWinText(failureText, failureMainMenuButtonImage, failureMainMenuButtonText));
     }
-    IEnumerator fadeInFailText()
+
+    IEnumerator fadeInFailOrWinText(TextMeshProUGUI mainText, Image buttonImage, TextMeshProUGUI buttonText)
     {
         float t = 0.0f;
         while(t < 3.0f)
         {
             yield return new WaitForEndOfFrame();
             t += Time.unscaledDeltaTime;
-            failureText.color = new Color(failureText.color.r,failureText.color.g,failureText.color.b,t/3);        
+            mainText.color = new Color(mainText.color.r,mainText.color.g,mainText.color.b,t/3);  
+            buttonImage.color = new Color(buttonImage.color.r,buttonImage.color.g,buttonImage.color.b,t/3);     
+            buttonText.color = new Color(buttonText.color.r,buttonText.color.g,buttonText.color.b,t/3);     
+
         }
         yield return new WaitForSeconds(3);
-        SceneManager.LoadScene("MainScene");
+        //SceneManager.LoadScene("MainScene");
+    }
+
+    public void returnToMainMenu() 
+    {
+        SceneManager.LoadScene("Start Menu");
     }
 }

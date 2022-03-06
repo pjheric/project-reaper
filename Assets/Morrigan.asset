@@ -28,3 +28,4 @@ MonoBehaviour:
     her.
   - Morrigan throws her spear, dealing heavy damage to all enemies in a line. Afterwards,
     her passive bonuses are doubled.
+  charPrefab: {fileID: 7125789978835377189, guid: 96eca3424c5d70842b483a60ef83e0b3, type: 3}

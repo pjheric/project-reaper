@@ -273,6 +273,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entity: {fileID: 4437786196091818675}
   healthBar: {fileID: 0}
+  outOfBoundsTickCooldown: 1.5
+  outOfBoundsDamage: 5
 --- !u!114 &7125789978835377194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -459,6 +461,8 @@ MonoBehaviour:
   player: {fileID: 7125789978835377189}
   locus: {fileID: 0}
   locusIndicator: {fileID: 0}
+  otherPlayer: {fileID: 0}
+  otherPlayerIndicator: {fileID: 0}
   playerCamera: {fileID: 8793734963115914858}
   playerNum: 2
 --- !u!114 &8941481672309183976

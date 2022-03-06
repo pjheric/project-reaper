@@ -11,13 +11,14 @@ enum enemyType
 public class waveManager : MonoBehaviour
 {
 
-    public DialogueManager dm;
-    [SerializeField] GameObject dmParent;
+    [SerializeField] DialogueManager dm;
+    [SerializeField] mainManager mm;
     [SerializeField] public GameObject[] prefabs = new GameObject[4];
     [SerializeField] GameObject locus;
     public GameObject player1;
     public GameObject player2;
     [SerializeField] float mapRadius;
+    public static float publicMapRadius;
     [SerializeField] float waveSpawnsPerSecond;
 
     [System.Serializable]
@@ -37,7 +38,7 @@ public class waveManager : MonoBehaviour
                                                  // public static int tankEnemyCount;
                                                  // public static int buffEnemyCount;
     public static int enemyCount;
-    public static int currentWaveNum = 0;//starting at 0   
+    public static int currentWaveNum = 0;//will be -1 until the game has started
     waveConfiguration currentWave;
 
     public bool waveRunning = false;
@@ -45,16 +46,15 @@ public class waveManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        dm = dmParent.GetComponent<DialogueManager>();
+        publicMapRadius = mapRadius;//to give easier access
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (mainManager.gameStart && beginOnce)
+        if (PersistentData.isGameStarted && beginOnce)
         {
             beginOnce = false;
-            currentWaveNum = 0;
             startWave();
         }
         runWave();
@@ -62,17 +62,24 @@ public class waveManager : MonoBehaviour
     void waveEnd()
     {
         waveRunning = false;
-        currentWaveNum += 1;
+        currentWaveNum++;//increases to the next wave here so that the dialogue displays the next waves stuff
         locus.GetComponent<Entity>().addHealth(50);
         player1.GetComponent<Entity>().addHealth(1000);//heal to full
         player2.GetComponent<Entity>().addHealth(1000);//heal to full
-        Invoke("startWave", 5);
+        //will call to start dialogue manager, control will bounce back and forth between them MM -> DM -> WM -> DM -> WM etc
+        if(currentWaveNum <=4){
+            dm.StartDialogue();
+        }
+        else
+        {
+            mm.gameWinFunc();
+        }
     }
-    void startWave()
+    public void startWave()
     {
         waveRunning = true;
         currentWave = waves[currentWaveNum];
-        //dm.StartDialogue(); TEMP
+        t= 40.0f;//to make sure it starts by spawning
     }
     void runWave()
     {
@@ -84,11 +91,14 @@ public class waveManager : MonoBehaviour
             for (int i = 0; i < prefabs.Length; i += 1)
             {
                 //spawn the enemy
+                Debug.Log(enemyCount);
                 SpawnEnemy((enemyType)i);
+                Debug.Log(enemyCount);
             }
             t = 0.0f;
 
         }
+        Debug.Log(enemyCount);
         if (enemyCount <= 0 && waveRunning)
         {
             waveEnd();

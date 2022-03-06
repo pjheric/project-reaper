@@ -49,7 +49,6 @@ public class ErraticEnemy : MonoBehaviour
         if(gameObject.scene.isLoaded) //Was Deleted
         {
             waveManager.enemyCounts[(int)enemyType.erratic] -=1;
-            waveManager.enemyCount -= 1;
         }
     }
     public void erraticMove()
@@ -92,8 +91,11 @@ public class ErraticEnemy : MonoBehaviour
             {
                 erraticMoveDecide();
                 currentZigTime = 0.0f;
-            }   
-            erraticMove();  
+            } 
+            if(enemy.isAttacking == false)
+            {  
+                erraticMove();  
+            }
         } 
     }
 

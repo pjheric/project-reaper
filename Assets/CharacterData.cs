@@ -11,4 +11,5 @@ public class CharacterData : ScriptableObject
     public string charBio; //Biography
     public string[] charSkillDescription; //Skill description.
                                           //0 = passive, 1 = basic, 2 = special
+    public GameObject charPrefab; //Prefab of the Reaper
 }
