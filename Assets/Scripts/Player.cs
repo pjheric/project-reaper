@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement; 
+using UnityEngine.SceneManagement;
+using TMPro; 
 public class Player : MonoBehaviour
 {
     [SerializeField] Entity entity;
     public Slider healthBar;
+    public TextMeshProUGUI healthText; 
     [SerializeField] float outOfBoundsTickCooldown;
     [SerializeField] float outOfBoundsDamage;
     float outOfBoundsTickCooldownTimer;
@@ -22,6 +24,7 @@ public class Player : MonoBehaviour
         if (PersistentData.isGameStarted)
         {
             healthBar.value = entity.currentHealth;
+            healthText.text = entity.currentHealth.ToString() + "/" + entity.maxHealth.ToString(); 
         }
         
         if(Vector2.Distance(Vector2.zero, transform.position) > waveManager.publicMapRadius +5)

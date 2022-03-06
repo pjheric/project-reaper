@@ -15,6 +15,8 @@ public class mainManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI waveEnemyText;
     [SerializeField] Slider gangHealth;
     [SerializeField] Slider morHealth;
+    [SerializeField] TextMeshProUGUI gangHealthNum;
+    [SerializeField] TextMeshProUGUI morHealthNum; 
 
     [SerializeField] GameObject failureScreen;
     [SerializeField] TextMeshProUGUI failureText;
@@ -85,6 +87,7 @@ public class mainManager : MonoBehaviour
             DontDestroyInput.player1.GetComponent<edgeScreenIndicatorManager>().otherPlayerIndicator = playerEdgeOfScreen1;
             DontDestroyInput.player1.GetComponent<edgeScreenIndicatorManager>().otherPlayer = DontDestroyInput.player2;
             DontDestroyInput.player1.GetComponent<Player>().healthBar = gangHealth;
+            DontDestroyInput.player1.GetComponent<Player>().healthText = gangHealthNum;
             WM.player1 = DontDestroyInput.player1;
 
             DontDestroyInput.player2.GetComponent<edgeScreenIndicatorManager>().locusIndicator = locusEdgeOfScreen2;
@@ -92,6 +95,7 @@ public class mainManager : MonoBehaviour
             DontDestroyInput.player2.GetComponent<edgeScreenIndicatorManager>().otherPlayerIndicator = playerEdgeOfScreen2;
             DontDestroyInput.player2.GetComponent<edgeScreenIndicatorManager>().otherPlayer = DontDestroyInput.player1;
             DontDestroyInput.player2.GetComponent<Player>().healthBar = morHealth;
+            DontDestroyInput.player2.GetComponent<Player>().healthText = morHealthNum;
             WM.player2 = DontDestroyInput.player2;
         }
         else
@@ -101,6 +105,7 @@ public class mainManager : MonoBehaviour
             DontDestroyInput.player1.GetComponent<edgeScreenIndicatorManager>().otherPlayerIndicator = playerEdgeOfScreen2;
             DontDestroyInput.player1.GetComponent<edgeScreenIndicatorManager>().otherPlayer = DontDestroyInput.player2;
             DontDestroyInput.player1.GetComponent<Player>().healthBar = morHealth;
+            DontDestroyInput.player1.GetComponent<Player>().healthText = morHealthNum;
             WM.player1 = DontDestroyInput.player1;
 
             DontDestroyInput.player2.GetComponent<edgeScreenIndicatorManager>().locusIndicator = locusEdgeOfScreen1;
@@ -108,6 +113,7 @@ public class mainManager : MonoBehaviour
             DontDestroyInput.player2.GetComponent<edgeScreenIndicatorManager>().otherPlayerIndicator = playerEdgeOfScreen1;
             DontDestroyInput.player2.GetComponent<edgeScreenIndicatorManager>().otherPlayer = DontDestroyInput.player1;
             DontDestroyInput.player2.GetComponent<Player>().healthBar = gangHealth;
+            DontDestroyInput.player2.GetComponent<Player>().healthText = gangHealthNum;
             WM.player2 = DontDestroyInput.player2;
         }
         PersistentData.isGameStarted = true; 
