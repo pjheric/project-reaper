@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc2edfc36cbebf34d998369f354027da, type: 3}
   m_Name: Morrigan
   m_EditorClassIdentifier: 
-  charName: Morrigan
+  charName: {fileID: 21300000, guid: fff8ff00bde7db3448e468ffe7a56886, type: 3}
   charSubname: Spear of War
   charFullImage: {fileID: 21300000, guid: fe0021d944599824dbc65d6c0f0d98eb, type: 3}
   charIngameImage: {fileID: 21300000, guid: 17fc8763b0e69f0469460ae71a082181, type: 3}

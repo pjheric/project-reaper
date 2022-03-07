@@ -11,7 +11,7 @@ public class CharacterSelect : MonoBehaviour
     [SerializeField] CharacterData[] CharDataArray; //This contains all character data
     //All the UI stuff
     [SerializeField] TextMeshProUGUI characterSelectTitle; 
-    [SerializeField] TextMeshProUGUI charName;
+    [SerializeField] Image charName;
     [SerializeField] TextMeshProUGUI charSubname; 
     [SerializeField] TextMeshProUGUI charBio;
     [SerializeField] TextMeshProUGUI charPassive;
@@ -42,7 +42,7 @@ public class CharacterSelect : MonoBehaviour
     private void UpdateCharacter() //Updates the necessary UI elements.
     {
         CharacterData currentChar = CharDataArray[currentIndex];
-        charName.text = currentChar.charName;
+        charName.sprite = currentChar.charName;
         charSubname.text = currentChar.charSubname; 
         charBio.text = currentChar.charBio;
         charPassive.text = currentChar.charSkillDescription[0];

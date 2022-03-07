@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc2edfc36cbebf34d998369f354027da, type: 3}
   m_Name: Nergal
   m_EditorClassIdentifier: 
-  charName: Nergal
+  charName: {fileID: 21300000, guid: 0d729b49421794146b08df48936703cc, type: 3}
   charSubname: Forgotten Plague
   charFullImage: {fileID: 21300000, guid: 3bb06832ed121214894dd1d5a1794b45, type: 3}
   charIngameImage: {fileID: 21300000, guid: fb9a1817e09c2114e9446009368da2d1, type: 3}

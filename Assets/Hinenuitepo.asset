@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc2edfc36cbebf34d998369f354027da, type: 3}
   m_Name: Hinenuitepo
   m_EditorClassIdentifier: 
-  charName: "Hine-nui-te-p\u014D"
+  charName: {fileID: 21300000, guid: 08e2189158ddf1d48bca015d4be1af8a, type: 3}
   charSubname: Shephard of Souls
   charFullImage: {fileID: 21300000, guid: c1b3bba15f1a556408ac84d0802acfcd, type: 3}
   charIngameImage: {fileID: 21300000, guid: 580b8f70464af7e428196222b8369d7b, type: 3}
