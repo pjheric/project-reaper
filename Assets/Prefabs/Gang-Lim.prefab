@@ -316,6 +316,7 @@ GameObject:
   - component: {fileID: 5214499984364631429}
   - component: {fileID: 5214499984364631450}
   - component: {fileID: 5214499984364631451}
+  - component: {fileID: 1070743877614145160}
   m_Layer: 0
   m_Name: Gang-Lim
   m_TagString: Player
@@ -526,8 +527,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseDamage: 3
   baseKnockback: 1
+  canBasickAttack: 1
   procNumber: 3
   procMaxHealthPercentageDamage: 5
+  specialCooldown: 8
+  specialDuration: 6
+  specialRadius: 3
+  specialMoveSpeedPercentage: 30
+  specialDPS: 8
 --- !u!114 &5214499984364631450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -559,6 +566,28 @@ MonoBehaviour:
   otherPlayerIndicator: {fileID: 0}
   playerCamera: {fileID: 5214499984717738279}
   playerNum: 1
+--- !u!114 &1070743877614145160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5816358765159570280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0736e8d1abf51ec4a873d6308ccdbe2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseDamage: 3
+  baseKnockback: 0.2
+  canBasickAttack: 1
+  procNumber: 3
+  procMaxHealthPercentageDamage: 5
+  specialCooldown: 8
+  specialDuration: 6
+  specialRadius: 3
+  specialMoveSpeedPercentage: 30
+  specialDPS: 8
 --- !u!1001 &5214499983743363373
 PrefabInstance:
   m_ObjectHideFlags: 0
