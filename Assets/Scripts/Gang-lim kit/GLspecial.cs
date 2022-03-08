@@ -8,7 +8,7 @@ public class GLspecial : GLpassive
     private bool specialActive = false;
     private bool specialOnCooldown = false;
     private float specialCooldownTimer = 8;
-
+    [SerializeField] Animator anim;
     public void OnSpecial(InputValue value)
     {
         if (specialOnCooldown == false && lockPlayerManager.ganglimLock == false)
@@ -37,6 +37,7 @@ public class GLspecial : GLpassive
 
     public void StartSpecial()
     {
+        anim.SetBool("specialOn", true);
         specialActive = true;
         CanBasicAttack = false;
         GetComponent<Collider2D>().enabled = false;
@@ -44,6 +45,7 @@ public class GLspecial : GLpassive
 
     private void UpdateSpecial()
     {
+        Debug.Log(anim.GetBool("specialOn"));
         Collider2D[] allHitColliders = Physics2D.OverlapCircleAll(transform.position, GetSpecialRadius);
 
         foreach (var x in allHitColliders)
@@ -65,6 +67,7 @@ public class GLspecial : GLpassive
 
     private void EndSpecial()
     {
+        anim.SetBool("specialOn", false);
         GetComponent<Collider2D>().enabled = true;
         specialCooldownTimer = GetSpecialCooldown;
         CanBasicAttack = true;

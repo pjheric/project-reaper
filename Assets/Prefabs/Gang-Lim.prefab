@@ -588,6 +588,7 @@ MonoBehaviour:
   specialRadius: 3
   specialMoveSpeedPercentage: 30
   specialDPS: 8
+  anim: {fileID: 5214499984453513613}
 --- !u!1001 &5214499983743363373
 PrefabInstance:
   m_ObjectHideFlags: 0
