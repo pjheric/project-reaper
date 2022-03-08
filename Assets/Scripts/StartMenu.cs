@@ -8,6 +8,7 @@ public class StartMenu : MonoBehaviour
     [SerializeField] GameObject NarrationPanel;
     [SerializeField] GameObject MenuPanel; 
     [SerializeField] float waitTime = 6.0f;
+    [SerializeField] GameObject CreditsPanel; 
     public Animator NarrationAnim; 
     IEnumerator co; 
     private void Start()
@@ -38,5 +39,16 @@ public class StartMenu : MonoBehaviour
     public void OnPressQuit()
     {
         Application.Quit(); 
+    }
+
+    public void OnPressCredits()
+    {
+        MenuPanel.SetActive(false);
+        CreditsPanel.SetActive(true); 
+    }
+    public void OnPressBack()
+    {
+        CreditsPanel.SetActive(false);
+        MenuPanel.SetActive(true); 
     }
 }
