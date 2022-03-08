@@ -35,6 +35,8 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue()
     {
+        lockPlayerManager.ganglimLock = true;
+        lockPlayerManager.morriganLock = true;
         DialoguePanel.SetActive(true); 
         inGameUI.SetActive(false);
         //First, freeze time
@@ -72,6 +74,8 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
+        lockPlayerManager.ganglimLock = false;
+        lockPlayerManager.morriganLock = false;
         currentIndex = 0;
         DialoguePanel.SetActive(false);
         inGameUI.SetActive(true);

@@ -259,6 +259,7 @@ MonoBehaviour:
   spriteObjSprite: {fileID: 183258601889152716}
   edgeOfScreen: {fileID: 0}
   edgeOfScreen2: {fileID: 0}
+  originalColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &1008747027372040575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,6 +274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entity: {fileID: 4437786196091818675}
   healthBar: {fileID: 0}
+  healthText: {fileID: 0}
   outOfBoundsTickCooldown: 1.5
   outOfBoundsDamage: 5
 --- !u!114 &7125789978835377194
@@ -566,9 +568,9 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.501
+    x: 0.5
     y: 0
-    width: 0.499
+    width: 0.5
     height: 1
   near clip plane: 0.3
   far clip plane: 1000

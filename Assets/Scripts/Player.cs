@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
             healthText.text = entity.currentHealth.ToString() + "/" + entity.maxHealth.ToString(); 
         }
         
-        if(Vector2.Distance(Vector2.zero, transform.position) > waveManager.publicMapRadius +5)
+        if(lockPlayerManager.ganglimLock == false && lockPlayerManager.morriganLock == false && Vector2.Distance(Vector2.zero, transform.position) > waveManager.publicMapRadius +5)
         {
             outOfBoundsTickCooldownTimer += Time.deltaTime;
             if(outOfBoundsTickCooldownTimer > outOfBoundsTickCooldown)

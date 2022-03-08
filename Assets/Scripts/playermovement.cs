@@ -41,6 +41,8 @@ public class playermovement : MonoBehaviour
     private void Awake()
     {
         playerInput = gameObject.GetComponent<PlayerInput>();
+        lockPlayerManager.ganglimLock = true;
+        lockPlayerManager.morriganLock = true;
         //moveAction = playerInput.actions["Move"];
         dashAction = playerInput.actions["Dash"];
     }
@@ -53,6 +55,7 @@ public class playermovement : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(lockPlayerManager.ganglimLock);
         if ((gameObject.transform.GetComponent<GangLimAttackingHandler>() != null && lockPlayerManager.ganglimLock ==false) || (gameObject.transform.GetComponent<TestMorriganAttackingHandler>() != null && lockPlayerManager.morriganLock ==false))
         {
             moveManager();
@@ -102,13 +105,16 @@ public class playermovement : MonoBehaviour
 
     void dash()
     {
-        if (dashWaitTimeTimer > dashWaitTime && isDashing == false)
+        if ((gameObject.transform.GetComponent<GangLimAttackingHandler>() != null && lockPlayerManager.ganglimLock ==false) || (gameObject.transform.GetComponent<TestMorriganAttackingHandler>() != null && lockPlayerManager.morriganLock ==false))
         {
-            Gamepad gamepad = InputSystem.GetDevice<Gamepad>();
-            if (gamepad != null)
-                gamepad.SetMotorSpeeds(0.923f, 0.934f);
-            isDashing = true;
-            print("dash started");
+            if (dashWaitTimeTimer > dashWaitTime && isDashing == false)
+            {
+                Gamepad gamepad = InputSystem.GetDevice<Gamepad>();
+                if (gamepad != null)
+                    gamepad.SetMotorSpeeds(0.923f, 0.934f);
+                isDashing = true;
+                print("dash started");
+            }
         }
     }
 

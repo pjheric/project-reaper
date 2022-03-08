@@ -30,44 +30,50 @@ public class edgeScreenIndicatorManager : MonoBehaviour
 
 
             //LOCUS INDICATOR
-            float x = playerCamera.WorldToScreenPoint(locus.transform.position).x;
-            float y = playerCamera.WorldToScreenPoint(locus.transform.position).y;
-            if (y > Screen.height * 1.018f || y < -1 * Screen.height * 0.73f || (playerNum == 1 && (x > Screen.width * 0.54f || x < -Screen.width * 0.07938f)) || (playerNum == 2 && x > Screen.width * 1.0282f || playerNum == 2 && x < Screen.width * 0.46f))
-            {
-                locusIndicator.SetActive(true);
-                if (playerNum == 1)
-                {
-                    locusIndicator.transform.position = new Vector2(Mathf.Clamp(x, Screen.width * 0.03125f, (Screen.width / 2) * 0.9375f), Mathf.Clamp(y, Screen.height * 0.07407f, Screen.height * 0.9259f));
-                }
-                if (playerNum == 2)
-                {
-                    locusIndicator.transform.position = new Vector2(Mathf.Clamp(x, Screen.width / 2 + Screen.width * 0.03125f, Screen.width / 2 + (Screen.width / 2) * 0.9375f), Mathf.Clamp(y, Screen.height * 0.07407f, Screen.height * 0.9259f));
-                }
-            }
-            else
-            {
-                locusIndicator.SetActive(false);
-            }
+            updateIndicator(locus,locusIndicator);
 
             //PLAYER INDICATOR
-            x = playerCamera.WorldToScreenPoint(otherPlayer.transform.position).x;
-            y = playerCamera.WorldToScreenPoint(otherPlayer.transform.position).y;
-            if (y > Screen.height * 1.018f || y < -1 * Screen.height * 0.73f || (playerNum == 1 && (x > Screen.width * 0.54f || x < -Screen.width * 0.07938f)) || (playerNum == 2 && x > Screen.width * 1.0282f || playerNum == 2 && x < Screen.width * 0.46f))
+            updateIndicator(otherPlayer,otherPlayerIndicator);
+
+        }
+    }
+    void updateIndicator(GameObject target, GameObject indicator)
+    {
+        float x = playerCamera.WorldToScreenPoint(target.transform.position).x;
+        float y = playerCamera.WorldToScreenPoint(target.transform.position).y;
+        if(Vector3.Distance(target.transform.position, player.transform.position)> 60 && target.transform.position.x > player.transform.position.x)
+        {
+            x = 100000;
+        }
+        if(Vector3.Distance(target.transform.position, player.transform.position)> 60 && target.transform.position.x < player.transform.position.x)
+        {
+            x = -100000;
+        }
+        if(Vector3.Distance(target.transform.position, player.transform.position)> 60 && target.transform.position.y > player.transform.position.y)
+        {
+            y = 100000;
+        }
+        if(Vector3.Distance(target.transform.position, player.transform.position)> 60 && target.transform.position.y < player.transform.position.y)
+        {
+            y = -100000;
+        }
+
+        if (y > Screen.height * 1.018f || y < -1 * Screen.height * 0.73f || (playerNum == 1 && (x > Screen.width * 0.54f || x < -Screen.width * 0.07938f)) || (playerNum == 2 && x > Screen.width * 1.0282f || playerNum == 2 && x < Screen.width * 0.46f))
+        {
+            indicator.SetActive(true);
+            if (playerNum == 1)
             {
-                otherPlayerIndicator.SetActive(true);
-                if (playerNum == 1)
-                {
-                    otherPlayerIndicator.transform.position = new Vector2(Mathf.Clamp(x, Screen.width * 0.03125f, (Screen.width / 2) * 0.9375f), Mathf.Clamp(y, Screen.height * 0.07407f, Screen.height * 0.9259f));
-                }
-                if (playerNum == 2)
-                {
-                    otherPlayerIndicator.transform.position = new Vector2(Mathf.Clamp(x, Screen.width / 2 + Screen.width * 0.03125f, Screen.width / 2 + (Screen.width / 2) * 0.9375f), Mathf.Clamp(y, Screen.height * 0.07407f, Screen.height * 0.9259f));
-                }
+                indicator.transform.position = new Vector2(Mathf.Clamp(x, Screen.width * 0.03125f, (Screen.width / 2) * 0.9375f), Mathf.Clamp(y, Screen.height * 0.07407f, Screen.height * 0.9259f));
             }
-            else
+            if (playerNum == 2)
             {
-                otherPlayerIndicator.SetActive(false);
+                
+                indicator.transform.position = new Vector2(Mathf.Clamp(x, Screen.width / 2 + Screen.width * 0.03125f, Screen.width / 2 + (Screen.width / 2) * 0.9375f), Mathf.Clamp(y, Screen.height * 0.07407f, Screen.height * 0.9259f));
             }
+        }
+        else
+        {
+            indicator.SetActive(false);
         }
     }
 }
