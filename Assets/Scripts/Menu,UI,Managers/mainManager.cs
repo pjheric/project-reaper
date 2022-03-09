@@ -18,6 +18,10 @@ public class mainManager : MonoBehaviour
     [SerializeField] Slider morHealth;
     [SerializeField] TextMeshProUGUI gangHealthNum;
     [SerializeField] TextMeshProUGUI morHealthNum; 
+    [SerializeField] Image gangSpecialCDRadial;
+    [SerializeField] Image morSpecialCDRadial;
+    [SerializeField] TextMeshProUGUI gangSpecialCDText;
+    [SerializeField] TextMeshProUGUI morSpecialCDText;  
 
     [SerializeField] GameObject failureScreen;
     [SerializeField] TextMeshProUGUI failureText;
