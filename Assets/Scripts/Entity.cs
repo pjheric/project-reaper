@@ -23,12 +23,8 @@ public class Entity : MonoBehaviour
     void Start()
     {
         originalColor = spriteObjSprite.color;
-        Invoke("kill", 1.0f);
     }
-    void kill()
-    {
-        currentHealth -=1000;
-    }
+    
     // // Update is called once per frame
     // void Update()
     // {

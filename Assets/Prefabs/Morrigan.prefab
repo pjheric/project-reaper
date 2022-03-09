@@ -586,7 +586,7 @@ MonoBehaviour:
   bonusAttackSpeedPercentageCap: 100
   passiveRadius: 4
   stabbingDelay: 0.375
-  specialCooldown: 20
+  specialCooldown: 8
   doomBuffTime: 10
   specialDamage: 15
   castingTime: 0.75
@@ -652,7 +652,7 @@ MonoBehaviour:
   bonusAttackSpeedPercentageCap: 100
   passiveRadius: 4
   stabbingDelay: 0.375
-  specialCooldown: 20
+  specialCooldown: 8
   doomBuffTime: 10
   specialDamage: 15
   castingTime: 0.75
@@ -679,7 +679,7 @@ MonoBehaviour:
   bonusAttackSpeedPercentageCap: 100
   passiveRadius: 4
   stabbingDelay: 0.375
-  specialCooldown: 20
+  specialCooldown: 8
   doomBuffTime: 10
   specialDamage: 15
   castingTime: 0.75

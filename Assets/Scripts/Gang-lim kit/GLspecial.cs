@@ -7,7 +7,8 @@ public class GLspecial : GLpassive
 {
     private bool specialActive = false;
     private bool specialOnCooldown = false;
-    private float specialCooldownTimer = 8;
+    private float specialDurationTimer = 0;
+    private float specialCooldownTimer = 0;
     [SerializeField] Animator anim;
     [SerializeField] GameObject specialAreaObj;
     [SerializeField] GameObject attackAreaObj;
@@ -21,6 +22,7 @@ public class GLspecial : GLpassive
 
     private void Update()
     {
+        Debug.Log(specialCooldownTimer);
         if (specialActive)
         {
             UpdateSpecial();
@@ -42,6 +44,7 @@ public class GLspecial : GLpassive
         specialAreaObj.SetActive(true);
         attackAreaObj.SetActive(false);
         anim.SetBool("specialOn", true);
+        specialDurationTimer = GetSpecialDuration;
         specialActive = true;
         CanBasicAttack = false;
         GetComponent<Collider2D>().enabled = false;
@@ -59,24 +62,25 @@ public class GLspecial : GLpassive
                 x.GetComponent<Entity>().currentHealth -= GetSpecialDPS * Time.deltaTime;
             }
         }
-
-        if (specialCooldownTimer <= 0)
+        specialDurationTimer -= Time.deltaTime;
+        if (specialDurationTimer <= 0)
         {
-            specialActive = false;
             EndSpecial();
         }
 
-        specialCooldownTimer -= Time.deltaTime;
     }
 
     private void EndSpecial()
     {
+        specialActive = false;
         specialAreaObj.SetActive(false);
         attackAreaObj.SetActive(true);
         anim.SetBool("specialOn", false);
         GetComponent<Collider2D>().enabled = true;
-        specialCooldownTimer = GetSpecialCooldown;
         CanBasicAttack = true;
+
+        specialCooldownTimer = GetSpecialCooldown;
         specialOnCooldown = true;
+
     }
 }

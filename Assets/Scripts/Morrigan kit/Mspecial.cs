@@ -59,20 +59,22 @@ public class Mspecial : Mpassive
     }
 
     public void StartSpecial()
-    {
-        specialCooldownTimer = GetSpecialCooldown;
-        specialAreaObj.SetActive(true);
-        attackAreaObj.SetActive(false);
-        Invoke("removeSpecialAreaIndicatorDelay",0.2f);
+    {        
         // do attack stabby kachow
         if (!specialOnCooldown && canSpecialStab)
         {
+            specialCooldownTimer = GetSpecialCooldown;
+            specialAreaObj.SetActive(true);
+            attackAreaObj.SetActive(false);
+            Invoke("removeSpecialAreaIndicatorDelay",0.2f);
             Debug.Log("start special");
 
             Collider2D[] allHitColliders = Physics2D.OverlapAreaAll(GetSpecialBorderPt1.position, GetSpecialBorderPt2.position);
 
             foreach (var x in allHitColliders)
             {
+                Debug.Log("special hit special");
+
                 if (x.transform.tag == "enemy")
                 {
                     var victimEntity = x.GetComponent<Entity>();
@@ -83,7 +85,7 @@ public class Mspecial : Mpassive
                 }
             }
         }
-
+        specialOnCooldown = true;
         canSpecialStab = false;
     }
     private void removeSpecialAreaIndicatorDelay()
@@ -102,6 +104,6 @@ public class Mspecial : Mpassive
     {
         DeactivateDoomEffect();
         doomBuffActive = false;
-        specialOnCooldown = true;
+        //specialOnCooldown = true;
     }
 }

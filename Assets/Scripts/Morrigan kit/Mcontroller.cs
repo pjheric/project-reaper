@@ -16,7 +16,7 @@ public class Mcontroller : MonoBehaviour
 
     [Header("Special Stats")]
     [SerializeField] private float stabbingDelay = 0.375f;
-    [SerializeField] private float specialCooldown = 20;
+    [SerializeField] private float specialCooldown = 8;
     [SerializeField] private float doomBuffTime = 10;
     [SerializeField] private float specialDamage = 15;
     [SerializeField] private float castingTime = 0.75f;

@@ -55,7 +55,6 @@ public class playermovement : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(lockPlayerManager.ganglimLock);
         if ((gameObject.transform.GetComponent<GangLimAttackingHandler>() != null && lockPlayerManager.ganglimLock ==false) || (gameObject.transform.GetComponent<TestMorriganAttackingHandler>() != null && lockPlayerManager.morriganLock ==false))
         {
             moveManager();
