@@ -71,7 +71,7 @@ public class Player : MonoBehaviour
         GetComponent<Rigidbody2D>().simulated = true;
         entity.originalColor = Color.white;
 
-        entity.addHealth(50);
+        entity.addHealth(75);
         if(playerChar == Character.morrigan)
         {
             lockPlayerManager.morriganLock = false;

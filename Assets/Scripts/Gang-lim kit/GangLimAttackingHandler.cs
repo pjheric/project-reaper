@@ -7,6 +7,7 @@ public class GangLimAttackingHandler : MonoBehaviour
 {
     [SerializeField] GameObject sword;
     [SerializeField] Transform directionObj;
+    [SerializeField] GameObject attackAreaObj;
     [SerializeField] Animator animator;
 
     public bool swinging;

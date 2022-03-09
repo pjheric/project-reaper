@@ -7,7 +7,7 @@ public class StartMenu : MonoBehaviour
     [SerializeField] GameObject OptionsPanel;
     [SerializeField] GameObject NarrationPanel;
     [SerializeField] GameObject MenuPanel; 
-    [SerializeField] float waitTime = 6.0f;
+    [SerializeField] float waitTime;
     [SerializeField] GameObject CreditsPanel; 
     public Animator NarrationAnim; 
     IEnumerator co; 

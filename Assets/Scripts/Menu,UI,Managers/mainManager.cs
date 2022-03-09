@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 using TMPro;
 using UnityEngine.SceneManagement;
 
@@ -24,6 +25,7 @@ public class mainManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI failureMainMenuButtonText;
 
     [SerializeField] GameObject inGameUI;
+    [SerializeField] EventSystem eventSys;
 
     [SerializeField] GameObject victoryScreen;
     [SerializeField] TextMeshProUGUI victoryText;
@@ -134,6 +136,8 @@ public class mainManager : MonoBehaviour
         victoryMainMenuButtonImage.gameObject.SetActive(true);
         locusHealthText.gameObject.SetActive(false);
         PersistentData.isGameStarted = false;
+        eventSys.SetSelectedGameObject(victoryMainMenuButtonImage.gameObject);
+
         StartCoroutine(fadeInFailOrWinText(victoryText, victoryMainMenuButtonImage, victoryMainMenuButtonText));
     }
 
@@ -147,6 +151,8 @@ public class mainManager : MonoBehaviour
         failureMainMenuButtonImage.gameObject.SetActive(true);
         locusHealthText.gameObject.SetActive(false);
         PersistentData.isGameStarted = false;
+        eventSys.SetSelectedGameObject(failureMainMenuButtonImage.gameObject);
+        //failureMainMenuButtonImage.gameObject.GetComponent<Button>().Select();
         StartCoroutine(fadeInFailOrWinText(failureText, failureMainMenuButtonImage, failureMainMenuButtonText));
     }
 

@@ -9,6 +9,8 @@ public class GLspecial : GLpassive
     private bool specialOnCooldown = false;
     private float specialCooldownTimer = 8;
     [SerializeField] Animator anim;
+    [SerializeField] GameObject specialAreaObj;
+    [SerializeField] GameObject attackAreaObj;
     public void OnSpecial(InputValue value)
     {
         if (specialOnCooldown == false && lockPlayerManager.ganglimLock == false)
@@ -37,6 +39,8 @@ public class GLspecial : GLpassive
 
     public void StartSpecial()
     {
+        specialAreaObj.SetActive(true);
+        attackAreaObj.SetActive(false);
         anim.SetBool("specialOn", true);
         specialActive = true;
         CanBasicAttack = false;
@@ -67,6 +71,8 @@ public class GLspecial : GLpassive
 
     private void EndSpecial()
     {
+        specialAreaObj.SetActive(false);
+        attackAreaObj.SetActive(true);
         anim.SetBool("specialOn", false);
         GetComponent<Collider2D>().enabled = true;
         specialCooldownTimer = GetSpecialCooldown;

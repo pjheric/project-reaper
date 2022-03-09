@@ -14,6 +14,9 @@ public class Mspecial : Mpassive
 
     private bool specialDidDamage = false;
 
+    [SerializeField] GameObject specialAreaObj;
+    [SerializeField] GameObject attackAreaObj;
+
     // if special is off cooldown, use special
     // if doom buff happens, start doom buff timer
     // when doom buff timer ends, start special cooldown
@@ -58,7 +61,9 @@ public class Mspecial : Mpassive
     public void StartSpecial()
     {
         specialCooldownTimer = GetSpecialCooldown;
-
+        specialAreaObj.SetActive(true);
+        attackAreaObj.SetActive(false);
+        Invoke("removeSpecialAreaIndicatorDelay",0.2f);
         // do attack stabby kachow
         if (!specialOnCooldown && canSpecialStab)
         {
@@ -81,7 +86,11 @@ public class Mspecial : Mpassive
 
         canSpecialStab = false;
     }
-
+    private void removeSpecialAreaIndicatorDelay()
+    {
+        specialAreaObj.SetActive(false);
+        attackAreaObj.SetActive(true);
+    }
     private void UpdateSpecial()
     {
         specialDidDamage = false;

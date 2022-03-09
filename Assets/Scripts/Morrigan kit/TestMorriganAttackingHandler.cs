@@ -10,6 +10,9 @@ public class TestMorriganAttackingHandler : MonoBehaviour
     [SerializeField] GameObject sword;
     [SerializeField] Transform directionObj;
 
+    [SerializeField] GameObject attackAreaObj;
+
+
     [SerializeField] Transform point1;
     [SerializeField] Transform point2;
 

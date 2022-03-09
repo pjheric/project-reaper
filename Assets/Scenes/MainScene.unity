@@ -867,7 +867,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 1, g: 0.97156996, b: 0.5157232, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1959,7 +1959,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.99197865, g: 1, b: 0.5707547, a: 1}
+    m_SelectedColor: {r: 1, g: 0.97156996, b: 0.5157232, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -3233,8 +3233,8 @@ MonoBehaviour:
   mapRadius: 80
   waveSpawnsPerSecond: 4
   waves:
-  - enemyCountsWave: 320000000a0000000100000000000000
-  - enemyCountsWave: 320000000a0000000100000000000000
+  - enemyCountsWave: 01000000000000000000000000000000
+  - enemyCountsWave: 01000000000000000000000000000000
   - enemyCountsWave: 01000000000000000000000000000000
   - enemyCountsWave: 01000000000000000000000000000000
   - enemyCountsWave: 01000000000000000000000000000000
@@ -5136,6 +5136,7 @@ MonoBehaviour:
   failureMainMenuButtonImage: {fileID: 484757106}
   failureMainMenuButtonText: {fileID: 1337058002}
   inGameUI: {fileID: 592502856}
+  eventSys: {fileID: 593898566}
   victoryScreen: {fileID: 1707595663}
   victoryText: {fileID: 651127689}
   victoryMainMenuButtonImage: {fileID: 789916677}
