@@ -88,6 +88,7 @@ public class mainManager : MonoBehaviour
             DontDestroyInput.player1.GetComponent<edgeScreenIndicatorManager>().otherPlayer = DontDestroyInput.player2;
             DontDestroyInput.player1.GetComponent<Player>().healthBar = gangHealth;
             DontDestroyInput.player1.GetComponent<Player>().healthText = gangHealthNum;
+            DontDestroyInput.player1.GetComponent<Player>().playerChar = Character.ganglim;
             WM.player1 = DontDestroyInput.player1;
 
             DontDestroyInput.player2.GetComponent<edgeScreenIndicatorManager>().locusIndicator = locusEdgeOfScreen2;
@@ -96,6 +97,7 @@ public class mainManager : MonoBehaviour
             DontDestroyInput.player2.GetComponent<edgeScreenIndicatorManager>().otherPlayer = DontDestroyInput.player1;
             DontDestroyInput.player2.GetComponent<Player>().healthBar = morHealth;
             DontDestroyInput.player2.GetComponent<Player>().healthText = morHealthNum;
+            DontDestroyInput.player2.GetComponent<Player>().playerChar = Character.morrigan;
             WM.player2 = DontDestroyInput.player2;
         }
         else
@@ -106,7 +108,8 @@ public class mainManager : MonoBehaviour
             DontDestroyInput.player1.GetComponent<edgeScreenIndicatorManager>().otherPlayer = DontDestroyInput.player2;
             DontDestroyInput.player1.GetComponent<Player>().healthBar = morHealth;
             DontDestroyInput.player1.GetComponent<Player>().healthText = morHealthNum;
-            WM.player1 = DontDestroyInput.player1;
+            DontDestroyInput.player1.GetComponent<Player>().playerChar = Character.morrigan;
+            WM.player2 = DontDestroyInput.player1;
 
             DontDestroyInput.player2.GetComponent<edgeScreenIndicatorManager>().locusIndicator = locusEdgeOfScreen1;
             DontDestroyInput.player2.GetComponent<edgeScreenIndicatorManager>().locus = locus;
@@ -114,7 +117,8 @@ public class mainManager : MonoBehaviour
             DontDestroyInput.player2.GetComponent<edgeScreenIndicatorManager>().otherPlayer = DontDestroyInput.player1;
             DontDestroyInput.player2.GetComponent<Player>().healthBar = gangHealth;
             DontDestroyInput.player2.GetComponent<Player>().healthText = gangHealthNum;
-            WM.player2 = DontDestroyInput.player2;
+            DontDestroyInput.player2.GetComponent<Player>().playerChar = Character.ganglim;
+            WM.player1 = DontDestroyInput.player2;
         }
         PersistentData.isGameStarted = true; 
         inGameUI.SetActive(true);

@@ -4,13 +4,21 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro; 
+
+public enum Character
+{
+    morrigan,
+    ganglim
+}
 public class Player : MonoBehaviour
 {
     [SerializeField] Entity entity;
+    public Character playerChar;
     public Slider healthBar;
     public TextMeshProUGUI healthText; 
     [SerializeField] float outOfBoundsTickCooldown;
     [SerializeField] float outOfBoundsDamage;
+    [SerializeField] float deathStasisTime;
     float outOfBoundsTickCooldownTimer;
     // Start is called before the first frame update
     void Awake()
@@ -23,11 +31,59 @@ public class Player : MonoBehaviour
     {
         if (PersistentData.isGameStarted)
         {
+            if(entity.currentHealth < 0){entity.currentHealth = 0;}
             healthBar.value = entity.currentHealth;
             healthText.text = entity.currentHealth.ToString() + "/" + entity.maxHealth.ToString(); 
         }
-        
-        if(lockPlayerManager.ganglimLock == false && lockPlayerManager.morriganLock == false && Vector2.Distance(Vector2.zero, transform.position) > waveManager.publicMapRadius +5)
+        if(PersistentData.isGameStarted)
+        {
+            if(entity.currentHealth <= 0)
+            {
+                if(((lockPlayerManager.ganglimLock == false && playerChar == Character.ganglim) || (lockPlayerManager.morriganLock == false && playerChar == Character.morrigan)))
+                {
+                    StartCoroutine(deathStasis());
+                }
+            }
+        }
+        //out of bounds damage check and run
+        outOfBoundsDamageCheckFunc();
+    }
+    IEnumerator deathStasis()
+    {
+        if(playerChar == Character.morrigan)
+        {
+            lockPlayerManager.morriganLock = true;
+        }
+        if(playerChar == Character.ganglim)
+        {
+            lockPlayerManager.ganglimLock = true;
+        }
+        entity.spriteObjSprite.color = Color.gray;
+        GetComponent<Rigidbody2D>().simulated = false;
+        entity.originalColor = Color.gray;
+        float t = 0.0f;
+        while (t < deathStasisTime)
+        {
+            t+= Time.deltaTime;
+            yield return null;
+        }
+        entity.spriteObjSprite.color = Color.white;
+        GetComponent<Rigidbody2D>().simulated = true;
+        entity.originalColor = Color.white;
+
+        entity.addHealth(50);
+        if(playerChar == Character.morrigan)
+        {
+            lockPlayerManager.morriganLock = false;
+        }
+        if(playerChar == Character.ganglim)
+        {
+            lockPlayerManager.ganglimLock = false;
+        }
+    }
+    void outOfBoundsDamageCheckFunc()
+    {
+        if(((lockPlayerManager.ganglimLock == false && playerChar == Character.ganglim) || (lockPlayerManager.morriganLock == false && playerChar == Character.morrigan)) && Vector2.Distance(Vector2.zero, transform.position) > waveManager.publicMapRadius +5)
         {
             outOfBoundsTickCooldownTimer += Time.deltaTime;
             if(outOfBoundsTickCooldownTimer > outOfBoundsTickCooldown)

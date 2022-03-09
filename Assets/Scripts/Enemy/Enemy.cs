@@ -64,8 +64,19 @@ public class Enemy : MonoBehaviour
     }
     public void moveandAttackNearestPlayer()
     {
-        GameObject target = (Vector3.Distance(transform.position, player1.transform.position) < Vector3.Distance(transform.position, player2.transform.position)) ? player1: player2;
-        moveAndAttack(target);
+        //if the player is the closest and is not locked/stasis
+        if(lockPlayerManager.ganglimLock == false && (Vector3.Distance(transform.position, player1.transform.position) < Vector3.Distance(transform.position, player2.transform.position) || lockPlayerManager.morriganLock == true))
+        {
+            moveAndAttack(player1);
+        }
+        else if(lockPlayerManager.morriganLock == false)
+        {
+            moveAndAttack(player2);
+        }
+        else
+        {
+
+        }
     }
     public void checkDeath()
     {
@@ -78,12 +89,12 @@ public class Enemy : MonoBehaviour
     public void CheckIfPlayerAttackable()
     {
         float attackStartDistance =  attackRange + player1.GetComponent<CapsuleCollider2D>().size.y/1.9f;
-        if (Vector2.Distance((Vector3)player1.GetComponent<CapsuleCollider2D>().offset+player1.transform.position, transform.position) < attackStartDistance)
+        if (Vector2.Distance((Vector3)player1.GetComponent<CapsuleCollider2D>().offset+player1.transform.position, transform.position) < attackStartDistance && lockPlayerManager.ganglimLock == false)
         {
             attackBasic(player1, attackStartDistance);
         }
         attackStartDistance =  attackRange + player2.GetComponent<CapsuleCollider2D>().size.y/1.9f;
-        if (Vector2.Distance((Vector3)player2.GetComponent<CapsuleCollider2D>().offset+player2.transform.position, transform.position) < attackStartDistance)
+        if (Vector2.Distance((Vector3)player2.GetComponent<CapsuleCollider2D>().offset+player2.transform.position, transform.position) < attackStartDistance && lockPlayerManager.morriganLock == false)
         {
             attackBasic(player2, attackStartDistance);
         }

@@ -273,10 +273,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entity: {fileID: 4437786196091818675}
+  playerChar: 0
   healthBar: {fileID: 0}
   healthText: {fileID: 0}
   outOfBoundsTickCooldown: 1.5
   outOfBoundsDamage: 5
+  deathStasisTime: 5
 --- !u!114 &7125789978835377194
 MonoBehaviour:
   m_ObjectHideFlags: 0
