@@ -869,7 +869,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &545844220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2838,7 +2838,7 @@ MonoBehaviour:
   OptionsPanel: {fileID: 546343654}
   NarrationPanel: {fileID: 545844219}
   MenuPanel: {fileID: 1549117502}
-  waitTime: 20
+  waitTime: 35
   CreditsPanel: {fileID: 170875322}
   ControlsPanel: {fileID: 1928524497}
   NarrationAnim: {fileID: 0}
@@ -3024,8 +3024,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -1500}
-  m_SizeDelta: {x: 1500, y: 1878.577}
+  m_AnchoredPosition: {x: 0, y: -1692}
+  m_SizeDelta: {x: 1500, y: 2190.14}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1811461696
 MonoBehaviour:
@@ -3051,14 +3051,14 @@ MonoBehaviour:
     as it turns out, the afterlife and the very gods who govern over and guide souls
     to it aren\u2019t horrific in any sense. Like most other gods, death deities
     only look out for their children: no deity would be so damned as to abandon their
-    ascendants, their lineage, their history, and to some extent, their responsibility.
+    descendants, their lineage, their history, and to some extent, their responsibility.
     These gods of death\u2013these overlords, psychopomps, shepherds, warriors, judges,
     and executioners\u2013bear much more responsibility than those who oversee the
     living plane, for there have always been otherworldly threats against the general
     dead populace, and in this story, we recount one of these moments."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bd6c1e8eae8a1604cbcf7c32f864d992, type: 2}
+  m_sharedMaterial: {fileID: -6445796735092309831, guid: bd6c1e8eae8a1604cbcf7c32f864d992, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3088,7 +3088,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
