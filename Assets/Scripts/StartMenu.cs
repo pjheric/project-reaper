@@ -2,15 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 public class StartMenu : MonoBehaviour
 {
     [SerializeField] GameObject OptionsPanel;
     [SerializeField] GameObject NarrationPanel;
-    [SerializeField] GameObject MenuPanel; 
+    [SerializeField] GameObject MenuPanel;
+    [SerializeField] GameObject startButton; 
     [SerializeField] float waitTime;
     [SerializeField] GameObject CreditsPanel;
     [SerializeField] GameObject ControlsPanel;
-    public Animator NarrationAnim; 
+    public Animator NarrationAnim;
+    [SerializeField] EventSystem es; 
     IEnumerator co;
     public bool AlreadyNarrated = false; 
     private void Awake()
@@ -21,13 +24,16 @@ public class StartMenu : MonoBehaviour
             NarrationAnim = NarrationPanel.GetComponentInChildren<Animator>();
             co = NarrationCoroutine();
             StartCoroutine(co);
+            es.SetSelectedGameObject(startButton); 
         }
     }
     IEnumerator NarrationCoroutine()
     {
+        MenuPanel.SetActive(false); 
         NarrationPanel.SetActive(true);
         yield return new WaitForSecondsRealtime(waitTime);
         NarrationPanel.SetActive(false);
+        MenuPanel.SetActive(true); 
     }
     public void OnPressStart()
     {
