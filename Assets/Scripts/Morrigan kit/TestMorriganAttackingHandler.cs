@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Audio;
 
 public class TestMorriganAttackingHandler : MonoBehaviour
 {
     [SerializeField] Mkit morriganKit;
+    [SerializeField] playerSFX sfx;
 
     [SerializeField] GameObject sword;
     [SerializeField] Transform directionObj;
@@ -48,7 +50,9 @@ public class TestMorriganAttackingHandler : MonoBehaviour
     void BasicAttack()
     {
         Debug.Log("A*WDHHAOLD");
-        
+        Vector3 audioPos = Vector3.right*2;      
+        GameObject temp = Instantiate(sfx.audioPrefab,audioPos,Quaternion.identity);//spawns in left ear
+        temp.GetComponent<SFXRunner>().clip = sfx.attack;
         if (canSwing)
         {
             animator.SetTrigger("attack");

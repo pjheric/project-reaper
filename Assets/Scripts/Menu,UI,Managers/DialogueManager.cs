@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 using System.IO;
 using System.Linq; 
+using UnityEngine.Audio;
 public class DialogueManager : MonoBehaviour
 {
     [SerializeField] GameObject DialoguePanel; 
@@ -19,6 +20,10 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] GameObject SpeakerName1;
     [SerializeField] GameObject SpeakerName2;
     [SerializeField] TextMeshProUGUI DialogueLine;
+
+    [SerializeField] GameObject runner;
+    [SerializeField] AudioClip speechClip;
+
 
     //All dialogue is just an array of list of strings
     //Array index: wave (0, 1, 2, 3, 4)
@@ -45,17 +50,26 @@ public class DialogueManager : MonoBehaviour
     }
     public void DisplayDialogue(string content)
     {
+        
         char speakername = content[0];
         Debug.Log(speakername); 
         string speakerBody = content.Substring(2);
         Debug.Log(speakerBody); 
         if(speakername == 'M')
         {
+            Vector3 audioPos = Vector3.right*1;      
+            GameObject temp = Instantiate(runner,audioPos,Quaternion.identity);//spawns in left ear
+            temp.GetComponent<SFXRunner>().clip = speechClip;
+            DialogueLine.alignment = TextAlignmentOptions.TopRight;
             SpeakerName1.SetActive(false);
             SpeakerName2.SetActive(true); 
         }
         else if(speakername == 'G')
         {
+            Vector3 audioPos = Vector3.left*1;      
+            GameObject temp = Instantiate(runner,audioPos,Quaternion.identity);//spawns in left ear
+            temp.GetComponent<SFXRunner>().clip = speechClip;
+            DialogueLine.alignment = TextAlignmentOptions.TopLeft;
             SpeakerName1.SetActive(true);
             SpeakerName2.SetActive(false);
         }

@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     public Character playerChar;
     public Slider healthBar;
     public TextMeshProUGUI healthText; 
+    [SerializeField] playerSFX sfx;
     [SerializeField] float outOfBoundsTickCooldown;
     [SerializeField] float outOfBoundsDamage;
     [SerializeField] float deathStasisTime;
@@ -62,9 +63,25 @@ public class Player : MonoBehaviour
         GetComponent<Rigidbody2D>().simulated = false;
         entity.originalColor = Color.gray;
         float t = 0.0f;
+        bool playedRespawnSound = false;
         while (t < deathStasisTime)
         {
             t+= Time.deltaTime;
+            if(t > deathStasisTime - 3.0f && playedRespawnSound == false)
+            {
+                playedRespawnSound = true;
+                Vector3 audioPos;  
+                if(playerChar == Character.morrigan)
+                {
+                    audioPos= Vector3.right*1;
+                }
+                else
+                {
+                    audioPos= Vector3.left*1;
+                }    
+                GameObject temp = Instantiate(sfx.audioPrefab,audioPos,Quaternion.identity);//spawns in left ear
+                temp.GetComponent<SFXRunner>().clip = sfx.respawn;
+            }
             yield return null;
         }
         entity.spriteObjSprite.color = Color.white;

@@ -14,6 +14,7 @@ public class Mspecial : Mpassive
 
     private bool specialDidDamage = false;
 
+    [SerializeField] playerSFX sfx;
     [SerializeField] GameObject specialAreaObj;
     [SerializeField] GameObject attackAreaObj;
 
@@ -63,6 +64,12 @@ public class Mspecial : Mpassive
         // do attack stabby kachow
         if (!specialOnCooldown && canSpecialStab)
         {
+
+            //audio
+            Vector3 audioPos = Vector3.right*1;      
+            GameObject temp = Instantiate(sfx.audioPrefab,audioPos,Quaternion.identity);//spawns in left ear
+            temp.GetComponent<SFXRunner>().clip = sfx.special;
+
             specialCooldownTimer = GetSpecialCooldown;
             specialAreaObj.SetActive(true);
             attackAreaObj.SetActive(false);

@@ -7,6 +7,7 @@ public class GangLimAttackingHandler : MonoBehaviour
 {
     [SerializeField] GameObject sword;
     [SerializeField] Transform directionObj;
+    [SerializeField] playerSFX sfx;
     [SerializeField] GameObject attackAreaObj;
     [SerializeField] Animator animator;
 
@@ -45,7 +46,11 @@ public class GangLimAttackingHandler : MonoBehaviour
         if (canSwing)
         {
             Debug.Log("attack!");
-
+            //run audio
+            Vector3 audioPos = Vector3.left*2;      
+            GameObject temp = Instantiate(sfx.audioPrefab,audioPos,Quaternion.identity);//spawns in left ear
+            temp.GetComponent<SFXRunner>().clip = sfx.attack;
+            
             canSwing = false;
             swinging = true;
             animator.SetTrigger("attack");

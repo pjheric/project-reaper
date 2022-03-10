@@ -73,6 +73,7 @@ MonoBehaviour:
   spriteObjSprite: {fileID: 3435922701935112164}
   edgeOfScreen: {fileID: 0}
   edgeOfScreen2: {fileID: 0}
+  originalColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &340009948643149203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,11 +88,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entity: {fileID: 340009948643149202}
   sprite: {fileID: 3435922701935112164}
-  baseColor: {r: 0.49019608, g: 1, b: 0.49019608, a: 1}
   anim: {fileID: 1321497693338844930}
+  SFXObj: {fileID: 11400000, guid: 22b3b85ca699e6a42bc634714a421720, type: 2}
   attackRange: 2
   attackDamage: 6
-  attackSpeed: 0.6
+  attackTime: 0.85
   timeBetweenAttacks: 1
   attackKnockBackDistance: 0.4
   isAttacking: 0

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ea455553422c894997010ddfbcb3a4a, type: 3}
+  m_Name: mor
+  m_EditorClassIdentifier: 
+  attack: {fileID: 8300000, guid: 20e6ee96f4974be4d889df0695e929f8, type: 3}
+  special: {fileID: 8300000, guid: 20e6ee96f4974be4d889df0695e929f8, type: 3}
+  respawn: {fileID: 8300000, guid: 23e5ef0cd8e16894a88e21c3696712cc, type: 3}
+  audioPrefab: {fileID: 7186404029287017246, guid: 4ac89eabbeec0f944b7211c7ba17a8e9, type: 3}

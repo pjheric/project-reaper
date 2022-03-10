@@ -7,14 +7,14 @@ public class Enemy : MonoBehaviour
     [SerializeField] Entity entity;
     [SerializeField] SpriteRenderer sprite;
     [SerializeField] Animator anim;
-
+    [SerializeField] enemySFX SFXObj;
     
 
     static int enemyCount;
 
     public float attackRange;
     public float attackDamage;
-    public float attackSpeed;
+    public float attackTime;
     public float timeBetweenAttacks;
     float tBACounter = 10.0f;
     public float attackKnockBackDistance;
@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        anim.SetFloat("attackSpeed", 0.2916666f/timeBetweenAttacks);
+        anim.SetFloat("attackSpeed", 0.153f/attackTime);
     }
 
     // // Update is called once per frame
@@ -82,6 +82,17 @@ public class Enemy : MonoBehaviour
     {
         if (entity.currentHealth <= 0)
         {
+            Vector3 audioPos;
+            if(Vector3.Distance(transform.position, player1.transform.position) < Vector3.Distance(transform.position, player2.transform.position))
+            {
+                audioPos = Vector3.left*2;
+            }
+            else
+            {
+                audioPos = Vector3.right*2;
+            }
+            GameObject temp = Instantiate(SFXObj.audioPrefab, audioPos, Quaternion.identity);//spawns in left ear
+            temp.GetComponent<SFXRunner>().clip = SFXObj.death;
             Destroy(this.gameObject);
         }
     }
@@ -104,6 +115,7 @@ public class Enemy : MonoBehaviour
     {
         if(isAttacking == false && tBACounter > timeBetweenAttacks)
         {
+            
             tBACounter = 0.0f;//redundant
             isAttacking = true;
             anim.SetTrigger("attack");
@@ -114,11 +126,30 @@ public class Enemy : MonoBehaviour
     IEnumerator attackDelayer(GameObject target, float attackStartDistance)
     {
         float t = 0.0f;
-
+        bool soundPlayed = false;
         while(true)
         {
             t += Time.deltaTime;
-            if (t > attackSpeed)
+            //run the attack sound a little bit before the attack actually ends, but still calc distance, rather janky but also maybe good sounding
+            if(t > attackTime - 0.2f && soundPlayed == false && Vector2.Distance(target.transform.position+(Vector3)target.GetComponent<Collider2D>().offset, transform.position)<= attackStartDistance)
+            {
+                soundPlayed = true;
+                Vector3 audioPos;
+                if(target.GetComponent<GLkit>() != null)
+                {
+                    audioPos = Vector3.left*2;
+                }else if(target.GetComponent<Mkit>() != null)
+                {
+                    audioPos = Vector3.right*2;
+                }
+                else
+                {
+                    audioPos = Vector3.up*2;
+                }
+                GameObject temp = Instantiate(SFXObj.audioPrefab,audioPos,Quaternion.identity);//spawns in left ear
+                temp.GetComponent<SFXRunner>().clip = SFXObj.Attack;
+            }
+            if (t > attackTime)
             {
                 if (Vector2.Distance(target.transform.position+(Vector3)target.GetComponent<Collider2D>().offset, transform.position)<= attackStartDistance)
                 {
@@ -127,6 +158,7 @@ public class Enemy : MonoBehaviour
                     target.GetComponent<Entity>().currentHealth -= attackDamage;
                     target.GetComponent<Entity>().hurtColor();
                     target.GetComponent<Entity>().knockBack(attackKnockBackDistance,this.gameObject);
+                    
                     yield return new WaitForSeconds(0.05f);// stay on the full red for a little bit
 
                 }

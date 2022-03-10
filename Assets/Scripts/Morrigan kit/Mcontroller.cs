@@ -23,6 +23,7 @@ public class Mcontroller : MonoBehaviour
     [SerializeField] private float doomBuff = 2;
     [SerializeField] private Transform point1;
     [SerializeField] private Transform point2;
+    
 
     #region get base stats
 

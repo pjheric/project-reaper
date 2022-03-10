@@ -10,6 +10,7 @@ public class GLspecial : GLpassive
     private float specialDurationTimer = 0;
     private float specialCooldownTimer = 0;
     [SerializeField] Animator anim;
+    [SerializeField] playerSFX sfx;
     [SerializeField] GameObject specialAreaObj;
     [SerializeField] GameObject attackAreaObj;
     public void OnSpecial(InputValue value)
@@ -41,6 +42,13 @@ public class GLspecial : GLpassive
 
     public void StartSpecial()
     {
+        //run audio
+        Vector3 audioPos = Vector3.left*1.5f;      
+        GameObject temp = Instantiate(sfx.audioPrefab,audioPos,Quaternion.identity);//spawns in left ear
+        temp.GetComponent<SFXRunner>().clip = sfx.special;
+        temp.GetComponent<SFXRunner>().source.loop = true;
+        temp.GetComponent<SFXRunner>().killInX(6);
+
         specialAreaObj.SetActive(true);
         attackAreaObj.SetActive(false);
         anim.SetBool("specialOn", true);
