@@ -8,7 +8,7 @@ public class GLspecial : GLpassive
     private bool specialActive = false;
     private bool specialOnCooldown = false;
     private float specialDurationTimer = 0;
-    private float specialCooldownTimer = 0;
+    public float specialCooldownTimer = 0;
     [SerializeField] Animator anim;
     [SerializeField] playerSFX sfx;
     [SerializeField] GameObject specialAreaObj;

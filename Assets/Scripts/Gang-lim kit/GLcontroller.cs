@@ -30,7 +30,7 @@ public class GLcontroller : MonoBehaviour
     protected float GetProcDamagePercentage { get { return procMaxHealthPercentageDamage; } }
     #endregion
     #region get special stats
-    protected float GetSpecialCooldown { get { return specialCooldown; } }
+    public float GetSpecialCooldown { get { return specialCooldown; } }
     protected float GetSpecialDuration { get { return specialDuration; } }
     protected float GetSpecialRadius { get { return specialRadius; } }
     protected float GetSpecialMoveSpeedPercentage { get { return specialMoveSpeedPercentage; } }

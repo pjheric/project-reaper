@@ -21,10 +21,12 @@ public class Player : MonoBehaviour
     [SerializeField] float outOfBoundsDamage;
     [SerializeField] float deathStasisTime;
     float outOfBoundsTickCooldownTimer;
+    float specialCooldownTimer;
+    float specialMaxDuration;
     // Start is called before the first frame update
     void Awake()
     {
-        DontDestroyOnLoad(this.gameObject); 
+        DontDestroyOnLoad(this.gameObject);
     }
 
     // Update is called once per frame
@@ -113,6 +115,19 @@ public class Player : MonoBehaviour
         else
         {
             outOfBoundsTickCooldownTimer = 0.0f;
+        }
+    }
+    void UpdateSpecialCooldownTimer()
+    {
+        if (playerChar == Character.ganglim)
+        {
+            specialCooldownTimer =  GetComponent<GLspecial>().specialCooldownTimer;
+            specialMaxDuration = GetComponent<GLspecial>().GetSpecialCooldown;
+        }
+        else if (playerChar == Character.morrigan)
+        {
+            specialCooldownTimer = GetComponent<Mspecial>().specialCooldownTimer;
+            specialMaxDuration = GetComponent<Mspecial>().GetSpecialCooldown;
         }
     }
 }
