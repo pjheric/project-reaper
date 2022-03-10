@@ -120,7 +120,6 @@ public class playermovement : MonoBehaviour
     //handles the high constant speed setting and handles stopping it and returning control after the time
     void dashing()
     {
-        Debug.Log("Dashing now");
         dashTimeTimer += Time.deltaTime;
         if (dashTimeTimer <= dashTime)
         {

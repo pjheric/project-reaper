@@ -21,7 +21,6 @@ public class SwordManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Hello");
         victimEntity = other.GetComponent<Entity>();
 
         if (gameObject.transform.parent.GetComponent<GangLimAttackingHandler>() != null)
@@ -29,7 +28,6 @@ public class SwordManager : MonoBehaviour
             if (GLAttackHandler.swinging && victimEntity != null && !victimEntity.isFriendly)
             {
                 victimEntity.currentHealth -= gangLimKit.BasicAttackDamage(victimEntity);
-                Debug.Log("enemy hit! health: " + victimEntity.currentHealth);
 
                 victimEntity.knockBack(gangLimKit.BasicAttackKnockback(), transform.parent.gameObject);
                 victimEntity.hurtColor();

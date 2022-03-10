@@ -21,6 +21,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] GameObject SpeakerName2;
     [SerializeField] TextMeshProUGUI DialogueLine;
 
+    [SerializeField] AudioSource musicSource;
+
     // [SerializeField] GameObject runner;
     // [SerializeField] AudioClip speechClip;
 
@@ -42,6 +44,7 @@ public class DialogueManager : MonoBehaviour
     {
         lockPlayerManager.ganglimLock = true;
         lockPlayerManager.morriganLock = true;
+        musicSource.volume = 0.30f;
         DialoguePanel.SetActive(true); 
         inGameUI.SetActive(false);
         //First, freeze time
@@ -52,9 +55,7 @@ public class DialogueManager : MonoBehaviour
     {
         
         char speakername = content[0];
-        Debug.Log(speakername); 
         string speakerBody = content.Substring(2);
-        Debug.Log(speakerBody); 
         if(speakername == 'M')
         {
             // Vector3 audioPos = Vector3.right*1;      
@@ -90,6 +91,7 @@ public class DialogueManager : MonoBehaviour
     {
         lockPlayerManager.ganglimLock = false;
         lockPlayerManager.morriganLock = false;
+        musicSource.volume = .70f;
         currentIndex = 0;
         DialoguePanel.SetActive(false);
         inGameUI.SetActive(true);

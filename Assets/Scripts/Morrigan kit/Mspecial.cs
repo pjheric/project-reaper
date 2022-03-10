@@ -74,19 +74,16 @@ public class Mspecial : Mpassive
             specialAreaObj.SetActive(true);
             attackAreaObj.SetActive(false);
             Invoke("removeSpecialAreaIndicatorDelay",0.2f);
-            Debug.Log("start special");
 
             Collider2D[] allHitColliders = Physics2D.OverlapAreaAll(GetSpecialBorderPt1.position, GetSpecialBorderPt2.position);
 
             foreach (var x in allHitColliders)
             {
-                Debug.Log("special hit special");
 
                 if (x.transform.tag == "enemy")
                 {
                     var victimEntity = x.GetComponent<Entity>();
                     victimEntity.currentHealth -= GetSpecialDamage;
-                    Debug.Log("enemy hit! health: " + victimEntity.currentHealth);
                     victimEntity.hurtColor();
                     specialDidDamage = true;
                 }

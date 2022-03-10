@@ -45,7 +45,6 @@ public class GangLimAttackingHandler : MonoBehaviour
     {
         if (canSwing)
         {
-            Debug.Log("attack!");
             //run audio
             Vector3 audioPos = Vector3.left*2;      
             GameObject temp = Instantiate(sfx.audioPrefab,audioPos,Quaternion.identity);//spawns in left ear
@@ -62,7 +61,6 @@ public class GangLimAttackingHandler : MonoBehaviour
         }
         else
         {
-            Debug.Log("Cannot attack!");
         }
     }
 

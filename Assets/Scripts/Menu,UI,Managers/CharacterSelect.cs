@@ -65,27 +65,19 @@ public class CharacterSelect : MonoBehaviour
             selectButton.interactable = true; 
         }
 
-        //Debug.Log(player1Selection);
-        //Debug.Log(player2Selection);
     }
 
     public void OnPressPrev()
     {
-        Debug.Log("pressPrev");
         currentIndex -=1;
-        Debug.Log(currentIndex);
         currentIndex = (currentIndex%4 + 4)%4;
-        Debug.Log(currentIndex);
         UpdateCharacter(); 
     }
 
     public void OnPressNext()
     {
-        Debug.Log("pressNext");
         currentIndex +=1;
-        Debug.Log(currentIndex);
         currentIndex = (currentIndex%4 + 4)%4;
-        Debug.Log(currentIndex);
 
         UpdateCharacter(); 
     }
@@ -94,25 +86,17 @@ public class CharacterSelect : MonoBehaviour
     {
         if(currentPlayer == 1)
         {
-            Debug.Log(currentIndex);
             player1Selection = currentIndex;
             currentPlayer = 2;
             currentIndex = 0;
             pim.playerPrefab = CharDataArray[player1Selection].charPrefab; //so that the next join is morrigan
             UpdateCharacter();
             characterSelectTitle.text = "CHOOSE YOUR REAPER (P2)";
-            Debug.Log("Called"); 
-            Debug.Log("PLY1");
-            Debug.Log(player1Selection);
-
         }
         else if (currentPlayer == 2)
         {
             player2Selection = currentIndex;
             characterSelectTitle.text = "PRESS Y TO LOCK IN"; 
-            Debug.Log("PLY2");
-            Debug.Log(player1Selection);
-            Debug.Log(player2Selection);
             //Start the game with the selected characters
         }
     }
@@ -121,13 +105,11 @@ public class CharacterSelect : MonoBehaviour
         //input.gameObject.GetComponent<edgeScreenIndicatorManager>().locus = locus;
         if (pim.playerCount == 1)
         {
-            Debug.Log("1 player");
             DontDestroyInput.player1 = input.gameObject; 
             pim.playerPrefab = CharDataArray[player2Selection].charPrefab; //so that the next join is morrigan
         }
         else if (pim.playerCount == 2)
         {
-            Debug.Log("Success");
             DontDestroyInput.player2 = input.gameObject;
             SceneManager.LoadScene("MainScene"); 
 

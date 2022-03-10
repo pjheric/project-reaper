@@ -49,7 +49,6 @@ public class TestMorriganAttackingHandler : MonoBehaviour
 
     void BasicAttack()
     {
-        Debug.Log("A*WDHHAOLD");
         Vector3 audioPos = Vector3.right*2;      
         GameObject temp = Instantiate(sfx.audioPrefab,audioPos,Quaternion.identity);//spawns in left ear
         temp.GetComponent<SFXRunner>().clip = sfx.attack;
@@ -57,7 +56,6 @@ public class TestMorriganAttackingHandler : MonoBehaviour
         {
             animator.SetTrigger("attack");
 
-            Debug.Log("attack!");
 
             canSwing = false;
 
@@ -69,7 +67,6 @@ public class TestMorriganAttackingHandler : MonoBehaviour
                 {
                     var victimEntity = x.GetComponent<Entity>();
                     victimEntity.currentHealth -= morriganKit.BasicAttackDamage;
-                    Debug.Log("enemy hit! health: " + victimEntity.currentHealth);
                     victimEntity.knockBack(morriganKit.BasicAttackKnockback, transform.gameObject);
                     victimEntity.hurtColor();
 
@@ -78,7 +75,6 @@ public class TestMorriganAttackingHandler : MonoBehaviour
         }
         else
         {
-            Debug.Log("Cannot attack!");
         }
     }
 

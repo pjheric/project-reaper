@@ -23,7 +23,6 @@ public class GLspecial : GLpassive
 
     private void Update()
     {
-        Debug.Log(specialCooldownTimer);
         if (specialActive)
         {
             UpdateSpecial();
@@ -60,7 +59,6 @@ public class GLspecial : GLpassive
 
     private void UpdateSpecial()
     {
-        Debug.Log(anim.GetBool("specialOn"));
         Collider2D[] allHitColliders = Physics2D.OverlapCircleAll(transform.position, GetSpecialRadius);
 
         foreach (var x in allHitColliders)
