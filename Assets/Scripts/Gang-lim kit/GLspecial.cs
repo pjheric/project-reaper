@@ -66,6 +66,8 @@ public class GLspecial : GLpassive
             if (x.transform.tag == "enemy")
             {
                 x.GetComponent<Entity>().currentHealth -= GetSpecialDPS * Time.deltaTime;
+                x.GetComponent<Entity>().knockBack(0.05f, this.gameObject);
+                x.GetComponent<Entity>().hurtColor();
             }
         }
         specialDurationTimer -= Time.deltaTime;

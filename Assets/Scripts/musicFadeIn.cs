@@ -24,11 +24,12 @@ public class musicFadeIn : MonoBehaviour
         float t = 0.0f;
         while(true)
         {
-            yield return new WaitForFixedUpdate();
-            t += Time.fixedUnscaledDeltaTime;
+            yield return new WaitForEndOfFrame();
+            t += Time.unscaledTime/30;
             source.volume = t;
             if(t > 0.40f)
             {
+                source.volume = 0.40f;
                 break;
             }
         }
