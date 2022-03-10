@@ -591,7 +591,7 @@ MonoBehaviour:
   stabbingDelay: 0.375
   specialCooldown: 8
   doomBuffTime: 10
-  specialDamage: 15
+  specialDamage: 30
   castingTime: 0.75
   doomBuff: 2
   point1: {fileID: 1142335235}
@@ -658,7 +658,7 @@ MonoBehaviour:
   stabbingDelay: 0.375
   specialCooldown: 8
   doomBuffTime: 10
-  specialDamage: 15
+  specialDamage: 30
   castingTime: 0.75
   doomBuff: 2
   point1: {fileID: 1142335235}
@@ -687,7 +687,7 @@ MonoBehaviour:
   stabbingDelay: 0.375
   specialCooldown: 8
   doomBuffTime: 10
-  specialDamage: 15
+  specialDamage: 30
   castingTime: 0.75
   doomBuff: 2
   point1: {fileID: 0}
