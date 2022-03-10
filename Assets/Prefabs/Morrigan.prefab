@@ -440,6 +440,8 @@ MonoBehaviour:
   playerChar: 0
   healthBar: {fileID: 0}
   healthText: {fileID: 0}
+  CDText: {fileID: 0}
+  CDRadial: {fileID: 0}
   sfx: {fileID: 11400000, guid: 464f65514f573814397a8671b48bf263, type: 2}
   outOfBoundsTickCooldown: 1.5
   outOfBoundsDamage: 5
@@ -661,6 +663,7 @@ MonoBehaviour:
   doomBuff: 2
   point1: {fileID: 1142335235}
   point2: {fileID: 729219699}
+  specialCooldownTimer: 0
   sfx: {fileID: 11400000, guid: 464f65514f573814397a8671b48bf263, type: 2}
   specialAreaObj: {fileID: 2907338136591879704}
   attackAreaObj: {fileID: 721487536307833251}

@@ -94,6 +94,8 @@ public class mainManager : MonoBehaviour
             DontDestroyInput.player1.GetComponent<edgeScreenIndicatorManager>().otherPlayer = DontDestroyInput.player2;
             DontDestroyInput.player1.GetComponent<Player>().healthBar = gangHealth;
             DontDestroyInput.player1.GetComponent<Player>().healthText = gangHealthNum;
+            DontDestroyInput.player1.GetComponent<Player>().CDText = gangSpecialCDText;
+            DontDestroyInput.player1.GetComponent<Player>().CDRadial = gangSpecialCDRadial;
             DontDestroyInput.player1.GetComponent<Player>().playerChar = Character.ganglim;
             WM.player1 = DontDestroyInput.player1;
 
@@ -103,6 +105,8 @@ public class mainManager : MonoBehaviour
             DontDestroyInput.player2.GetComponent<edgeScreenIndicatorManager>().otherPlayer = DontDestroyInput.player1;
             DontDestroyInput.player2.GetComponent<Player>().healthBar = morHealth;
             DontDestroyInput.player2.GetComponent<Player>().healthText = morHealthNum;
+            DontDestroyInput.player2.GetComponent<Player>().CDText = morSpecialCDText;
+            DontDestroyInput.player2.GetComponent<Player>().CDRadial = morSpecialCDRadial;
             DontDestroyInput.player2.GetComponent<Player>().playerChar = Character.morrigan;
             WM.player2 = DontDestroyInput.player2;
         }
@@ -114,6 +118,8 @@ public class mainManager : MonoBehaviour
             DontDestroyInput.player1.GetComponent<edgeScreenIndicatorManager>().otherPlayer = DontDestroyInput.player2;
             DontDestroyInput.player1.GetComponent<Player>().healthBar = morHealth;
             DontDestroyInput.player1.GetComponent<Player>().healthText = morHealthNum;
+            DontDestroyInput.player1.GetComponent<Player>().CDText = morSpecialCDText;
+            DontDestroyInput.player1.GetComponent<Player>().CDRadial = morSpecialCDRadial;
             DontDestroyInput.player1.GetComponent<Player>().playerChar = Character.morrigan;
             WM.player2 = DontDestroyInput.player1;
 
@@ -123,6 +129,8 @@ public class mainManager : MonoBehaviour
             DontDestroyInput.player2.GetComponent<edgeScreenIndicatorManager>().otherPlayer = DontDestroyInput.player1;
             DontDestroyInput.player2.GetComponent<Player>().healthBar = gangHealth;
             DontDestroyInput.player2.GetComponent<Player>().healthText = gangHealthNum;
+            DontDestroyInput.player2.GetComponent<Player>().CDText = gangSpecialCDText;
+            DontDestroyInput.player2.GetComponent<Player>().CDRadial = gangSpecialCDRadial;
             DontDestroyInput.player2.GetComponent<Player>().playerChar = Character.ganglim;
             WM.player1 = DontDestroyInput.player2;
         }

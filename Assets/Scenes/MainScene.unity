@@ -699,7 +699,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 79ac67667da0f454e8e2eb4681d33349, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e6d12fbbd556c274ca32dceed2f3376d, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3015,8 +3015,6 @@ MonoBehaviour:
   SpeakerName1: {fileID: 373724529}
   SpeakerName2: {fileID: 97097340}
   DialogueLine: {fileID: 1857743669}
-  runner: {fileID: 7186404029287017246, guid: 4ac89eabbeec0f944b7211c7ba17a8e9, type: 3}
-  speechClip: {fileID: 8300000, guid: ba3dd9410367b454c9f9469fcac95dae, type: 3}
   dialogue:
   - lines:
     - G I see that you still bring out the best in your warriors.
@@ -4289,8 +4287,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 79ac67667da0f454e8e2eb4681d33349, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: e6d12fbbd556c274ca32dceed2f3376d, type: 3}
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5405,10 +5403,10 @@ MonoBehaviour:
   morHealth: {fileID: 1478175202}
   gangHealthNum: {fileID: 522349452}
   morHealthNum: {fileID: 850227981}
-  gangSpecialCDRadial: {fileID: 0}
-  morSpecialCDRadial: {fileID: 0}
-  gangSpecialCDText: {fileID: 0}
-  morSpecialCDText: {fileID: 0}
+  gangSpecialCDRadial: {fileID: 322642127}
+  morSpecialCDRadial: {fileID: 1678475348}
+  gangSpecialCDText: {fileID: 311194262}
+  morSpecialCDText: {fileID: 2095485193}
   failureScreen: {fileID: 1400772590}
   failureText: {fileID: 793814830}
   failureMainMenuButtonImage: {fileID: 484757106}

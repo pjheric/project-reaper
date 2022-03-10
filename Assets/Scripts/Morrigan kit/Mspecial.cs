@@ -10,7 +10,7 @@ public class Mspecial : Mpassive
     private bool canSpecialStab = true;
 
     private float doomBuffTimer = 0;
-    public float specialCooldownTimer = 8;
+    public float specialCooldownTimer = 0;
 
     private bool specialDidDamage = false;
 

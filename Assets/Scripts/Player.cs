@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     public Character playerChar;
     public Slider healthBar;
     public TextMeshProUGUI healthText; 
+    public TextMeshProUGUI CDText; 
+    public Image CDRadial; 
     [SerializeField] playerSFX sfx;
     [SerializeField] float outOfBoundsTickCooldown;
     [SerializeField] float outOfBoundsDamage;
@@ -37,6 +39,20 @@ public class Player : MonoBehaviour
             if(entity.currentHealth < 0){entity.currentHealth = 0;}
             healthBar.value = entity.currentHealth;
             healthText.text = entity.currentHealth.ToString() + "/" + entity.maxHealth.ToString(); 
+            UpdateSpecialCooldownTimer();
+            if(specialCooldownTimer < 0){specialCooldownTimer = 0.0f;}
+            CDText.text = specialCooldownTimer.ToString("0.#");
+            CDRadial.fillAmount = specialCooldownTimer/specialMaxDuration;
+            if(specialCooldownTimer == 0.0)
+            {
+                CDRadial.fillAmount = 1;
+                CDText.text = "";
+                CDRadial.color = Color.green;
+            }else
+            {
+                CDRadial.color = Color.black;
+            }
+
         }
         if(PersistentData.isGameStarted)
         {
