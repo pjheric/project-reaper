@@ -616,7 +616,7 @@ MonoBehaviour:
   animator: {fileID: 180039740859886245}
   swingDegrees: 5
   swingTime: 0.01
-  swingDelayTime: 0.8
+  swingDelayTime: 0.5
 --- !u!114 &8793734964404351680
 MonoBehaviour:
   m_ObjectHideFlags: 0

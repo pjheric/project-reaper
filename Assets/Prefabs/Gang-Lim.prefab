@@ -586,7 +586,7 @@ MonoBehaviour:
   swinging: 0
   swingDegrees: 140
   swingTime: 0.15
-  swingDelayTime: 0.5
+  swingDelayTime: 0.2
 --- !u!70 &3841786295790607540
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

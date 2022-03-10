@@ -11,20 +11,23 @@ public class StartMenu : MonoBehaviour
     [SerializeField] GameObject CreditsPanel;
     [SerializeField] GameObject ControlsPanel;
     public Animator NarrationAnim; 
-    IEnumerator co; 
-    private void Start()
+    IEnumerator co;
+    public bool AlreadyNarrated = false; 
+    private void Awake()
     {
-        NarrationAnim = NarrationPanel.GetComponentInChildren<Animator>(); 
-        co = NarrationCoroutine();
-        StartCoroutine(co); 
+        if (!AlreadyNarrated)
+        {
+            AlreadyNarrated = true; 
+            NarrationAnim = NarrationPanel.GetComponentInChildren<Animator>();
+            co = NarrationCoroutine();
+            StartCoroutine(co);
+        }
     }
     IEnumerator NarrationCoroutine()
     {
-        MenuPanel.SetActive(false);
         NarrationPanel.SetActive(true);
         yield return new WaitForSecondsRealtime(waitTime);
         NarrationPanel.SetActive(false);
-        MenuPanel.SetActive(true); 
     }
     public void OnPressStart()
     {
