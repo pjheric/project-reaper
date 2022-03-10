@@ -21,8 +21,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] GameObject SpeakerName2;
     [SerializeField] TextMeshProUGUI DialogueLine;
 
-    [SerializeField] GameObject runner;
-    [SerializeField] AudioClip speechClip;
+    // [SerializeField] GameObject runner;
+    // [SerializeField] AudioClip speechClip;
 
 
     //All dialogue is just an array of list of strings
@@ -57,18 +57,18 @@ public class DialogueManager : MonoBehaviour
         Debug.Log(speakerBody); 
         if(speakername == 'M')
         {
-            Vector3 audioPos = Vector3.right*1;      
-            GameObject temp = Instantiate(runner,audioPos,Quaternion.identity);//spawns in left ear
-            temp.GetComponent<SFXRunner>().clip = speechClip;
+            // Vector3 audioPos = Vector3.right*1;      
+            // GameObject temp = Instantiate(runner,audioPos,Quaternion.identity);//spawns in left ear
+            // temp.GetComponent<SFXRunner>().clip = speechClip;
             DialogueLine.alignment = TextAlignmentOptions.TopRight;
             SpeakerName1.SetActive(false);
             SpeakerName2.SetActive(true); 
         }
         else if(speakername == 'G')
         {
-            Vector3 audioPos = Vector3.left*1;      
-            GameObject temp = Instantiate(runner,audioPos,Quaternion.identity);//spawns in left ear
-            temp.GetComponent<SFXRunner>().clip = speechClip;
+            // Vector3 audioPos = Vector3.left*1;      
+            // GameObject temp = Instantiate(runner,audioPos,Quaternion.identity);//spawns in left ear
+            // temp.GetComponent<SFXRunner>().clip = speechClip;
             DialogueLine.alignment = TextAlignmentOptions.TopLeft;
             SpeakerName1.SetActive(true);
             SpeakerName2.SetActive(false);

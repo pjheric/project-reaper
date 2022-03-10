@@ -539,8 +539,8 @@ MonoBehaviour:
   procNumber: 3
   procMaxHealthPercentageDamage: 5
   specialCooldown: 8
-  specialDuration: 6
-  specialRadius: 3
+  specialDuration: 3
+  specialRadius: 6
   specialMoveSpeedPercentage: 30
   specialDPS: 8
 --- !u!114 &5214499984364631450
@@ -592,7 +592,7 @@ MonoBehaviour:
   procNumber: 3
   procMaxHealthPercentageDamage: 5
   specialCooldown: 8
-  specialDuration: 6
+  specialDuration: 3
   specialRadius: 6
   specialMoveSpeedPercentage: 30
   specialDPS: 8
