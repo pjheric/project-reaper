@@ -9,9 +9,14 @@ public class StartMenu : MonoBehaviour
     [SerializeField] GameObject NarrationPanel;
     [SerializeField] GameObject MenuPanel;
     [SerializeField] GameObject startButton; 
+    [SerializeField] GameObject controlsButton; 
+    [SerializeField] GameObject creditsButton; 
     [SerializeField] float waitTime;
     [SerializeField] GameObject CreditsPanel;
     [SerializeField] GameObject ControlsPanel;
+    [SerializeField] GameObject optionsBackButton;
+    [SerializeField] GameObject creditsBackButton;
+    [SerializeField] GameObject controlsBackButton;
     public Animator NarrationAnim;
     [SerializeField] EventSystem es; 
     IEnumerator co;
@@ -44,6 +49,7 @@ public class StartMenu : MonoBehaviour
     {
         OptionsPanel.SetActive(true);
         MenuPanel.SetActive(false); 
+        es.SetSelectedGameObject(optionsBackButton); 
     }
 
     public void OnPressQuit()
@@ -55,20 +61,26 @@ public class StartMenu : MonoBehaviour
     {
         MenuPanel.SetActive(false);
         CreditsPanel.SetActive(true); 
+        es.SetSelectedGameObject(creditsBackButton); 
+
     }
     public void OnPressControls()
     {
         MenuPanel.SetActive(false);
         ControlsPanel.SetActive(true); 
+        es.SetSelectedGameObject(controlsBackButton); 
+
     }
     public void OnPressBackCredits()
     {
         CreditsPanel.SetActive(false);
         MenuPanel.SetActive(true); 
+        es.SetSelectedGameObject(creditsButton); 
     }
     public void OnPressBackControls()
     {
         ControlsPanel.SetActive(false);
         MenuPanel.SetActive(true); 
+        es.SetSelectedGameObject(controlsButton); 
     }
 }
