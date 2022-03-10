@@ -2838,10 +2838,12 @@ MonoBehaviour:
   OptionsPanel: {fileID: 546343654}
   NarrationPanel: {fileID: 545844219}
   MenuPanel: {fileID: 1549117502}
+  startButton: {fileID: 795901237}
   waitTime: 35
   CreditsPanel: {fileID: 170875322}
   ControlsPanel: {fileID: 1928524497}
   NarrationAnim: {fileID: 0}
+  es: {fileID: 693632589}
   AlreadyNarrated: 0
 --- !u!4 &1785547340
 Transform:
