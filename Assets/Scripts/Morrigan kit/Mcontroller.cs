@@ -40,7 +40,7 @@ public class Mcontroller : MonoBehaviour
     #endregion
     #region get special stats
 
-    protected float GetSpecialCooldown { get{ return specialCooldown; } }
+    public float GetSpecialCooldown { get{ return specialCooldown; } }
     protected float GetDoomBuffTime { get { return doomBuffTime; } }
     protected float GetSpecialDamage { get{ return specialDamage; } }
     protected float GetCastingTime { get { return castingTime; } }
